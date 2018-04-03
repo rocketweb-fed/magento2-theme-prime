@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<page 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <!-- Removed elements -->
+        <referenceBlock name="report.bugs" remove="true"/>
+        <referenceBlock name="currency" remove="true"/>
+
+        <!-- Updating element classes -->
+        <referenceContainer name="header-wrapper" htmlClass="header content flex flex-wrap float-panel" />
+
+        <!-- Header layout modifications -->
+        <referenceContainer name="header-wrapper">
+            <container name="header-wrapper.links" as="links-wrapper" htmlTag="div" htmlClass="flex-item links-wrapper"/>
+            <container name="header-wrapper.logo" as="logo-wrapper" htmlTag="div" htmlClass="flex-item logo-wrapper"/>
+            <container name="header-wrapper.search" as="search-wrapper" htmlTag="div" htmlClass="flex-item search-wrapper" />
+        </referenceContainer>
+
+        <!-- Moved elements -->
+        <move element="logo" destination="header-wrapper.logo" before="-"/>
+        <move element="top.search" destination="header-wrapper.search"/>
+        <move element="minicart" destination="header-wrapper.links" after="-"/>
+    </body>
+</page>
