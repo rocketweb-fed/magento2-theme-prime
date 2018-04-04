@@ -29,5 +29,12 @@
         <move element="wish-list-link" destination="account-dropdown"/>
         <move element="multiple-wish-list-link" destination="account-dropdown"/>
         <move element="catalog.compare.link" destination="header-wrapper.search"/>
+                
+        <!-- Preheader message -->
+        <referenceContainer name="header.panel">        
+            <container name="preheader" htmlTag="div" htmlClass="preheader">
+                <block class="Magento\Framework\View\Element\Template" name="preheader.message" template="Magento_Theme::html/preheader.phtml" />
+            </container>
+        </referenceContainer>
     </body>
 </page>
