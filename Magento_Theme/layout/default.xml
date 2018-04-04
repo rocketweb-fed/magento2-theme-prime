@@ -15,7 +15,20 @@
             <container name="header-wrapper.logo" as="logo-wrapper" htmlTag="div" htmlClass="flex-item logo-wrapper"/>
             <container name="header-wrapper.search" as="search-wrapper" htmlTag="div" htmlClass="flex-item search-wrapper" />
             <container name="header-wrapper.links" as="links-wrapper" htmlTag="div" htmlClass="flex-item links-wrapper">
-                <block class="Magento\Framework\View\Element\Template" name="account-dropdown" template="Magento_Theme::account-dropdown.phtml" />
+                <block class="Magento\Framework\View\Element\Template" name="account-dropdown" template="Magento_Theme::account-dropdown.phtml">
+                    <block class="Magento\Framework\View\Element\Html\Link" name="orders-link">
+                        <arguments>
+                            <argument name="label" xsi:type="string" translate="true">My Orders</argument>
+                            <argument name="path" xsi:type="string" translate="true">sales/order/history/</argument>
+                        </arguments>
+                    </block>
+                    <block class="Magento\Framework\View\Element\Html\Link" name="logout-link" after="-">
+                        <arguments>
+                            <argument name="label" xsi:type="string" translate="true">Sign Out</argument>
+                            <argument name="path" xsi:type="string" translate="true">customer/account/logout</argument>
+                        </arguments>
+                    </block>
+                </block>
             </container>
         </referenceContainer>
 

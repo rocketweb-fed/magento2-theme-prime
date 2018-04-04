@@ -23,15 +23,17 @@ $customerSession = $objectManager->get('Magento\Customer\Model\Session');
         }
     </script>
     <ul class="dropdown" data-bind="scope: 'customer'">
+        <!-- ko ifnot: customer().fullname  -->
         <?php echo $block->getChildHtml('authorization-link');?>
         <?php echo $block->getChildHtml('register-link');?>
+        <!-- /ko -->
+
+        <!-- ko if: customer().fullname  -->
+        <?php echo $block->getChildHtml('orders-link');?>
         <?php echo $block->getChildHtml('my-account-link');?>
         <?php echo $block->getChildHtml('wish-list-link');?>
         <?php echo $block->getChildHtml('multiple-wish-list-link');?>
-
-        <!-- ko if: customer().fullname  -->
-        <hr>
+        <?php echo $block->getChildHtml('logout-link');?>
         <!-- /ko -->
-
     </ul>
 </div>
