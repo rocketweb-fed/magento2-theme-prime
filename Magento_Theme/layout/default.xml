@@ -5,6 +5,7 @@
         <!-- Removed elements -->
         <referenceBlock name="report.bugs" remove="true"/>
         <referenceBlock name="currency" remove="true"/>
+        <referenceBlock name="top.links" remove="true"/>
 
         <!-- Updating element classes -->
         <referenceContainer name="header-wrapper" htmlClass="header content flex flex-wrap float-panel" />
@@ -27,5 +28,6 @@
         <move element="my-account-link" destination="account-dropdown"/>
         <move element="wish-list-link" destination="account-dropdown"/>
         <move element="multiple-wish-list-link" destination="account-dropdown"/>
+        <move element="catalog.compare.link" destination="header-wrapper.search"/>
     </body>
 </page>
