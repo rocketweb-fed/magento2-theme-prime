@@ -12,11 +12,11 @@
 
         <!-- Header layout modifications -->
         <referenceContainer name="header-wrapper">
+            <container name="header-wrapper.logo" as="logo-wrapper" htmlTag="div" htmlClass="flex-item logo-wrapper"/>
+            <container name="header-wrapper.search" as="search-wrapper" htmlTag="div" htmlClass="flex-item search-wrapper" />
             <container name="header-wrapper.links" as="links-wrapper" htmlTag="div" htmlClass="flex-item links-wrapper">
                 <block class="Magento\Framework\View\Element\Template" name="account-dropdown" template="Magento_Theme::account-dropdown.phtml" />
             </container>
-            <container name="header-wrapper.logo" as="logo-wrapper" htmlTag="div" htmlClass="flex-item logo-wrapper"/>
-            <container name="header-wrapper.search" as="search-wrapper" htmlTag="div" htmlClass="flex-item search-wrapper" />
         </referenceContainer>
 
         <!-- Moved elements -->
