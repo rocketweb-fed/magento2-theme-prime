@@ -7,15 +7,17 @@
         <referenceBlock name="currency" remove="true"/>
         <referenceBlock name="top.links" remove="true"/>
         <referenceBlock name="navigation.sections" remove="true"/>
+        <referenceBlock name="advanced-search-link" remove="true"/>
 
         <!-- Updating element classes -->
         <referenceContainer name="header-wrapper" htmlClass="header content flex flex-wrap float-panel" />
 
         <!-- Header layout modifications -->
         <referenceContainer name="header-wrapper">
-            <container name="header-wrapper.logo" as="logo-wrapper" htmlTag="div" htmlClass="flex-item logo-wrapper"/>
-            <container name="header-wrapper.search" as="search-wrapper" htmlTag="div" htmlClass="flex-item search-wrapper hidden-m" />
-            <container name="header-wrapper.links" as="links-wrapper" htmlTag="div" htmlClass="flex-item links-wrapper">
+            <block class="Magento\Framework\View\Element\Template" name="navigation.toggle" template="Magento_Theme::html/header/hamburger.phtml" />
+            <container name="header-wrapper.logo" as="logo-wrapper" htmlTag="div" htmlClass="flex-item flex logo-wrapper"/>
+            <container name="header-wrapper.search" as="search-wrapper" htmlTag="div" htmlClass="flex-item flex search-wrapper hidden-m" />
+            <container name="header-wrapper.links" as="links-wrapper" htmlTag="div" htmlClass="flex-item flex links-wrapper">
                 <block class="Magento\Framework\View\Element\Template" name="navigation.account.menu" template="Magento_Customer::nav/account-dropdown.phtml">
                     <block class="Magento\Framework\View\Element\Html\Link" name="orders-link">
                         <arguments>
@@ -35,14 +37,14 @@
 
         <!-- Moved elements -->
         <move element="logo" destination="header-wrapper.logo" before="-"/>
-        <move element="top.search" destination="header-wrapper.search"/>
+        <move element="top.search" destination="header-wrapper.search" before="-"/>
         <move element="minicart" destination="header-wrapper.links" after="-"/>
         <move element="authorization-link" destination="navigation.account.menu"/>
         <move element="register-link" destination="navigation.account.menu"/>
         <move element="my-account-link" destination="navigation.account.menu"/>
         <move element="wish-list-link" destination="navigation.account.menu"/>
         <move element="multiple-wish-list-link" destination="navigation.account.menu"/>
-        <move element="catalog.compare.link" destination="header-wrapper.search"/>
+        <move element="catalog.compare.link" destination="header-wrapper.search" after="-"/>
         <move element="catalog.topnav" destination="navigation.main" before="-"/> 
         
         <!-- Main menu modifications -->
