@@ -1,0 +1,25 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+
+<div id="acc-links-mobile" class="hidden-dt"></div>
+<script>
+    require([
+        "jquery"
+    ], function($) {
+        $(document).ready(function() {
+            var $accLinks =  $('#account-links-block');
+            if ($accLinks.length) {
+                $accLinks.clone().appendTo('#acc-links-mobile');
+            }
+        });
+    });
+</script>
+
+

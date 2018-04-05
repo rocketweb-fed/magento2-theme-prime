@@ -6,6 +6,7 @@
         <referenceBlock name="report.bugs" remove="true"/>
         <referenceBlock name="currency" remove="true"/>
         <referenceBlock name="top.links" remove="true"/>
+        <referenceBlock name="navigation.sections" remove="true"/>
 
         <!-- Updating element classes -->
         <referenceContainer name="header-wrapper" htmlClass="header content flex flex-wrap float-panel" />
@@ -15,7 +16,7 @@
             <container name="header-wrapper.logo" as="logo-wrapper" htmlTag="div" htmlClass="flex-item logo-wrapper"/>
             <container name="header-wrapper.search" as="search-wrapper" htmlTag="div" htmlClass="flex-item search-wrapper" />
             <container name="header-wrapper.links" as="links-wrapper" htmlTag="div" htmlClass="flex-item links-wrapper">
-                <block class="Magento\Framework\View\Element\Template" name="account-dropdown" template="Magento_Theme::account-dropdown.phtml">
+                <block class="Magento\Framework\View\Element\Template" name="navigation.account.menu" template="Magento_Customer::nav/account-dropdown.phtml">
                     <block class="Magento\Framework\View\Element\Html\Link" name="orders-link">
                         <arguments>
                             <argument name="label" xsi:type="string" translate="true">My Orders</argument>
@@ -28,20 +29,28 @@
                             <argument name="path" xsi:type="string" translate="true">customer/account/logout</argument>
                         </arguments>
                     </block>
-                </block>
+                </block>    
             </container>
+        </referenceContainer>
+
+        <!-- Main menu modifications -->
+        <referenceContainer name="page.top">
+            <block class="Magento\Framework\View\Element\Template" name="navigation.main" before="-" template="Magento_Theme::html/main-nav.phtml">
+                <block class="Magento\Framework\View\Element\Template" name="navigation.account.menu.mobile" template="Magento_Customer::nav/account-menu.phtml" after="-" />
+            </block>
         </referenceContainer>
 
         <!-- Moved elements -->
         <move element="logo" destination="header-wrapper.logo" before="-"/>
         <move element="top.search" destination="header-wrapper.search"/>
         <move element="minicart" destination="header-wrapper.links" after="-"/>
-        <move element="authorization-link" destination="account-dropdown"/>
-        <move element="register-link" destination="account-dropdown"/>
-        <move element="my-account-link" destination="account-dropdown"/>
-        <move element="wish-list-link" destination="account-dropdown"/>
-        <move element="multiple-wish-list-link" destination="account-dropdown"/>
+        <move element="authorization-link" destination="navigation.account.menu"/>
+        <move element="register-link" destination="navigation.account.menu"/>
+        <move element="my-account-link" destination="navigation.account.menu"/>
+        <move element="wish-list-link" destination="navigation.account.menu"/>
+        <move element="multiple-wish-list-link" destination="navigation.account.menu"/>
         <move element="catalog.compare.link" destination="header-wrapper.search"/>
+        <move element="catalog.topnav" destination="navigation.main" before="-"/> 
                 
         <!-- Preheader message -->
         <referenceContainer name="header.panel">        
