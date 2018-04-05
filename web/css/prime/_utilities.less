@@ -1,0 +1,13 @@
+// Mobile
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {    
+    .hidden-m {
+        .lib-visually-hidden();
+    }
+}
+
+// Desktop
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {    
+    .hidden-dt {
+        .lib-visually-hidden();
+    }
+}

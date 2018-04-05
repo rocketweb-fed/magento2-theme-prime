@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<page 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <!-- Removed elements -->
+        <referenceBlock name="report.bugs" remove="true"/>
+        <referenceBlock name="currency" remove="true"/>
+        <referenceBlock name="top.links" remove="true"/>
+        <referenceBlock name="navigation.sections" remove="true"/>
+        <referenceBlock name="advanced-search-link" remove="true"/>
+
+        <!-- Updating element classes -->
+        <referenceContainer name="header-wrapper" htmlClass="header content flex flex-wrap float-panel" />
+
+        <!-- Header layout modifications -->
+        <referenceContainer name="header-wrapper">
+            <block class="Magento\Framework\View\Element\Template" name="navigation.toggle" template="Magento_Theme::html/header/hamburger.phtml" />
+            <container name="header-wrapper.logo" as="logo-wrapper" htmlTag="div" htmlClass="flex-item flex logo-wrapper"/>
+            <container name="header-wrapper.search" as="search-wrapper" htmlTag="div" htmlClass="flex-item flex search-wrapper hidden-m" />
+            <container name="header-wrapper.links" as="links-wrapper" htmlTag="div" htmlClass="flex-item flex links-wrapper">
+                <block class="Magento\Framework\View\Element\Template" name="navigation.account.menu" template="Magento_Customer::nav/account-dropdown.phtml">
+                    <block class="Magento\Framework\View\Element\Html\Link" name="orders-link">
+                        <arguments>
+                            <argument name="label" xsi:type="string" translate="true">My Orders</argument>
+                            <argument name="path" xsi:type="string" translate="true">sales/order/history/</argument>
+                        </arguments>
+                    </block>
+                    <block class="Magento\Framework\View\Element\Html\Link" name="logout-link" after="-">
+                        <arguments>
+                            <argument name="label" xsi:type="string" translate="true">Sign Out</argument>
+                            <argument name="path" xsi:type="string" translate="true">customer/account/logout</argument>
+                        </arguments>
+                    </block>
+                </block>    
+            </container>
+        </referenceContainer>
+
+        <!-- Moved elements -->
+        <move element="logo" destination="header-wrapper.logo" before="-"/>
+        <move element="top.search" destination="header-wrapper.search" before="-"/>
+        <move element="minicart" destination="header-wrapper.links" after="-"/>
+        <move element="authorization-link" destination="navigation.account.menu"/>
+        <move element="register-link" destination="navigation.account.menu"/>
+        <move element="my-account-link" destination="navigation.account.menu"/>
+        <move element="wish-list-link" destination="navigation.account.menu"/>
+        <move element="multiple-wish-list-link" destination="navigation.account.menu"/>
+        <move element="catalog.compare.link" destination="header-wrapper.search" after="-"/>
+        <move element="catalog.topnav" destination="navigation.main" before="-"/> 
+        
+        <!-- Main menu modifications -->
+        <referenceContainer name="page.top">
+            <block class="Magento\Framework\View\Element\Template" name="navigation.main" before="-" template="Magento_Theme::html/main-nav.phtml">
+                <block class="Magento\Framework\View\Element\Template" name="mobile.search" template="Magento_Search::search-mobile.phtml"/>
+                <block class="Magento\Framework\View\Element\Template" name="navigation.account.menu.mobile" template="Magento_Customer::nav/account-menu.phtml"/>
+            </block>
+        </referenceContainer>
+                
+        <!-- Preheader message -->
+        <referenceContainer name="header.panel">        
+            <container name="preheader" htmlTag="div" htmlClass="preheader">
+                <block class="Magento\Framework\View\Element\Template" name="preheader.message" template="Magento_Theme::html/preheader.phtml" />
+            </container>
+        </referenceContainer>
+    </body>
+</page>

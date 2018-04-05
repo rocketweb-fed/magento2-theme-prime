@@ -1,0 +1,22 @@
+<?php
+    $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+    $customerSession = $objectManager->get('Magento\Customer\Model\Session');
+?>
+
+<div class="actions dropdown account-dropdown hidden-m">
+    <span class="action" data-mage-init='{"dropdown":{}}' data-toggle="dropdown" aria-haspopup="false"><?php echo __('Account');?></span>
+    <ul id="account-links-block" class="dropdown navigation">
+        <?php
+            if ($customerSession->isLoggedIn()): 
+                echo $block->getChildHtml('orders-link');
+                echo $block->getChildHtml('my-account-link');
+                echo $block->getChildHtml('wish-list-link');
+                echo $block->getChildHtml('multiple-wish-list-link');
+                echo $block->getChildHtml('logout-link');
+            else: 
+                echo $block->getChildHtml('authorization-link');
+                echo $block->getChildHtml('register-link');
+            endif; 
+        ?>
+    </ul>
+</div>
