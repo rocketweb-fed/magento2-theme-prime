@@ -11,3 +11,41 @@
         }
     }
 }
+
+// Desktop
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {    
+    /**
+     * Sticky header
+     */
+    .sticky-header {
+        .panel.wrapper {
+            display: none;
+        }
+
+        header.page-header {
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            z-index: 1010;
+
+            .header {
+                padding: 10px 15px;
+            }
+
+            .logo-wrapper,
+            .search-wrapper {
+                .lib-visually-hidden();
+            }
+        }
+
+        .nav-sections {
+            position: fixed;
+            top: 0;
+            left: 0px;
+            width: 100%;
+            z-index: 1000; 
+            box-shadow: @dropdown-list__shadow;
+        }
+    }
+}

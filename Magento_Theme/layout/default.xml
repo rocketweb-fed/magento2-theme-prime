@@ -10,7 +10,7 @@
         <referenceBlock name="advanced-search-link" remove="true"/>
 
         <!-- Updating element classes -->
-        <referenceContainer name="header-wrapper" htmlClass="header content flex flex-wrap float-panel" />
+        <referenceContainer name="header-wrapper" htmlClass="header content flex flex-wrap" />
 
         <!-- Header layout modifications -->
         <referenceContainer name="header-wrapper">
@@ -53,6 +53,8 @@
                 <block class="Magento\Framework\View\Element\Template" name="mobile.search" template="Magento_Search::search-mobile.phtml"/>
                 <block class="Magento\Framework\View\Element\Template" name="navigation.account.menu.mobile" template="Magento_Customer::nav/account-menu.phtml"/>
             </block>
+            <!-- Sticky header -->
+            <block class="Magento\Framework\View\Element\Template" name="navigation.sticky" template="Magento_Theme::html/header/sticky-header.phtml" />
         </referenceContainer>
                 
         <!-- Preheader message -->
