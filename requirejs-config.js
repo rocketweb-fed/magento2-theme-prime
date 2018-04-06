@@ -1,7 +1,5 @@
 var config = {
-    map: {
-        '*': {
-            
-        }
+    paths: {
+        stickyheader: 'js/stickyheader'
     }
 }
