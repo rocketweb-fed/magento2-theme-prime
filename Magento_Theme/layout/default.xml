@@ -8,12 +8,9 @@
         <referenceBlock name="top.links" remove="true"/>
         <referenceBlock name="navigation.sections" remove="true"/>
         <referenceBlock name="advanced-search-link" remove="true"/>
-
-        <!-- Updating element classes -->
-        <referenceContainer name="header-wrapper" htmlClass="header content flex flex-wrap" />
-
+        
         <!-- Header layout modifications -->
-        <referenceContainer name="header-wrapper">
+        <referenceContainer name="header-wrapper" htmlClass="header content flex flex-wrap">
             <block class="Magento\Framework\View\Element\Template" name="navigation.toggle" template="Magento_Theme::html/header/hamburger.phtml" />
             <container name="header-wrapper.logo" as="logo-wrapper" htmlTag="div" htmlClass="flex-item flex logo-wrapper"/>
             <container name="header-wrapper.search" as="search-wrapper" htmlTag="div" htmlClass="flex-item flex search-wrapper hidden-m" />
@@ -34,18 +31,15 @@
                 </block>    
             </container>
         </referenceContainer>
-
-        <!-- Moved elements -->
         <move element="logo" destination="header-wrapper.logo" before="-"/>
         <move element="top.search" destination="header-wrapper.search" before="-"/>
+        <move element="catalog.compare.link" destination="header-wrapper.search" after="-"/>
         <move element="minicart" destination="header-wrapper.links" after="-"/>
         <move element="authorization-link" destination="navigation.account.menu"/>
         <move element="register-link" destination="navigation.account.menu"/>
         <move element="my-account-link" destination="navigation.account.menu"/>
         <move element="wish-list-link" destination="navigation.account.menu"/>
         <move element="multiple-wish-list-link" destination="navigation.account.menu"/>
-        <move element="catalog.compare.link" destination="header-wrapper.search" after="-"/>
-        <move element="catalog.topnav" destination="navigation.main" before="-"/> 
         
         <!-- Main menu modifications -->
         <referenceContainer name="page.top">
@@ -56,6 +50,7 @@
             <!-- Sticky header -->
             <block class="Magento\Framework\View\Element\Template" name="navigation.sticky" template="Magento_Theme::html/header/sticky-header.phtml" />
         </referenceContainer>
+        <move element="catalog.topnav" destination="navigation.main" before="-"/> 
                 
         <!-- Preheader message -->
         <referenceContainer name="header.panel">        
@@ -63,5 +58,64 @@
                 <block class="Magento\Framework\View\Element\Template" name="preheader.message" template="Magento_Theme::html/preheader.phtml" />
             </container>
         </referenceContainer>
+
+        <!-- Footer modifications -->
+        <referenceContainer name="footer-container">
+            <container name="footer.bottom" htmlTag="div" htmlClass="footer-bottom" after="-"/>
+        </referenceContainer>
+        <referenceContainer name="footer" htmlClass="footer content flex flex-wrap">
+            <block class="Magento\Framework\View\Element\Template" name="footer.left" template="Magento_Theme::html/footer-column.phtml">
+                <arguments>
+                    <argument name="title" xsi:type="string">Customer Service</argument>
+                    <argument name="enabled" xsi:type="boolean">true</argument>
+                </arguments>
+            </block>
+            <block class="Magento\Framework\View\Element\Template" name="footer.middle" template="Magento_Theme::html/footer-column.phtml">
+                <arguments>
+                    <argument name="title" xsi:type="string">Static Links</argument>
+                    <argument name="enabled" xsi:type="boolean">true</argument>
+                </arguments>
+                <block class="Magento\Cms\Block\Block" name="top.banner">
+                    <arguments>
+                        <argument name="block_id" xsi:type="string">footer_links_block</argument>
+                    </arguments>
+                </block>
+            </block>
+            <block class="Magento\Framework\View\Element\Template" name="footer.right" template="Magento_Theme::html/footer-column.phtml">
+                <arguments>
+                    <argument name="enabled" xsi:type="boolean">true</argument>
+                </arguments>
+                <block class="Magento\Framework\View\Element\Template" name="footer.social" template="Magento_Theme::html/footer-social.phtml">
+                    <arguments>
+                        <argument name="social" xsi:type="array">
+                            <item name="facebook" xsi:type="array">
+                                <item name="title" xsi:type="string">Facebook</item>
+                                <item name="url" xsi:type="string">http://www.facebook.com/rocketweb</item>
+                                <item name="icon" xsi:type="string">fb</item>
+                            </item>
+                            <item name="twitter" xsi:type="array">
+                                <item name="title" xsi:type="string">Twitter</item>
+                                <item name="url" xsi:type="string">http://www.twitter.com/rocketweb</item>
+                                <item name="icon" xsi:type="string">tw</item>
+                            </item>
+                            <item name="pinterest" xsi:type="array">
+                                <item name="title" xsi:type="string">Pinterest</item>
+                                <item name="url" xsi:type="string">http://www.pinterest.com/rocketweb</item>
+                                <item name="icon" xsi:type="string">pt</item>
+                            </item>
+                            <item name="instagram" xsi:type="array">
+                                <item name="title" xsi:type="string">Instagram</item>
+                                <item name="url" xsi:type="string">http://www.instagram.com/rocketweb</item>
+                                <item name="icon" xsi:type="string">ig</item>
+                            </item>
+                        </argument>
+                    </arguments>
+                </block>
+            </block>
+        </referenceContainer>
+        <move element="footer_links" destination="footer.left" after="-"/>
+        <move element="form.subscribe" destination="footer.right" after="-"/>
+        <move element="copyright" destination="footer.bottom" after="-"/>
+
     </body>
 </page>
