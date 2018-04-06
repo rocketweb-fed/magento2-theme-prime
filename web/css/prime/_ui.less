@@ -1,5 +1,13 @@
 & when (@media-common = true) {
-    .dropdown {
-        .lib-dropdown();
+    .header-dropdown {
+        .lib-dropdown(
+            @_dropdown-list-position-right: 0,
+            @_dropdown-list-pointer-position: right,
+            @_dropdown-list-item-padding: @indent__xs @indent__s
+        );
+
+        .dropdown {
+            width: 180px;
+        }
     }
 }
