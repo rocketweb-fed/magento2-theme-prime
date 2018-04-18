@@ -28,7 +28,8 @@
                             <argument name="path" xsi:type="string" translate="true">customer/account/logout</argument>
                         </arguments>
                     </block>
-                </block>    
+                </block> 
+                <block class="Magento\Framework\View\Element\Template" name="minicart.js" template="Magento_Checkout::cart/minicart-js.phtml" after="-"/>   
             </container>
         </referenceContainer>
         <move element="logo" destination="header-wrapper.logo" before="-"/>
@@ -116,6 +117,8 @@
         <move element="footer_links" destination="footer.left" after="-"/>
         <move element="form.subscribe" destination="footer.right" after="-"/>
         <move element="copyright" destination="footer.bottom" after="-"/>
+
+
 
     </body>
 </page>

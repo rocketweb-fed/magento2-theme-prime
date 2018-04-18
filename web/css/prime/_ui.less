@@ -23,6 +23,31 @@
     .footer-bottom {
         text-align: center;
     }
+
+    /* More/less toggle */
+    .more-toggle {
+        display: none;
+
+        .more-available & {
+            display: block;
+        }
+
+        > a {
+            .less {
+                display: none;
+            }
+
+            &.toggled {
+                .more {
+                    display: none;
+                }
+                
+                .less {
+                    display: inline;
+                }
+            }
+        }
+    }
 }
 
 // Desktop
