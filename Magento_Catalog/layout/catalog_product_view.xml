@@ -7,6 +7,19 @@
 -->
 <page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
+        <!-- Relocate elements -->
         <move element="page.main.title" destination="product.info.main" before="-"/>
+
+        <!-- Add qty +/- buttons -->
+        <referenceBlock name="product.info.addtocart">
+            <action method="setTemplate">
+                <argument name="template" xsi:type="string">Magento_Catalog::product/view/addtocart.phtml</argument>
+            </action>
+        </referenceBlock>
+        <referenceBlock name="product.info.addtocart.additional">
+            <action method="setTemplate">
+                <argument name="template" xsi:type="string">Magento_Catalog::product/view/addtocart.phtml</argument>
+            </action>
+        </referenceBlock>
     </body>
 </page>
