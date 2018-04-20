@@ -18,8 +18,8 @@
 
             .action-delete {
                 .lib-icon-font(
-                        @icon-trash,
-                        @_icon-font-size: 26px
+                    @icon-trash,
+                    @_icon-font-size: 26px
                 );
             }
         }
@@ -32,6 +32,16 @@
             display: block;
         }
     }
+
+    .checkout-container {
+        .lib-vendor-prefix-display();
+        .lib-vendor-prefix-flex-wrap(wrap);
+        
+        [class^="opc-"] {
+            .lib-vendor-prefix-flex-grow(1);
+        }
+    }
+
 }
 
 .media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
@@ -41,5 +51,32 @@
                 text-align: right;
             }
         }
+    }
+
+    /*** CHECKOUT ***/
+    .opc-wrapper {
+        .lib-vendor-prefix-flex-basis(60%);
+    }
+
+    .opc-progress-bar {
+        .lib-vendor-prefix-flex-basis(12%);
+        margin: 20px 0;
+        
+        &-item {
+            width: auto;
+            display: block;
+
+            &:before {
+                content: none;
+            }
+
+            > span {
+                padding-bottom: 30px;
+            }
+        }
+    }
+
+    .opc-sidebar {
+        .lib-vendor-prefix-flex-basis(28%);
     }
 }
