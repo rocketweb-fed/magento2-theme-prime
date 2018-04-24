@@ -10,26 +10,6 @@ define([
 ], function ($, mediaCheck) {
     'use strict';
 
-    /**
-     * Responsive behavior
-     */
-    mediaCheck({
-        media: '(min-width: 769px)',
-
-        /*** Switch to Desktop Version. ***/
-        entry: function () {
-            $("#narrow-by-list > dt").collapsible({ active: true, content: '.filter-options-content' });
-        },
-        /*** Switch to Mobile Version. ***/
-        exit: function () {
-            $("#narrow-by-title .filter-title").collapsible({ active: false, content: '.filter-content' });
-            $("#narrow-by-list > dt").collapsible({ active: false, content: '.filter-options-content' });
-        }
-    });
-
-    /**
-     * Global behavior
-     */
     $(document).ready(function () {
 
         /* More/Less toggle in default layered nav */
