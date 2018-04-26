@@ -1,0 +1,54 @@
+// /**
+//  * Copyright © 2015 Studioemma. All rights reserved.
+//  * See ... for license details.
+//  */
+
+@rw-label_size: 50px; 
+@rw-label_new_color: @color-blue1;
+@rw-label_sale_color: @color-orange-red1;
+
+& when (@media-common = true) {
+    /*** Product Labels ***/
+    .product-labels {
+        position: relative;
+        z-index: 10;
+
+        > span {
+            position: absolute;
+            display: block;
+            height: @rw-label_size;
+            width: @rw-label_size;
+            line-height: @rw-label_size;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+
+            .product.media & {
+                height: @rw-label_size * 1.5;
+                width: @rw-label_size * 1.5;
+                line-height: @rw-label_size * 1.5;
+                font-size: x-large;
+            }
+
+            &.new-label {
+                background-color: @rw-label_new_color;
+            }
+
+            &.sale-label {
+                background-color: @rw-label_sale_color;
+
+                &.sale-value {
+                    &:before {
+                        content: '-';
+                    }
+                }
+            }
+        }
+        
+    }
+
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    
+}

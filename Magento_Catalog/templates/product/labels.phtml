@@ -1,0 +1,10 @@
+<?php 
+$_productHelper = $this->helper('RocketWeb\UiCore\Helper\Product');
+$_product = $_productHelper->getProduct();
+?>
+
+<?php if($_productHelper->getProductLabels($_product)): ?>
+    <div class="product-labels">
+        <?php echo $_productHelper->getProductLabels($_product); ?>
+    </div>
+<?php endif; ?>
