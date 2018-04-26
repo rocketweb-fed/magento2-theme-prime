@@ -1,0 +1,9 @@
+<?php 
+$_dataHelper = $this->helper('RocketWeb\UiCore\Helper\Data');
+?>
+
+<?php if($_dataHelper->isShareButtonsEnabled() && $_dataHelper->getShareButtonsCode() != ''): ?>
+    <!-- Go to www.addthis.com/dashboard to customize your tools --> 
+    <div class="addthis_inline_share_toolbox"></div>
+    <?php echo $_dataHelper->getShareButtonsCode(); ?>
+<?php endif; ?>
