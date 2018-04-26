@@ -22,8 +22,15 @@
             </action>
         </referenceBlock>
 
+        <!-- Product labels -->
         <referenceContainer name="product.info.media">
             <block class="Magento\Framework\View\Element\Template" name="product.labels" before="-" template="Magento_Catalog::product/labels.phtml"/>
+        </referenceContainer>
+
+        <!-- AddThis share buttons  -->
+        <referenceBlock name="product.info.mailto" remove="true"/>
+        <referenceContainer name="product.info.social">
+            <block class="Magento\Framework\View\Element\Template" name="product.info.social.buttons" template="Magento_Catalog::product/view/addthis-inline.phtml" after="-"/>
         </referenceContainer>
     </body>
 </page>
