@@ -21,5 +21,9 @@
                 <argument name="template" xsi:type="string">Magento_Catalog::product/view/addtocart.phtml</argument>
             </action>
         </referenceBlock>
+
+        <referenceContainer name="product.info.media">
+            <block class="Magento\Framework\View\Element\Template" name="product.labels" before="-" template="Magento_Catalog::product/labels.phtml"/>
+        </referenceContainer>
     </body>
 </page>
