@@ -1,2 +1,19 @@
 @import 'layouts/_grids.less';
 @import 'layouts/_header.less';
+
+& when (@media-common = true) {
+    .page-layout {
+        &-full-width {
+            .page-main {
+                max-width: 100%;
+                padding-left: 0;
+                padding-right: 0;
+            }
+        }
+    }
+
+    .container {
+        max-width: @layout__max-width;
+        margin: 0 auto;
+    }
+}

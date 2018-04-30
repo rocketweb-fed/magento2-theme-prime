@@ -1,0 +1,188 @@
+<?php /* @var \WeltPixel\OwlCarouselSlider\Block\Slider\Products $this */ ?>
+
+<?php $sliderData    = $this->getSliderConfiguration(); ?>
+<?php $enabled       = array_key_exists('status', $sliderData) ? $sliderData['status'] : ''; ?>
+<?php $showPrice     = array_key_exists('show_price', $sliderData) ? $sliderData['show_price'] : false; ?>
+<?php $showAddToCart = array_key_exists('show_addto', $sliderData) ? $sliderData['show_addto'] : false; ?>
+<?php $showWishlist  = (array_key_exists('show_wishlist', $sliderData) && $sliderData['show_wishlist'] !=0) ? true : false; ?>
+<?php $showCompare   = (array_key_exists('show_compare', $sliderData) && $sliderData['show_compare'] !=0) ? true : false; ?>
+<?php if(!$enabled){ return; } ?>
+
+<?php
+$products = $this->getProductCollection();
+
+if(!count($products)) { return; }
+
+$productsType = $this->getData('products_type');
+$sliderConfig = json_encode($sliderData);
+$sliderTitle  = array_key_exists('title', $sliderData) ? $sliderData['title'] : '';
+$breakpoint   = $this->getBreakpointConfiguration();
+
+?>
+
+<div class="product-slider">
+    <div class="content-heading">
+        <h2 class="title"><?php echo $sliderTitle; ?></h2>
+    </div>
+    <div class="slick-slider-products-<?php echo $productsType;?><?php echo count($products)== 1? '-single-item': '';?>">
+        <?php foreach($products as $product) : ?>
+
+            <?php
+            $_imagehelper = $this->helper('Magento\Catalog\Helper\Image');
+            $productImage = $_imagehelper->init($product, 'category_page_list')->constrainOnly(FALSE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(400)->getUrl();
+            $productUrl   =  $product->getUrlModel()->getUrl($product);
+            ?>
+
+            <div class="item product product-item">
+                <div data-container="product-grid" class="product-item-info">
+                    <a tabindex="-1" class="product photo product-item-photo" href="<?php echo $productUrl; ?>">
+                        <span style="width:240px;" class="product-image-container">
+                            <span style="padding-bottom: 125%;" class="product-image-wrapper">
+                                <img width="240" height="300" alt="<?php echo $product->getName(); ?>" src="<?php echo $productImage; ?>" class="product-image-photo"
+                                    <?php echo $sliderData['lazyLoad'] ? 'data-src="' . $productImage . '" data-src-retina="' . $productImage . '" class="owl-lazy"' : '' ?>
+                                />
+                            </span>
+                        </span>
+                    </a>
+                    <div class="product details product-item-details">
+                        <strong class="product name product-item-name">
+                            <a href="<?php echo $productUrl; ?>" class="product-item-link">
+                                <?php echo $product->getName(); ?>
+                            </a>
+                        </strong>
+                        <?php if($showPrice) : ?>
+                            <?php /* @escapeNotVerified */ echo $this->getProductPrice($product); ?>
+                        <?php endif; ?>
+                        <div class="product-item-inner">
+                            <div class="product actions product-item-actions">
+
+                                <?php if($showAddToCart) : ?>
+                                    <div class="actions-primary">
+                                            <?php if ($product->isSaleable()): ?>
+                                                <?php if ($product->getTypeInstance()->hasRequiredOptions($product)): ?>
+                                                    <button class="action tocart primary" data-mage-init='{"redirectUrl": {"url": "<?php /* @escapeNotVerified */ echo $block->getAddToCartUrl($product) ?>"}}' type="button" title="<?php /* @escapeNotVerified */ echo __('View More') ?>">
+                                                        <span><?php /* @escapeNotVerified */ echo __('View More') ?></span>
+                                                    </button>
+                                                <?php else: ?>
+                                                    <?php $postDataHelper = $this->helper('Magento\Framework\Data\Helper\PostHelper');
+                                                    $postData = $postDataHelper->getPostData($block->getAddToCartUrl($product), ['product' => $product->getEntityId()])
+                                                    ?>
+                                                    <button class="action tocart primary"
+                                                            data-post='<?php /* @escapeNotVerified */ echo $postData; ?>'
+                                                            type="button" title="<?php /* @escapeNotVerified */ echo __('Add to Cart') ?>">
+                                                        <span><?php /* @escapeNotVerified */ echo __('Add to Cart') ?></span>
+                                                    </button>
+                                                <?php endif; ?>
+                                            <?php else: ?>
+                                                <?php if ($product->getIsSalable()): ?>
+                                                    <div class="stock available"><span><?php /* @escapeNotVerified */ echo __('In stock') ?></span></div>
+                                                <?php else: ?>
+                                                    <div class="stock unavailable"><span><?php /* @escapeNotVerified */ echo __('Out of stock') ?></span></div>
+                                                <?php endif; ?>
+                                            <?php endif; ?>
+                                    </div>
+                                <?php endif; ?>
+
+                                <div class="actions-secondary" data-role="add-to-links">
+                                    <?php if ($showWishlist || $showCompare): ?>
+                                        <div class="secondary-addto-links actions-secondary" data-role="add-to-links">
+
+                                            <?php if ($this->helper('Magento\Wishlist\Helper\Data')->isAllow() && $showWishlist): ?>
+                                                <a href="#" data-post='<?php /* @escapeNotVerified */ echo $block->getAddToWishlistParams($product); ?>'  class="action towishlist" data-action="add-to-wishlist" title="<?php /* @escapeNotVerified */ echo __('Add to Wish List') ?>">
+                                                    <span><?php /* @escapeNotVerified */ echo __('Add to Wish List') ?></span>
+                                                </a>
+                                            <?php endif; ?>
+
+                                            <?php if ($block->getAddToCompareUrl() && $showCompare): ?>
+                                                <?php
+                                                $compareHelper = $this->helper('Magento\Catalog\Helper\Product\Compare');
+                                                ?>
+                                                <a href="#" class="action tocompare"
+                                                   data-post='<?php /* @escapeNotVerified */ echo $compareHelper->getPostDataParams($product);?>'
+                                                   data-role="add-to-links"
+                                                   title="<?php /* @escapeNotVerified */ echo __('Add to Compare'); ?>">
+                                                    <span><?php /* @escapeNotVerified */ echo __('Add to Compare') ?></span>
+                                                </a>
+                                            <?php endif; ?>
+                                        </div>
+                                    <?php endif; ?>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php endforeach; ?>
+    </div>
+</div>
+
+<script>
+        require(['jquery', 'slick' ],
+            function ($) {
+                var products_type = '<?php echo $productsType;?>',
+                slider_config = <?php echo $sliderConfig; ?>,
+
+                carouselElement = $('.slick-slider-products-' + products_type),
+
+                items = ((slider_config.items >= 0 && slider_config.items != null) ? slider_config.items : 2),
+
+                stagePadding = slider_config.stagePadding != '' ? parseInt(slider_config.stagePadding) : 0,
+                animate_Out = slider_config.transition == 'fadeOut' ? true : false,
+
+                sPBrk_1 = slider_config.stagePadding_brk1 != '' ? parseInt(slider_config.stagePadding_brk1) : 0,
+                sPBrk_2 = slider_config.stagePadding_brk2 != '' ? parseInt(slider_config.stagePadding_brk2) : 0,
+                sPBrk_3 = slider_config.stagePadding_brk3 != '' ? parseInt(slider_config.stagePadding_brk3) : 0,
+                sPBrk_4 = slider_config.stagePadding_brk4 != '' ? parseInt(slider_config.stagePadding_brk4) : 0;
+
+                
+                carouselElement.slick({
+                    autoplay        :   parseInt(slider_config.autoplay) == 1 ? true : false,
+                    autoplaySpeed   :   (parseInt(slider_config.autoplayTimeout) > 0 && slider_config.autoplayTimeout != null) ? parseInt(slider_config.autoplayTimeout) : 3000,
+                    adaptiveHeight  :   parseInt(slider_config.autoHeight) == 1 ? true : false,
+                    arrows          :   parseInt(slider_config.nav) == 1 ? true : false,
+                    dots            :   parseInt(slider_config.dots) == 1 ? true : false,
+                    lazyLoad        :   parseInt(slider_config.lazyLoad) == 1 ? "ondemand" : "progressive",
+                    infinite        :   parseInt(slider_config.loop) == 1 ? true : false,
+                    centerPadding   :   parseInt(slider_config.center) == 1 ? 0 : stagePadding,
+                    slidesToShow    :   items,
+                    fade            :   animate_Out,
+                    responsive      :   [
+                        {
+                            breakpoint  : <?php echo $breakpoint['breakpoint_1']; ?>,
+                            settings: {
+                                slidesToShow :(slider_config.items_brk1  >= 0 && slider_config.items_brk1 != null) ? parseInt(slider_config.items_brk1) : items,
+                                slidesToScroll :(slider_config.items_brk1  >= 0 && slider_config.items_brk1 != null) ? parseInt(slider_config.items_brk1) : items,
+                                arrows  : parseInt(slider_config.nav_brk1) == 1 ? true : false,
+                                fade    : false
+                            }
+                        },
+                        {
+                            breakpoint  : <?php echo $breakpoint['breakpoint_2']; ?>,
+                            settings: {
+                                slidesToShow :(slider_config.items_brk2  >= 0 && slider_config.items_brk2 != null) ? parseInt(slider_config.items_brk2) : items,
+                                slidesToScroll :(slider_config.items_brk2  >= 0 && slider_config.items_brk2 != null) ? parseInt(slider_config.items_brk2) : items,
+                                arrows  : parseInt(slider_config.nav_brk2) == 1 ? true : false,
+                                fade    : false
+                            }
+                        },
+                        {
+                            breakpoint  : <?php echo $breakpoint['breakpoint_3']; ?>,
+                            settings: {
+                                slidesToShow :(slider_config.items_brk3  >= 0 && slider_config.items_brk3 != null) ? parseInt(slider_config.items_brk3) : items,
+                                slidesToScroll :(slider_config.items_brk3  >= 0 && slider_config.items_brk3 != null) ? parseInt(slider_config.items_brk3) : items,
+                                arrows  : parseInt(slider_config.nav_brk3) == 1 ? true : false
+                            }
+                        },
+                        {
+                            breakpoint  : <?php echo $breakpoint['breakpoint_4']; ?>,
+                            settings: {
+                                slidesToShow :(slider_config.items_brk4  >= 0 && slider_config.items_brk4 != null) ? parseInt(slider_config.items_brk4) : items,
+                                slidesToScroll :(slider_config.items_brk4  >= 0 && slider_config.items_brk4 != null) ? parseInt(slider_config.items_brk4) : items,
+                                arrows  : parseInt(slider_config.nav_brk4) == 1 ? true : false
+                            }
+                        }
+                    ]
+                });
+            });
+    </script>

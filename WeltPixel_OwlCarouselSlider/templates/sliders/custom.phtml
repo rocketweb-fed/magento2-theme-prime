@@ -1,0 +1,170 @@
+<?php  /* @var \WeltPixel\OwlCarouselSlider\Block\Slider\Custom $this */ ?>
+
+<?php $sliderConfig  = $this->getSliderConfiguration(); ?>
+<?php $sliderGeneral = $sliderConfig['slider_config']; ?>
+<?php $enabled       = (array_key_exists('status', $sliderGeneral) && $sliderGeneral['status'] !=0) ? true : false; ?>
+
+<?php if ($enabled) : ?>
+
+    <?php
+    $sliderId     = $this->getData('slider_id');
+    $breakpoint   = $this->getBreakpointConfiguration();
+    $bannerConfig = $sliderConfig['banner_config'];
+    $sliderConfig = json_encode($sliderGeneral);
+    $mediaUrl     = $this->getMediaUrl();
+    ?>
+    
+    <?php if($sliderGeneral['show_title']) : ?>
+        <div class="content-heading">
+            <h2 class="title"><?php echo $sliderGeneral['title']; ?></h2>
+        </div>
+    <?php endif; ?>
+
+    <div class="custom-slider">
+        <div id="slick-slider-<?php echo $sliderId;?>">
+            <?php foreach($bannerConfig as $banner) : ?>
+                <?php
+                    $title = (array_key_exists('title', $banner) && $banner['title'] !='') ? $banner['title'] : false;
+                    $showTitle = array_key_exists('show_title', $banner) ? $banner['show_title'] : false;
+                    $description = (array_key_exists('description', $banner) && $banner['description'] !='')
+                        ? $banner['description'] : false;
+                    $showDescription = array_key_exists('show_description', $banner)
+                        ? $banner['show_description'] : false;
+                    $url = array_key_exists('url', $banner) ? $banner['url'] : null;
+                    $target = array_key_exists('target', $banner) ? $banner['target'] : '_blank';
+                    $bannerType = array_key_exists('banner_type', $banner) ? $banner['banner_type'] : '';
+                    $image = array_key_exists('image', $banner) ? $banner['image'] : '';
+                    $imageMobile = $banner['image_mobile'] ?? '';
+                    $layout = $banner['layout'] ?? ''; // 0 - left, 1 - center, 2 - right
+                    $altText = array_key_exists('alt_text', $banner) ? $banner['alt_text'] : '';
+                    $video = array_key_exists('video', $banner) ? $banner['video'] : '';
+                    $custom = array_key_exists('custom', $banner) ? $banner['custom'] : '';
+                    $buttonText = array_key_exists('button_text', $banner) ? $banner['button_text'] : null;
+                    $customContent = array_key_exists('custom_content', $banner) ? $banner['custom_content'] : '';
+                ?>
+                    <div class="hp-banner-item banner-<?php echo $banner['id']; ?>" style="margin:0px 4px">
+                        <?php if ($bannerType == 1) : ?>
+                            <?php if (!$buttonText): ?>
+                                <?php if (isset($url)): ?>
+                                <a href="<?php echo $url; ?>" target="<?php echo $target; ?>" >
+                                <?php endif; ?>
+                            <?php endif; ?>
+                                <div class="hp-banner-item--image">
+                                    <picture>
+                                        <source media="(min-width: 768px)" srcset="<?php echo $mediaUrl . $image; ?>" />
+                                        <source media="(max-width: 767px)" srcset="<?php echo $mediaUrl . $imageMobile; ?>" />
+                                        <img src="<?php echo $mediaUrl . $image; ?>"
+                                             alt="<?php echo $altText; ?>"
+                                             title="<?php echo $altText; ?>"
+                                            />
+                                    </picture>
+                                </div>
+                            <?php if (!$buttonText): ?>
+                                <?php if (isset($url)): ?>
+                                </a>
+                                <?php endif; ?>
+                            <?php endif; ?>
+                        <?php elseif ($bannerType == 3) : ?>
+                            <?php if (!$buttonText): ?>
+                                <?php if ($url): ?>
+                                    <a href="<?php echo $url; ?>" target="<?php echo $target; ?>" >
+                                <?php endif; ?>
+                            <?php endif; ?>
+                                <span class="banner-custom">
+                                    <?php echo $custom; ?>
+                                </span>
+                            <?php if (!$buttonText): ?>
+                                <?php if ($url): ?>
+                                    </a>
+                                <?php endif; ?>
+                            <?php endif; ?>
+                        <?php elseif ($bannerType == 2) : ?>
+                            <span class="banner-video">
+                                <?php echo $video; ?>
+                            </span>
+                        <?php endif; ?>
+                        <?php if($layout == 0) {
+                                $align = 'left';
+                            } elseif ($layout == 1) {
+                                $align = 'center';
+                            } else {
+                                $align = 'right';
+                            }
+                        ?>
+                        <div class="hp-banner-item--content align-<?php echo $align; ?>">
+                            <?php if ($showTitle && $title) : ?>
+                                <h2 class="hp-banner-item--title"><?php echo $title; ?></h2>
+                            <?php endif; ?>
+
+                            <?php if ($showDescription && $description) : ?>
+                                <p class="hp-banner-item--description"><?php echo $description; ?></p>
+                            <?php endif; ?>
+
+                            <div class="hp-banner-item--button">
+                                <?php if ($buttonText && $url): ?>
+                                    <a class="action button" href="<?php echo $url; ?>" target="<?php echo $target; ?>"> <?php echo $buttonText; ?> </a>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                        <?php if ($customContent): ?>
+                            <div class="clearfix"></div>
+                            <div class="custom_content">
+                                <?php echo $customContent; ?>
+                            </div>
+                        <?php endif; ?>
+                    </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+
+    <script>
+        require(['jquery', 'slick' ],
+            function ($) {
+                var slider_id = <?php echo $sliderId; ?>;
+                var slider_config = <?php echo $sliderConfig; ?>;
+
+                var stagePadding = slider_config.stagePadding != '' ? parseInt(slider_config.stagePadding) : 0;
+                var animate_Out = slider_config.transition == 'fadeOut' ? true : false;
+
+                $('#slick-slider-'+slider_id).slick({
+                    autoplay        :   parseInt(slider_config.autoplay) == 1 ? true : false,
+                    autoplaySpeed   :   (parseInt(slider_config.autoplayTimeout) > 0 && slider_config.autoplayTimeout != null) ? parseInt(slider_config.autoplayTimeout) : 3000,
+                    adaptiveHeight  :   parseInt(slider_config.autoHeight) == 1 ? true : false,
+                    arrows          :   parseInt(slider_config.nav) == 1 ? true : false,
+                    dots            :   parseInt(slider_config.dots) == 1 ? true : false,
+                    lazyLoad        :   parseInt(slider_config.lazyLoad) == 1 ? "ondemand" : "progressive",
+                    infinite        :   parseInt(slider_config.loop) == 1 ? true : false,
+                    centerPadding   :   parseInt(slider_config.center) == 1 ? 0 : stagePadding,
+                    fade            :   animate_Out,
+                    responsive      :   [
+                        {
+                            breakpoint  : <?php echo $breakpoint['breakpoint_1']; ?>,
+                            settings: {
+                                arrows  : parseInt(slider_config.nav_brk1) == 1 ? true : false,
+                                fade    : false
+                            }
+                        },
+                        {
+                            breakpoint  : <?php echo $breakpoint['breakpoint_2']; ?>,
+                            settings: {
+                                arrows  : parseInt(slider_config.nav_brk2) == 1 ? true : false,
+                                fade    : false
+                            }
+                        },
+                        {
+                            breakpoint  : <?php echo $breakpoint['breakpoint_3']; ?>,
+                            settings: {
+                                arrows  : parseInt(slider_config.nav_brk3) == 1 ? true : false
+                            }
+                        },
+                        {
+                            breakpoint  : <?php echo $breakpoint['breakpoint_4']; ?>,
+                            settings: {
+                                arrows  : parseInt(slider_config.nav_brk4) == 1 ? true : false
+                            }
+                        }
+                    ]
+                });
+            });
+    </script>
+<?php endif; ?>
