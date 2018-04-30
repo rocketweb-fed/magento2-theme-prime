@@ -4,10 +4,7 @@
 
 // Default Variables
 @slick-font-path: "./fonts/";
-@slick-loader-path: "../../../../images/";
-@slick-arrow-color: white;
-@slick-dot-color: white;
-@slick-dot-color-active: @slick-dot-color;
+@slick-loader-path: "../images/";
 @slick-prev-character: "<";
 @slick-next-character: ">";
 @slick-dot-size: 18px;
@@ -132,18 +129,20 @@
             padding: 0;
             border: none;
             outline: none;
+            color: #eee;
             z-index: 1;
             
             &:before {
                 font-size: 40px;
                 line-height: 1;
-                color: @slick-arrow-color;
+
                 opacity: @slick-opacity-default;
             }
 
             &:active,
             &:focus {
                 box-shadow: none;
+                color: #ccc;
             }
 
             &.slick-disabled:before {
@@ -183,8 +182,6 @@
 
         /* Dots */
         &-dots {
-            position: absolute;
-            bottom: 0;
             list-style: none;
             text-align: center;
             padding: 0;
@@ -206,7 +203,7 @@
                     display: inline-block;
                     height: @slick-dot-size;
                     width: @slick-dot-size;
-                    border: solid 2px @slick-dot-color;
+                    border: solid 2px #eee;
                     background: transparent;
                     outline: none;
                     line-height: 0px;
@@ -217,28 +214,47 @@
                     cursor: pointer;
 
                     &:hover, &:focus {
-                        border: solid 2px @slick-dot-color;
+                        border: solid 2px #eee;
                     }
 
                     @media (min-width: @screen__m) {
                         &:hover {
                             outline: none;
-                            background: @slick-dot-color;
+                            background: #eee;
                             opacity: @slick-opacity-on-hover;
                         }
                     }
                 }
                 
                 &.slick-active button {
-                    background: @slick-dot-color-active;
-                    border: solid 2px @slick-dot-color-active;
+                    background: #ccc;
+                    border: solid 2px #ccc;
                 }
             }
         }
     } 
+
+    /** 
+     * Product slider
+     **/
+    .custom-slider {
+        .slick-dots {
+            position: absolute;
+            bottom: 0;
+        }
+    }
+
+    /** 
+     * Product slider
+     **/
+    .product-slider {
+        .slick-dots {
+            margin: @indent__l 0;
+        }
+    }
     
     /**
-    * Homepage banners
+    * HP banner slider
     **/
     .hp-banner-item {
         color: white;
