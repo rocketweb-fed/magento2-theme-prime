@@ -116,7 +116,6 @@ $breakpoint   = $this->getBreakpointConfiguration();
         <?php endforeach; ?>
     </div>
 </div>
-
 <script>
         require(['jquery', 'slick' ],
             function ($) {
@@ -145,14 +144,15 @@ $breakpoint   = $this->getBreakpointConfiguration();
                     lazyLoad        :   parseInt(slider_config.lazyLoad) == 1 ? "ondemand" : "progressive",
                     infinite        :   parseInt(slider_config.loop) == 1 ? true : false,
                     centerPadding   :   parseInt(slider_config.center) == 1 ? 0 : stagePadding,
-                    slidesToShow    :   items,
+                    slidesToShow    :   parseInt(items),
+                    slidesToScroll  :   parseInt(items),
                     fade            :   animate_Out,
                     responsive      :   [
                         {
                             breakpoint  : <?php echo $breakpoint['breakpoint_1']; ?>,
                             settings: {
-                                slidesToShow :(slider_config.items_brk1  >= 0 && slider_config.items_brk1 != null) ? parseInt(slider_config.items_brk1) : items,
-                                slidesToScroll :(slider_config.items_brk1  >= 0 && slider_config.items_brk1 != null) ? parseInt(slider_config.items_brk1) : items,
+                                slidesToShow :(slider_config.items_brk1  >= 0 && slider_config.items_brk1 != null) ? parseInt(slider_config.items_brk1) : parseInt(items),
+                                slidesToScroll :(slider_config.items_brk1  >= 0 && slider_config.items_brk1 != null) ? parseInt(slider_config.items_brk1) : parseInt(items),
                                 arrows  : parseInt(slider_config.nav_brk1) == 1 ? true : false,
                                 fade    : false
                             }
@@ -160,8 +160,8 @@ $breakpoint   = $this->getBreakpointConfiguration();
                         {
                             breakpoint  : <?php echo $breakpoint['breakpoint_2']; ?>,
                             settings: {
-                                slidesToShow :(slider_config.items_brk2  >= 0 && slider_config.items_brk2 != null) ? parseInt(slider_config.items_brk2) : items,
-                                slidesToScroll :(slider_config.items_brk2  >= 0 && slider_config.items_brk2 != null) ? parseInt(slider_config.items_brk2) : items,
+                                slidesToShow :(slider_config.items_brk2  >= 0 && slider_config.items_brk2 != null) ? parseInt(slider_config.items_brk2) : parseInt(items),
+                                slidesToScroll :(slider_config.items_brk2  >= 0 && slider_config.items_brk2 != null) ? parseInt(slider_config.items_brk2) : parseInt(items),
                                 arrows  : parseInt(slider_config.nav_brk2) == 1 ? true : false,
                                 fade    : false
                             }
@@ -169,16 +169,16 @@ $breakpoint   = $this->getBreakpointConfiguration();
                         {
                             breakpoint  : <?php echo $breakpoint['breakpoint_3']; ?>,
                             settings: {
-                                slidesToShow :(slider_config.items_brk3  >= 0 && slider_config.items_brk3 != null) ? parseInt(slider_config.items_brk3) : items,
-                                slidesToScroll :(slider_config.items_brk3  >= 0 && slider_config.items_brk3 != null) ? parseInt(slider_config.items_brk3) : items,
+                                slidesToShow :(slider_config.items_brk3  >= 0 && slider_config.items_brk3 != null) ? parseInt(slider_config.items_brk3) : parseInt(items),
+                                slidesToScroll :(slider_config.items_brk3  >= 0 && slider_config.items_brk3 != null) ? parseInt(slider_config.items_brk3) : parseInt(items),
                                 arrows  : parseInt(slider_config.nav_brk3) == 1 ? true : false
                             }
                         },
                         {
                             breakpoint  : <?php echo $breakpoint['breakpoint_4']; ?>,
                             settings: {
-                                slidesToShow :(slider_config.items_brk4  >= 0 && slider_config.items_brk4 != null) ? parseInt(slider_config.items_brk4) : items,
-                                slidesToScroll :(slider_config.items_brk4  >= 0 && slider_config.items_brk4 != null) ? parseInt(slider_config.items_brk4) : items,
+                                slidesToShow :(slider_config.items_brk4  >= 0 && slider_config.items_brk4 != null) ? parseInt(slider_config.items_brk4) : parseInt(items),
+                                slidesToScroll :(slider_config.items_brk4  >= 0 && slider_config.items_brk4 != null) ? parseInt(slider_config.items_brk4) : parseInt(items),
                                 arrows  : parseInt(slider_config.nav_brk4) == 1 ? true : false
                             }
                         }
