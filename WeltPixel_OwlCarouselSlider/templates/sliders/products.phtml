@@ -140,7 +140,7 @@ $breakpoint   = $this->getBreakpointConfiguration();
                     autoplaySpeed   :   (parseInt(slider_config.autoplayTimeout) > 0 && slider_config.autoplayTimeout != null) ? parseInt(slider_config.autoplayTimeout) : 3000,
                     adaptiveHeight  :   parseInt(slider_config.autoHeight) == 1 ? true : false,
                     arrows          :   parseInt(slider_config.nav) == 1 ? true : false,
-                    dots            :   parseInt(slider_config.dots) == 1 ? true : false,
+                    dots            :   (parseInt(slider_config.dots) == 1 && parseInt(items) < <?php echo count($products); ?>) ? true : false,
                     lazyLoad        :   parseInt(slider_config.lazyLoad) == 1 ? "ondemand" : "progressive",
                     infinite        :   parseInt(slider_config.loop) == 1 ? true : false,
                     centerPadding   :   parseInt(slider_config.center) == 1 ? 0 : stagePadding,
@@ -154,6 +154,7 @@ $breakpoint   = $this->getBreakpointConfiguration();
                                 slidesToShow :(slider_config.items_brk1  >= 0 && slider_config.items_brk1 != null) ? parseInt(slider_config.items_brk1) : parseInt(items),
                                 slidesToScroll :(slider_config.items_brk1  >= 0 && slider_config.items_brk1 != null) ? parseInt(slider_config.items_brk1) : parseInt(items),
                                 arrows  : parseInt(slider_config.nav_brk1) == 1 ? true : false,
+                                dots : (slider_config.items_brk1 != null && slider_config.items_brk1 < <?php echo count($products); ?>) ? true : false,
                                 fade    : false
                             }
                         },
@@ -163,6 +164,7 @@ $breakpoint   = $this->getBreakpointConfiguration();
                                 slidesToShow :(slider_config.items_brk2  >= 0 && slider_config.items_brk2 != null) ? parseInt(slider_config.items_brk2) : parseInt(items),
                                 slidesToScroll :(slider_config.items_brk2  >= 0 && slider_config.items_brk2 != null) ? parseInt(slider_config.items_brk2) : parseInt(items),
                                 arrows  : parseInt(slider_config.nav_brk2) == 1 ? true : false,
+                                dots : (slider_config.items_brk2 != null && slider_config.items_brk2 < <?php echo count($products); ?>) ? true : false,
                                 fade    : false
                             }
                         },
@@ -171,7 +173,8 @@ $breakpoint   = $this->getBreakpointConfiguration();
                             settings: {
                                 slidesToShow :(slider_config.items_brk3  >= 0 && slider_config.items_brk3 != null) ? parseInt(slider_config.items_brk3) : parseInt(items),
                                 slidesToScroll :(slider_config.items_brk3  >= 0 && slider_config.items_brk3 != null) ? parseInt(slider_config.items_brk3) : parseInt(items),
-                                arrows  : parseInt(slider_config.nav_brk3) == 1 ? true : false
+                                arrows  : parseInt(slider_config.nav_brk3) == 1 ? true : false,
+                                dots : (slider_config.items_brk3 != null && slider_config.items_brk3 < <?php echo count($products); ?>) ? true : false
                             }
                         },
                         {
@@ -179,7 +182,8 @@ $breakpoint   = $this->getBreakpointConfiguration();
                             settings: {
                                 slidesToShow :(slider_config.items_brk4  >= 0 && slider_config.items_brk4 != null) ? parseInt(slider_config.items_brk4) : parseInt(items),
                                 slidesToScroll :(slider_config.items_brk4  >= 0 && slider_config.items_brk4 != null) ? parseInt(slider_config.items_brk4) : parseInt(items),
-                                arrows  : parseInt(slider_config.nav_brk4) == 1 ? true : false
+                                arrows  : parseInt(slider_config.nav_brk4) == 1 ? true : false,
+                                dots : (slider_config.items_brk4 != null && slider_config.items_brk4 < <?php echo count($products); ?>) ? true : false
                             }
                         }
                     ]
