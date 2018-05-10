@@ -1,0 +1,44 @@
+
+<div class="rw-google-address-container fieldset" data-bind="afterRender: afterRender()">
+    <!-- ko foreach: { data: getNamesArea(), as: 'element' } -->
+    <!-- ko if: hasTemplate() -->
+    <!-- ko template: getTemplate() --><!-- /ko -->
+    <!-- /ko -->
+    <!-- /ko -->
+    <div class="actions group" data-bind="mageInit:{rwGoogleAddressTab: {'search_area': '#'+$parent.dataScopePrefix+'-address-search-billing','complete_form': '#'+$parent.dataScopePrefix+'-complete-form'}}" >
+        <a class="action button google-auto-address active" data-bind="i18n: 'Search'"></a>
+        <a class="action button google-fill-address" data-bind="i18n: 'Enter manually'"></a>
+    </div>
+    <div class="rw-google-address-search-billing fieldset"  data-bind="attr:{
+                       id:$parent.dataScopePrefix+'-address-search-billing'
+                       }">
+        <div class="field">
+            <div class="control _with-tooltip">
+                <input class="rw-google-autocomplete-billing" placeholder="Begin typing your address to search..." type="text"
+                       data-bind="attr:{
+                       id:$parent.dataScopePrefix+'-autocomplete-billing'
+                       },
+                       afterRender: afterRenderSearchInput()"/>
+
+                <div class="field-tooltip toggle">
+                    <span class="field-tooltip-action action-help" tabindex="0" data-toggle="dropdown" data-bind="mageInit: {'dropdown':{'activeClass': '_active'}}"
+                        aria-haspopup="true" aria-expanded="false" role="button"></span>
+                
+                    <div class="field-tooltip-content" data-target="dropdown" aria-hidden="true">Enter your address and select it from the dropdown if available. If the address does not generate automatically, please
+                        choose &quot;Enter manually&quot; above</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="rw-google-complete-form-billing fieldset" style="display: none"
+         data-bind="attr:{
+            id: $parent.dataScopePrefix+'-complete-form'
+            },
+            afterRender: afterRenderSearchForm()">
+        <!-- ko foreach: { data: getAddressArea(), as: 'element' } -->
+        <!-- ko if: hasTemplate() -->
+        <!-- ko template: getTemplate() --><!-- /ko -->
+        <!-- /ko -->
+        <!-- /ko -->
+    </div>
+</div>

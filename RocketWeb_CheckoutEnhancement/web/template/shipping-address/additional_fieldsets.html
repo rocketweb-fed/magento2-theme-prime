@@ -1,0 +1,53 @@
+<!--
+/**
+ * Rocket Web
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * @category  RocketWeb
+ * @package  RocketWeb_CheckoutEnhacement
+ * @copyright Copyright (c) 2016-2017 RocketWeb (http://rocketweb.com)
+ * @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * @author    Rocket Web Inc.
+ */
+-->
+<div class="rw-google-address-container fieldset" data-bind="afterRender: afterRender()">
+    <!-- ko foreach: { data: getNamesArea(), as: 'element' } -->
+    <!-- ko if: hasTemplate() -->
+    <!-- ko template: getTemplate() -->
+    <!-- /ko -->
+    <!-- /ko -->
+    <!-- /ko -->
+    <div class="actions" data-bind="mageInit:{rwGoogleAddressTab: {'search_area': '#rw-google-address-search','complete_form': '#rw-google-complete-form'}}">
+        <a class="action button google-auto-address active" data-bind="i18n: 'Search Address'"></a>
+        <a class="action button google-fill-address" data-bind="i18n: 'Enter manually'"></a>
+    </div>
+    <div id="rw-google-address-search" class="fieldset">
+        <div class="field">
+            <div class="control _with-tooltip">
+                <input id="rw-google-autocomplete" placeholder="Begin typing your address to search..." type="text" />
+
+                <div class="field-tooltip toggle">
+                    <span class="field-tooltip-action action-help" tabindex="0" data-toggle="dropdown" data-bind="mageInit: {'dropdown':{'activeClass': '_active'}}"
+                        aria-haspopup="true" aria-expanded="false" role="button"></span>
+
+                    <div class="field-tooltip-content" data-target="dropdown" aria-hidden="true">Enter your address and select it from the dropdown if available. If the address does not generate automatically,
+                        please choose &quot;Enter manually&quot; above</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="rw-google-complete-form" class="fieldset" style="display: none">
+        <!-- ko foreach: { data: getAddressArea(), as: 'element' } -->
+        <!-- ko if: hasTemplate() -->
+        <!-- ko template: getTemplate() -->
+        <!-- /ko -->
+        <!-- /ko -->
+        <!-- /ko -->
+    </div>
+</div>
