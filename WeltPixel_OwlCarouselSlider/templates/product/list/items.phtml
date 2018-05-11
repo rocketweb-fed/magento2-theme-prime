@@ -22,6 +22,7 @@ $showAddToCart = array_key_exists('show_addto', $sliderConfiguration) ? $sliderC
 $showWishlist  = (array_key_exists('show_wishlist', $sliderConfiguration) && $sliderConfiguration['show_wishlist'] !=0) ? true : false;
 $showCompare   = (array_key_exists('show_compare', $sliderConfiguration) && $sliderConfiguration['show_compare'] !=0) ? true : false;
 $enableSlider = (array_key_exists('status', $sliderConfiguration) && $sliderConfiguration['status'] == 1) ? true : false ;
+$items = [];
 ?>
 <?php
 switch ($type = $block->getType()) {
@@ -285,6 +286,7 @@ switch ($type = $block->getType()) {
             carouselElement = $('.slick-slider-products-' + products_type),
 
             items = ((slider_config.items >= 0 && slider_config.items != null) ? slider_config.items : 2),
+            total = <?php echo count($items); ?> || 0,
 
             stagePadding = slider_config.stagePadding != '' ? parseInt(slider_config.stagePadding) : 0,
             animate_Out = slider_config.transition == 'fadeOut' ? true : false,
@@ -300,7 +302,7 @@ switch ($type = $block->getType()) {
                 autoplaySpeed   :   (parseInt(slider_config.autoplayTimeout) > 0 && slider_config.autoplayTimeout != null) ? parseInt(slider_config.autoplayTimeout) : 3000,
                 adaptiveHeight  :   parseInt(slider_config.autoHeight) == 1 ? true : false,
                 arrows          :   parseInt(slider_config.nav) == 1 ? true : false,
-                dots            :   (parseInt(slider_config.dots) == 1 && parseInt(items) < <?php echo count($items); ?>) ? true : false,
+                dots            :   (parseInt(slider_config.dots) == 1 && parseInt(items) < total) ? true : false,
                 lazyLoad        :   parseInt(slider_config.lazyLoad) == 1 ? "ondemand" : "progressive",
                 infinite        :   parseInt(slider_config.loop) == 1 ? true : false,
                 centerPadding   :   parseInt(slider_config.center) == 1 ? 0 : stagePadding,
@@ -314,7 +316,7 @@ switch ($type = $block->getType()) {
                             slidesToShow :(slider_config.items_brk1  >= 0 && slider_config.items_brk1 != null) ? parseInt(slider_config.items_brk1) : parseInt(items),
                             slidesToScroll :(slider_config.items_brk1  >= 0 && slider_config.items_brk1 != null) ? parseInt(slider_config.items_brk1) : parseInt(items),
                             arrows  : parseInt(slider_config.nav_brk1) == 1 ? true : false,
-                            dots : (slider_config.items_brk1 != null && slider_config.items_brk1 < <?php echo count($items); ?>) ? true : false,
+                            dots : (slider_config.items_brk1 != null && slider_config.items_brk1 < total) ? true : false,
                             fade    : false
                         }
                     },
@@ -324,7 +326,7 @@ switch ($type = $block->getType()) {
                             slidesToShow :(slider_config.items_brk2  >= 0 && slider_config.items_brk2 != null) ? parseInt(slider_config.items_brk2) : parseInt(items),
                             slidesToScroll :(slider_config.items_brk2  >= 0 && slider_config.items_brk2 != null) ? parseInt(slider_config.items_brk2) : parseInt(items),
                             arrows  : parseInt(slider_config.nav_brk2) == 1 ? true : false,
-                            dots : (slider_config.items_brk2 != null && slider_config.items_brk2 < <?php echo count($items); ?>) ? true : false,
+                            dots : (slider_config.items_brk2 != null && slider_config.items_brk2 < total) ? true : false,
                             fade    : false
                         }
                     },
@@ -334,7 +336,7 @@ switch ($type = $block->getType()) {
                             slidesToShow :(slider_config.items_brk3  >= 0 && slider_config.items_brk3 != null) ? parseInt(slider_config.items_brk3) : parseInt(items),
                             slidesToScroll :(slider_config.items_brk3  >= 0 && slider_config.items_brk3 != null) ? parseInt(slider_config.items_brk3) : parseInt(items),
                             arrows  : parseInt(slider_config.nav_brk3) == 1 ? true : false,
-                            dots : (slider_config.items_brk3 != null && slider_config.items_brk3 < <?php echo count($items); ?>) ? true : false
+                            dots : (slider_config.items_brk3 != null && slider_config.items_brk3 < total) ? true : false
                         }
                     },
                     {
@@ -343,7 +345,7 @@ switch ($type = $block->getType()) {
                             slidesToShow :(slider_config.items_brk4  >= 0 && slider_config.items_brk4 != null) ? parseInt(slider_config.items_brk4) : parseInt(items),
                             slidesToScroll :(slider_config.items_brk4  >= 0 && slider_config.items_brk4 != null) ? parseInt(slider_config.items_brk4) : parseInt(items),
                             arrows  : parseInt(slider_config.nav_brk4) == 1 ? true : false,
-                            dots : (slider_config.items_brk4 != null && slider_config.items_brk4 < <?php echo count($items); ?>) ? true : false
+                            dots : (slider_config.items_brk4 != null && slider_config.items_brk4 < total) ? true : false
                         }
                     }
                 ]
