@@ -1,0 +1,112 @@
+/**
+ * Checkboxes and radios
+ */
+.rwp-choice(@rw-choice__size: 24px, @rw-choice__color: black) {
+    /* Normal state */
+    input[type="checkbox"],
+    input[type="radio"] {
+        .lib-visually-hidden(); // hide default magento checkboxes and radios
+
+        + label {
+            .lib-vendor-prefix-display();
+            .lib-vendor-box-align(center);
+            position: relative;
+            cursor: pointer;
+            padding: (@rw-choice__size / 2) 0 (@rw-choice__size / 2) calc(@rw-choice__size + @indent__s);
+            margin: @form-element-choice__margin;
+
+            &:after {
+                position: absolute;
+                text-transform: none;
+                .lib-css(transition, all 0.2s, 1);
+            }
+
+            &:before {
+                content: '';
+                position: absolute;
+                left:0;
+                border: 1px solid @rw-choice__color;
+                text-transform: none;
+            }
+        }
+    }
+
+    input[type="checkbox"] {
+        + label {
+            @inner-padding: 4px;
+
+            &:after {
+                content: "\2714";
+                left: @rw-choice__size * 0.2 + 1;
+                .lib-font-size(@rw-choice__size - @inner-padding); 
+                color: @rw-choice__color;
+            }
+
+            &:before {
+                left: 2px;
+                width: @rw-choice__size;
+                height: @rw-choice__size;
+                border-radius: 3px;
+            }
+        }
+    }
+
+    input[type="radio"] {
+        + label {
+            @inner-padding: 10px;
+
+            &:after {
+                content: '';
+                left: @inner-padding / 2 + 1;
+                width: @rw-choice__size - @inner-padding;
+                height: @rw-choice__size - @inner-padding;
+                background-color: @rw-choice__color;
+                border-radius: 50%;
+            }
+
+            &:before {
+                width: @rw-choice__size;
+                height: @rw-choice__size;
+                border-radius: 50%;
+            }
+        }
+    }
+
+    /* Checked state */
+    input[type="checkbox"],
+    input[type="radio"] {
+        &:not(:checked) {
+            + label {
+                &:after {
+                    opacity: 0;
+                    .lib-css(transform, scale(0), 1);
+                }
+            }
+        }
+
+        &:checked {
+            + label {
+                &:after {
+                    opacity: 1;
+                    .lib-css(transform, scale(1), 1);
+                }
+            }
+        }
+    }
+
+    /* Disabled state */
+    input[type="checkbox"],
+    input[type="radio"] {
+        &:disabled {
+            + label:before {
+                opacity: 0.4;
+            }
+        }
+
+        &:disabled:checked {
+            + label:after {
+                opacity: 0.4;
+            }
+        }
+    }
+}
