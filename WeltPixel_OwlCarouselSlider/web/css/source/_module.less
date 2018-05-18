@@ -3,10 +3,10 @@
  */
 
 // Default Variables
-@slick-font-path: "./fonts/";
+@slick-icon-font: "rw-prime";
 @slick-loader-path: "../images/";
-@slick-prev-character: "<";
-@slick-next-character: ">";
+@slick-prev-character: "\62";
+@slick-next-character: "\63";
 @slick-dot-size: 18px;
 @slick-opacity-default: 0.85;
 @slick-opacity-on-hover: 1;
@@ -133,9 +133,9 @@
             z-index: 1;
             
             &:before {
-                font-size: 40px;
+                .lib-font-size(60);
                 line-height: 1;
-
+                font-family: @slick-icon-font;
                 opacity: @slick-opacity-default;
             }
 
@@ -160,7 +160,7 @@
 
         &-prev {
             left: 25px;
-    
+
             &:before {
                 content: @slick-prev-character;
             }
@@ -168,7 +168,7 @@
     
         &-next {
             right: 25px;
-    
+            
             &:before {
                 content: @slick-next-character;
             }
