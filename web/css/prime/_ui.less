@@ -1,4 +1,6 @@
 & when (@media-common = true) {
+    .rwp-form-reset();
+    
     .header-dropdown {
         .lib-dropdown(
             @_dropdown-list-position-right: 0,
@@ -53,9 +55,13 @@
         .rwp-choice(24px);
     }
 
+    select {
+        .rwp-dropdown();
+    }
+
     .rw-icon {
         &:before {
-            .lib-font-size(@rw-icon_size);
+            .lib-font-size(@rw-icon__size);
         }
     }
 }

@@ -1,4 +1,17 @@
 /**
+ * Form resets
+ */
+.rwp-form-reset() {
+    input:not([disabled]),
+    textarea:not([disabled]),
+    select:not([disabled]) {
+        &:focus {
+            border-color: darken(@form-element-input__border-color, 35%);
+        }
+    }
+}
+
+/**
  * Checkboxes and radios
  */
 .rwp-choice(@rw-choice__size: 24px, @rw-choice__color: black) {
@@ -37,7 +50,7 @@
 
             .lib-icon-font(
                 @_icon-font-content: @rw-icon-tick,
-                @_icon-font: @rw-icon_font,
+                @_icon-font: @rw-icon__font,
                 @_icon-font-size: @rw-choice__size - @inner-padding,
                 @_icon-font-color: @rw-choice__color,
                 @_icon-font-position: after
@@ -115,5 +128,24 @@
                 opacity: 0.4;
             }
         }
+    }
+}
+
+
+/**
+ * Select dropdowns
+ */
+.rwp-dropdown() {
+    .lib-css(appearance, none, 1);
+    appearance: none;
+    background: @select__background url('../images/select-bg.svg') no-repeat 100% 48%;
+    
+    &::-ms-expand{
+        display:none;
+    }
+
+    .lt-ie10 & {
+        background-image: none;
+        padding-right: 4px;
     }
 }
