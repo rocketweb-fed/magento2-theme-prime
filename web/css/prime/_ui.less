@@ -1,6 +1,6 @@
 & when (@media-common = true) {
     .rwp-form-reset();
-    
+
     .header-dropdown {
         .lib-dropdown(
             @_dropdown-list-position-right: 0,
@@ -72,6 +72,8 @@
      * Sticky header
      */
     .sticky-header {
+        .lib-vendor-prefix-display();
+
         .panel.wrapper {
             display: none;
         }
@@ -79,14 +81,13 @@
         header.page-header {
             position: fixed;
             top: 0px;
-            left: 0px;
-            width: 100%;
+            right: 15px;
             z-index: 1010;
-
+            
             .header {
                 padding: 10px 15px;
             }
-
+            
             .logo-wrapper,
             .search-wrapper {
                 .lib-visually-hidden();

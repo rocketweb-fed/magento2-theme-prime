@@ -8,19 +8,18 @@ define([
     // sticky header class toggle
     // __________________________
 
-    var stickyDummyHeight = $("header.page-header").height();
-    
-    $(window).scroll(function(){
+    var stickyDummyHeight = $("header.page-header").height(),
+        wrapper = $('.page-wrapper'),
+        scrollPosition;
+
+    $(window).scroll(function () {
         if (window.innerWidth > 768) {
-            var scrollPosition = $(window).scrollTop();
-            var sticky = $('.page-wrapper');
+            scrollPosition = $(window).scrollTop();
 
             if (scrollPosition > stickyDummyHeight) {
-                sticky.addClass('sticky-header');
-                $('body').css({"padding-top": stickyDummyHeight + 'px'});
+                enableSticky(wrapper, stickyDummyHeight);
             } else {
-                sticky.removeClass('sticky-header');
-                $('body').css({"padding-top": "0"});
+                disableSticky(wrapper);
             }
         }
     });
@@ -29,18 +28,24 @@ define([
         media: '(min-width: 769px)',
         entry: function () {
             stickyDummyHeight = $("header.page-header").height();
-            var scrollPosition = $(window).scrollTop();
-            var sticky = $('.page-wrapper');
+            scrollPosition = $(window).scrollTop();
 
-            if(scrollPosition > 550) {
-                sticky.addClass('sticky-header');
-                $('body').css({"padding-top": stickyDummyHeight + 'px'});
+            if (scrollPosition > 550) {
+                enableSticky(wrapper, stickyDummyHeight);
             }
         },
         exit: function () {
-            var sticky = $('.page-wrapper');
-            sticky.removeClass('sticky-header');
-            $('body').css({"padding-top": "0"});
+            disableSticky(wrapper);
         }
     });
+
+    function enableSticky(el, height) {
+        el.addClass('sticky-header');
+        $('body').css({ "padding-top": height + 'px' });
+    }
+
+    function disableSticky(el) {
+        el.removeClass('sticky-header');
+        $('body').css({ "padding-top": "0" });
+    }
 });
