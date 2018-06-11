@@ -1,7 +1,118 @@
-@import 'layouts/_grids.less';
-@import 'layouts/_header.less';
-
 & when (@media-common = true) {
+    /**
+     * Column layout
+     */
+    @total-columns: 12;
+
+    .column-wrapper {
+        .lib-column-wrapper(); 
+        .lib-clearfix();
+        box-sizing: border-box;
+    }
+
+    .column {
+        &.half {
+            .lib-column(6);
+        }
+
+        &.one-third {
+            .lib-column(12);
+        }
+
+        &.one-fourth {
+            .lib-column(6);
+        }
+
+        &.last {
+            .lib-end-column();
+        }
+    }
+
+    .page-wrapper {
+        overflow: hidden;
+        position: relative;
+
+        .ie10 &,
+        .ie11 & {
+            height: auto;
+        }
+    }
+
+    /** 
+     * Flex layout
+     */
+
+    .flex {
+        .flex-set();
+    }
+
+    .flex-wrap {
+        .flex-wrap();
+    }
+
+    .flex-justify-space-around() {
+        .lib-css(justify-content, space-around, 1);
+    }
+
+    .flex-justify-space-between() {
+        .lib-css(justify-content, space-between, 1);
+    }
+
+    .flex-row {
+        .flex-direction();
+    }
+
+    .flex-item {
+        .lib-vendor-prefix-flex-grow(1);
+        .lib-vendor-prefix-flex-shrink(1);
+        .lib-css(box-sizing, border-box, 1);
+        // padding: 0 @rw-layout__gutter;
+    }
+
+    .flex-50 {
+        .flex-basis(50%);
+    }
+
+    .flex-33 {
+        .flex-basis(33.33%);
+    }
+
+    .flex-25 {
+        .flex-basis(25%);
+    }
+
+    /** 
+     * Grid layout
+     */
+
+    .grid {
+        display: grid;
+        grid-gap: @rw-layout__grid-gap;
+    }
+    
+    .grid-auto {
+        .grid-auto();
+    }
+    
+    .grid-2 {
+        .grid-set(2);
+    }
+
+    .grid-3 {
+        .grid-set(3);
+    }
+
+    .grid-4 {
+        .grid-set(4);
+    }
+
+    .grid-6 {
+        .grid-set(6);
+    }
+
+    /**
+     * General layout
+     */ 
     .page-layout {
         &-full-width {
             .page-main {
@@ -15,5 +126,22 @@
     .container {
         max-width: @layout__max-width;
         margin: 0 auto;
+    }
+}
+
+// Desktop
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {    
+    .columns {
+        clear: both;
+    }
+
+    .column {
+        &.one-third {
+            .lib-column(4);
+        }
+
+        &.one-fourth {
+            .lib-column(3);
+        }
     }
 }
