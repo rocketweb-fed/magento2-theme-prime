@@ -14,7 +14,42 @@
         align-items: center;
         justify-content: center;
         .grid-auto;
+
+        &[class^='color'] {
+            color: white;
+        }
     }
+
+    .color {
+        &-primary {
+            background: @col-primary;
+        }
+
+        &-accent {
+            background: @col-accent;
+        }
+
+        &-action {
+            background: @col-action;
+        }
+
+        &-success {
+            background: @col-success;
+        }
+
+        &-error {
+            background: @col-error;
+        }
+
+        &-dark {
+            background: @col-dark;
+        }
+
+        &-neutral {
+            background: @col-neutral;
+        }
+    }
+    
 }
 
 // Mobile

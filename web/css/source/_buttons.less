@@ -1,0 +1,96 @@
+// /**
+//  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+//  * See COPYING.txt for license details.
+//  */
+
+@import "../prime/_prime-lib.less";
+
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+
+    button,
+    a.action.primary {
+        .lib-css(border-radius, @button__border-radius);
+    }
+
+    button {
+        &:active {
+            .lib-css(box-shadow, @button__shadow);
+        }
+    }
+
+    a.action.primary {
+        .lib-link-as-button();
+    }
+
+    .action {
+        &.primary,
+        &.tocart {
+            .lib-button-primary(
+                @_button-background: @col-primary;
+                @_button-background-hover: lighten(@col-primary, 6%);
+            );
+        }
+
+        &.cta,
+        &.checkout {
+            .lib-button(
+                @_button-background: @col-action;
+                @_button-background-hover: lighten(@col-action, 6%);
+                @_button-color: white;
+                @_button-color-hover: white;
+            );
+        }
+
+        &.secondary {
+            .lib-button-primary(
+                @_button-background: @col-accent;
+                @_button-background-hover: lighten(@col-accent, 6%);
+            );
+        }
+
+        &.success {
+            .lib-button(
+                @_button-background: @col-success;
+                @_button-background-hover: lighten(@col-success, 6%);
+                @_button-color: white;
+                @_button-color-hover: white;
+            );
+        }
+        
+        &.error {
+            .lib-button(
+                @_button-background: @col-error;
+                @_button-background-hover: lighten(@col-error, 6%);
+                @_button-color: white;
+                @_button-color-hover: white;
+            );
+        }
+
+        &.link {
+            .lib-button-as-link();
+        }
+
+        &.large {
+            .lib-button-l(
+                @_button-l-font-size: 2.5rem,
+                @_button-l-padding: 20px 35px
+            );
+        }
+
+        &.small {
+            .lib-button-s(
+                @_button-s-font-size: 1.2rem,
+                @_button-s-padding: 6px 10px
+            );
+        }
+
+        > i {
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+    }
+}
