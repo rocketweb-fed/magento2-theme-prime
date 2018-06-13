@@ -27,21 +27,10 @@
     }
 
     .action {
-        &.primary,
-        &.tocart {
+        &.primary {
             .lib-button-primary(
                 @_button-background: @col-primary;
                 @_button-background-hover: lighten(@col-primary, 6%);
-            );
-        }
-
-        &.cta,
-        &.checkout {
-            .lib-button(
-                @_button-background: @col-action;
-                @_button-background-hover: lighten(@col-action, 6%);
-                @_button-color: white;
-                @_button-color-hover: white;
             );
         }
 
@@ -49,6 +38,17 @@
             .lib-button-primary(
                 @_button-background: @col-accent;
                 @_button-background-hover: lighten(@col-accent, 6%);
+            );
+        }
+
+        &.flow,
+        &.checkout,
+        &.tocart {
+            .lib-button(
+                @_button-background: @col-action;
+                @_button-background-hover: lighten(@col-action, 6%);
+                @_button-color: white;
+                @_button-color-hover: white;
             );
         }
 
