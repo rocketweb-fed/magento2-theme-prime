@@ -1,5 +1,5 @@
 /**
- * Form resets
+ *  Resets
  */
 .rwp-form-reset() {
     input:not([disabled]),
@@ -8,6 +8,15 @@
         &:focus {
             border-color: darken(@form-element-input__border-color, 35%);
         }
+    }
+}
+
+.rwp-link-reset() {
+    color: @text__color;
+
+    &:hover {
+        text-decoration: none;
+        color: @text__color;
     }
 }
 
