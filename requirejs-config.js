@@ -3,6 +3,7 @@ var config = {
         'js/prime'
     ],
     paths: {
-        stickyheader: 'js/stickyheader'
+        stickyheader: 'js/stickyheader',
+        lazysizes: 'js/lazysizes.min'
     }
 }
