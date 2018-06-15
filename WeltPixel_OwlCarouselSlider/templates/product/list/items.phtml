@@ -176,7 +176,7 @@ switch ($type = $block->getType()) {
                 <span id="block-<?php /* @escapeNotVerified */ echo $class?>-heading" role="heading" aria-level="2"><?php /* @escapeNotVerified */ echo $title; ?></span>
             </h3>
             <div class="block-content content" aria-labelledby="block-<?php /* @escapeNotVerified */ echo $class?>-heading">
-                <div class="products wrapper grid products-grid products-<?php /* @escapeNotVerified */ echo $type; ?>">
+                <div class="products wrapper products-<?php /* @escapeNotVerified */ echo $type; ?>">
                     <div class="slick-slider-products-<?php echo $type;?><?php echo count($items)== 1? '-single-item': '';?>">
                         <?php $product_item = $enableSlider ? '' : ' product-item'; ?>
                         <?php $iterator = 1; ?>
@@ -295,7 +295,6 @@ switch ($type = $block->getType()) {
             sPBrk_2 = slider_config.stagePadding_brk2 != '' ? parseInt(slider_config.stagePadding_brk2) : 0,
             sPBrk_3 = slider_config.stagePadding_brk3 != '' ? parseInt(slider_config.stagePadding_brk3) : 0,
             sPBrk_4 = slider_config.stagePadding_brk4 != '' ? parseInt(slider_config.stagePadding_brk4) : 0;
-
             
             carouselElement.slick({
                 autoplay        :   parseInt(slider_config.autoplay) == 1 ? true : false,
