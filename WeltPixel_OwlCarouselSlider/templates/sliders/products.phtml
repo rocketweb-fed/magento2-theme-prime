@@ -38,7 +38,7 @@ $breakpoint   = $this->getBreakpointConfiguration();
                     <a tabindex="-1" class="product photo product-item-photo" href="<?php echo $productUrl; ?>">
                         <span style="width:240px;" class="product-image-container">
                             <span style="padding-bottom: 125%;" class="product-image-wrapper">
-                                <img width="240" height="300" alt="<?php echo $product->getName(); ?>" src="<?php echo $productImage; ?>" class="product-image-photo"
+                                <img width="240" height="300" alt="<?php echo $product->getName(); ?>" data-src="<?php echo $productImage; ?>" class="product-image-photo lazyload"
                                     <?php echo $sliderData['lazyLoad'] ? 'data-src="' . $productImage . '" data-src-retina="' . $productImage . '" class="owl-lazy"' : '' ?>
                                 />
                             </span>

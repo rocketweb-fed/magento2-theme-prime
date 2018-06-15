@@ -118,7 +118,8 @@
         <move element="form.subscribe" destination="footer.right" after="-"/>
         <move element="copyright" destination="footer.bottom" after="-"/>
 
-
-
+        <referenceContainer name="before.body.end">
+            <block class="Magento\Framework\View\Element\Template" name="scripts.lazysizes" template="Magento_Theme::html/lazysizes.phtml" />
+        </referenceContainer>
     </body>
 </page>

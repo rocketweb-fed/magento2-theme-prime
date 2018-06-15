@@ -54,15 +54,31 @@
     .choice {
         .rwp-choice(24px);
     }
-
+    
     select {
         .rwp-dropdown();
     }
-
+    
     .rw-icon {
         &:before {
             .lib-font-size(@rw-icon__size);
         }
+    }
+
+    /* Lazyloading image */
+    .lazyload,
+    .lazyloading,
+    .lazyloaded.swatch-option-loading {
+        opacity: 0;
+    }
+
+    .lazyloaded {
+        opacity: 1;
+        .lib-css(transition, opacity 200ms, 1);
+    }
+
+    .more-toggle {
+        font-style: italic;
     }
 }
 
