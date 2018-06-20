@@ -9,7 +9,7 @@
         "rocketweb/module-checkout-enhancement": ">=1.0.0"
     },
     "type": "magento2-theme",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "license": [
         "OSL-3.0",
         "AFL-3.0"
