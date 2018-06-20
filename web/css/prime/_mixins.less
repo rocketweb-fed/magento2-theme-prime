@@ -199,6 +199,14 @@
     .lib-vendor-prefix-flex-basis(@width);
 }
 
+.flex-align(@position: center) {
+    .lib-vendor-box-align(@position);
+}
+
+.flex-justify(@position) {
+    .lib-css(justify-content, @position, 1);
+}
+
 /**
  * CSS Grid utilities
  */
