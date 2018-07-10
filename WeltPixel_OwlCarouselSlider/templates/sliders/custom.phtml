@@ -3,12 +3,14 @@
 <?php $sliderConfig  = $this->getSliderConfiguration(); ?>
 <?php $sliderGeneral = $sliderConfig['slider_config']; ?>
 <?php $enabled       = (array_key_exists('status', $sliderGeneral) && $sliderGeneral['status'] !=0) ? true : false; ?>
+<?php $type = 'banner-slider'; ?>
 
 <?php if ($enabled) : ?>
 
     <?php
     $sliderId     = $this->getData('slider_id');
     $breakpoint   = $this->getBreakpointConfiguration();
+    $breakpointConfig = json_encode($breakpoint);
     $bannerConfig = $sliderConfig['banner_config'];
     $sliderConfig = json_encode($sliderGeneral);
     $mediaUrl     = $this->getMediaUrl();
@@ -21,7 +23,12 @@
     <?php endif; ?>
 
     <div class="custom-slider">
-        <div id="slick-slider-<?php echo $sliderId;?>">
+        <div id="slick-slider-<?php echo $sliderId;?>"
+            data-mage-init='{"rwSlider" : {
+                "type": "<?php echo $type ?>",
+                "sliderConfig": <?php echo $sliderConfig ?>,
+                "breakpoints": <?php echo $breakpointConfig ?>
+            }}'>
             <?php foreach($bannerConfig as $banner) : ?>
                 <?php
                     $title = (array_key_exists('title', $banner) && $banner['title'] !='') ? $banner['title'] : false;
@@ -116,55 +123,4 @@
             <?php endforeach; ?>
         </div>
     </div>
-
-    <script>
-        require(['jquery', 'slick' ],
-            function ($) {
-                var slider_id = <?php echo $sliderId; ?>;
-                var slider_config = <?php echo $sliderConfig; ?>;
-
-                var stagePadding = slider_config.stagePadding != '' ? parseInt(slider_config.stagePadding) : 0;
-                var animate_Out = slider_config.transition == 'fadeOut' ? true : false;
-
-                $('#slick-slider-'+slider_id).slick({
-                    autoplay        :   parseInt(slider_config.autoplay) == 1 ? true : false,
-                    autoplaySpeed   :   (parseInt(slider_config.autoplayTimeout) > 0 && slider_config.autoplayTimeout != null) ? parseInt(slider_config.autoplayTimeout) : 3000,
-                    adaptiveHeight  :   parseInt(slider_config.autoHeight) == 1 ? true : false,
-                    arrows          :   parseInt(slider_config.nav) == 1 ? true : false,
-                    dots            :   parseInt(slider_config.dots) == 1 ? true : false,
-                    lazyLoad        :   parseInt(slider_config.lazyLoad) == 1 ? "ondemand" : "progressive",
-                    infinite        :   parseInt(slider_config.loop) == 1 ? true : false,
-                    centerPadding   :   parseInt(slider_config.center) == 1 ? 0 : stagePadding,
-                    fade            :   animate_Out,
-                    responsive      :   [
-                        {
-                            breakpoint  : <?php echo $breakpoint['breakpoint_1']; ?>,
-                            settings: {
-                                arrows  : parseInt(slider_config.nav_brk1) == 1 ? true : false,
-                                fade    : false
-                            }
-                        },
-                        {
-                            breakpoint  : <?php echo $breakpoint['breakpoint_2']; ?>,
-                            settings: {
-                                arrows  : parseInt(slider_config.nav_brk2) == 1 ? true : false,
-                                fade    : false
-                            }
-                        },
-                        {
-                            breakpoint  : <?php echo $breakpoint['breakpoint_3']; ?>,
-                            settings: {
-                                arrows  : parseInt(slider_config.nav_brk3) == 1 ? true : false
-                            }
-                        },
-                        {
-                            breakpoint  : <?php echo $breakpoint['breakpoint_4']; ?>,
-                            settings: {
-                                arrows  : parseInt(slider_config.nav_brk4) == 1 ? true : false
-                            }
-                        }
-                    ]
-                });
-            });
-    </script>
 <?php endif; ?>

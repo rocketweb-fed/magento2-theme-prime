@@ -17,6 +17,8 @@ $productsType = $this->getData('products_type');
 $sliderConfig = json_encode($sliderData);
 $sliderTitle  = array_key_exists('title', $sliderData) ? $sliderData['title'] : '';
 $breakpoint   = $this->getBreakpointConfiguration();
+$breakpointConfig = json_encode($breakpoint);
+$sliderType = 'widget-product-slider';
 
 ?>
 
@@ -24,7 +26,12 @@ $breakpoint   = $this->getBreakpointConfiguration();
     <div class="content-heading">
         <h2 class="title"><?php echo $sliderTitle; ?></h2>
     </div>
-    <div class="slick-slider-products-<?php echo $productsType;?><?php echo count($products)== 1? '-single-item': '';?>">
+    <div class="<?php echo $sliderType;?> slider-hide"
+        data-mage-init='{"rwSlider" : {
+            "total": "<?php echo count($products) ?>",
+            "sliderConfig": <?php echo $sliderConfig ?>,
+            "breakpoints": <?php echo $breakpointConfig ?>
+        }}'>
         <?php foreach($products as $product) : ?>
 
             <?php
@@ -116,77 +123,3 @@ $breakpoint   = $this->getBreakpointConfiguration();
         <?php endforeach; ?>
     </div>
 </div>
-<script>
-        require(['jquery', 'slick' ],
-            function ($) {
-                var products_type = '<?php echo $productsType;?>',
-                slider_config = <?php echo $sliderConfig; ?>,
-
-                carouselElement = $('.slick-slider-products-' + products_type),
-
-                items = ((slider_config.items >= 0 && slider_config.items != null) ? slider_config.items : 2),
-
-                stagePadding = slider_config.stagePadding != '' ? parseInt(slider_config.stagePadding) : 0,
-                animate_Out = slider_config.transition == 'fadeOut' ? true : false,
-
-                sPBrk_1 = slider_config.stagePadding_brk1 != '' ? parseInt(slider_config.stagePadding_brk1) : 0,
-                sPBrk_2 = slider_config.stagePadding_brk2 != '' ? parseInt(slider_config.stagePadding_brk2) : 0,
-                sPBrk_3 = slider_config.stagePadding_brk3 != '' ? parseInt(slider_config.stagePadding_brk3) : 0,
-                sPBrk_4 = slider_config.stagePadding_brk4 != '' ? parseInt(slider_config.stagePadding_brk4) : 0;
-
-                
-                carouselElement.slick({
-                    autoplay        :   parseInt(slider_config.autoplay) == 1 ? true : false,
-                    autoplaySpeed   :   (parseInt(slider_config.autoplayTimeout) > 0 && slider_config.autoplayTimeout != null) ? parseInt(slider_config.autoplayTimeout) : 3000,
-                    adaptiveHeight  :   parseInt(slider_config.autoHeight) == 1 ? true : false,
-                    arrows          :   parseInt(slider_config.nav) == 1 ? true : false,
-                    dots            :   (parseInt(slider_config.dots) == 1 && parseInt(items) < <?php echo count($products); ?>) ? true : false,
-                    lazyLoad        :   parseInt(slider_config.lazyLoad) == 1 ? "ondemand" : "progressive",
-                    infinite        :   parseInt(slider_config.loop) == 1 ? true : false,
-                    centerPadding   :   parseInt(slider_config.center) == 1 ? 0 : stagePadding,
-                    slidesToShow    :   parseInt(items),
-                    slidesToScroll  :   parseInt(items),
-                    fade            :   animate_Out,
-                    responsive      :   [
-                        {
-                            breakpoint  : <?php echo $breakpoint['breakpoint_1']; ?>,
-                            settings: {
-                                slidesToShow :(slider_config.items_brk1  >= 0 && slider_config.items_brk1 != null) ? parseInt(slider_config.items_brk1) : parseInt(items),
-                                slidesToScroll :(slider_config.items_brk1  >= 0 && slider_config.items_brk1 != null) ? parseInt(slider_config.items_brk1) : parseInt(items),
-                                arrows  : parseInt(slider_config.nav_brk1) == 1 ? true : false,
-                                dots : (slider_config.items_brk1 != null && slider_config.items_brk1 < <?php echo count($products); ?>) ? true : false,
-                                fade    : false
-                            }
-                        },
-                        {
-                            breakpoint  : <?php echo $breakpoint['breakpoint_2']; ?>,
-                            settings: {
-                                slidesToShow :(slider_config.items_brk2  >= 0 && slider_config.items_brk2 != null) ? parseInt(slider_config.items_brk2) : parseInt(items),
-                                slidesToScroll :(slider_config.items_brk2  >= 0 && slider_config.items_brk2 != null) ? parseInt(slider_config.items_brk2) : parseInt(items),
-                                arrows  : parseInt(slider_config.nav_brk2) == 1 ? true : false,
-                                dots : (slider_config.items_brk2 != null && slider_config.items_brk2 < <?php echo count($products); ?>) ? true : false,
-                                fade    : false
-                            }
-                        },
-                        {
-                            breakpoint  : <?php echo $breakpoint['breakpoint_3']; ?>,
-                            settings: {
-                                slidesToShow :(slider_config.items_brk3  >= 0 && slider_config.items_brk3 != null) ? parseInt(slider_config.items_brk3) : parseInt(items),
-                                slidesToScroll :(slider_config.items_brk3  >= 0 && slider_config.items_brk3 != null) ? parseInt(slider_config.items_brk3) : parseInt(items),
-                                arrows  : parseInt(slider_config.nav_brk3) == 1 ? true : false,
-                                dots : (slider_config.items_brk3 != null && slider_config.items_brk3 < <?php echo count($products); ?>) ? true : false
-                            }
-                        },
-                        {
-                            breakpoint  : <?php echo $breakpoint['breakpoint_4']; ?>,
-                            settings: {
-                                slidesToShow :(slider_config.items_brk4  >= 0 && slider_config.items_brk4 != null) ? parseInt(slider_config.items_brk4) : parseInt(items),
-                                slidesToScroll :(slider_config.items_brk4  >= 0 && slider_config.items_brk4 != null) ? parseInt(slider_config.items_brk4) : parseInt(items),
-                                arrows  : parseInt(slider_config.nav_brk4) == 1 ? true : false,
-                                dots : (slider_config.items_brk4 != null && slider_config.items_brk4 < <?php echo count($products); ?>) ? true : false
-                            }
-                        }
-                    ]
-                });
-            });
-    </script>
