@@ -25,7 +25,7 @@ $breakpointConfig = json_encode($breakpoint);
     <div class="content-heading">
         <h2 class="title"><?php echo $sliderTitle; ?></h2>
     </div>
-    <div class="slick-slider-products-<?php echo $productsType;?><?php echo count($products)== 1? '-single-item': '';?>"
+    <div class="slick-slider-products-<?php echo $productsType;?><?php echo count($products)== 1? '-single-item': '';?> slider-hide"
         data-mage-init='{"productSlider" : {
             "total": "<?php echo count($products) ?>",
             "type": "<?php echo $productsType ?>",

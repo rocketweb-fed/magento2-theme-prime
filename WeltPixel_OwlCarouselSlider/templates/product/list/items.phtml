@@ -177,7 +177,7 @@ switch ($type = $block->getType()) {
             </h3>
             <div class="block-content content" aria-labelledby="block-<?php /* @escapeNotVerified */ echo $class?>-heading">
                 <div class="products wrapper products-<?php /* @escapeNotVerified */ echo $type; ?>">
-                    <div class="slick-slider-products-<?php echo $type;?><?php echo count($items)== 1? '-single-item': '';?>"
+                    <div class="slick-slider-products-<?php echo $type;?><?php echo count($items)== 1? '-single-item': '';?> slider-hide"
                         <?php if($enableSlider) : ?>
                             data-mage-init='{"productSlider" : {
                                 "total": "<?php echo count($items) ?>",
