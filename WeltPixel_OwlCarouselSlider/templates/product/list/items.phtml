@@ -22,6 +22,7 @@ $showAddToCart = array_key_exists('show_addto', $sliderConfiguration) ? $sliderC
 $showWishlist  = (array_key_exists('show_wishlist', $sliderConfiguration) && $sliderConfiguration['show_wishlist'] !=0) ? true : false;
 $showCompare   = (array_key_exists('show_compare', $sliderConfiguration) && $sliderConfiguration['show_compare'] !=0) ? true : false;
 $enableSlider = (array_key_exists('status', $sliderConfiguration) && $sliderConfiguration['status'] == 1) ? true : false ;
+$sliderType = 'widget-product-slider';
 $items = [];
 ?>
 <?php
@@ -177,11 +178,10 @@ switch ($type = $block->getType()) {
             </h3>
             <div class="block-content content" aria-labelledby="block-<?php /* @escapeNotVerified */ echo $class?>-heading">
                 <div class="products wrapper products-<?php /* @escapeNotVerified */ echo $type; ?>">
-                    <div class="slick-slider-products-<?php echo $type;?><?php echo count($items)== 1? '-single-item': '';?> slider-hide"
+                    <div class="<?php echo $sliderType;?> slider-hide"
                         <?php if($enableSlider) : ?>
-                            data-mage-init='{"productSlider" : {
+                            data-mage-init='{"rwSlider" : {
                                 "total": "<?php echo count($items) ?>",
-                                "type": "<?php echo $type ?>",
                                 "sliderConfig": <?php echo $sliderConfig ?>,
                                 "breakpoints": <?php echo $breakpointConfig ?>
                             }}'

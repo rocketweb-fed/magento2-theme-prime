@@ -18,6 +18,7 @@ $sliderConfig = json_encode($sliderData);
 $sliderTitle  = array_key_exists('title', $sliderData) ? $sliderData['title'] : '';
 $breakpoint   = $this->getBreakpointConfiguration();
 $breakpointConfig = json_encode($breakpoint);
+$sliderType = 'widget-product-slider';
 
 ?>
 
@@ -25,10 +26,9 @@ $breakpointConfig = json_encode($breakpoint);
     <div class="content-heading">
         <h2 class="title"><?php echo $sliderTitle; ?></h2>
     </div>
-    <div class="slick-slider-products-<?php echo $productsType;?><?php echo count($products)== 1? '-single-item': '';?> slider-hide"
-        data-mage-init='{"productSlider" : {
+    <div class="<?php echo $sliderType;?> slider-hide"
+        data-mage-init='{"rwSlider" : {
             "total": "<?php echo count($products) ?>",
-            "type": "<?php echo $productsType ?>",
             "sliderConfig": <?php echo $sliderConfig ?>,
             "breakpoints": <?php echo $breakpointConfig ?>
         }}'>
