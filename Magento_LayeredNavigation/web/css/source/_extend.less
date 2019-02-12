@@ -5,16 +5,16 @@
     }
 
     .filter-options {
-        [data-collapsible="true"] {
+        [data-collapsible='true'] {
             cursor: pointer;
 
-            &:after {
+            &::after {
                 float: right;
                 content: '\2303';
             }
 
-            &[aria-expanded="false"] {
-                &:after {
+            &[aria-expanded='false'] {
+                &::after {
                     .lib-css(transform, rotate(180deg), 1);
                 }
             }
@@ -29,14 +29,14 @@
             color: @color-gray40;
             padding: 2px 5px;
         }
-        
+
         .filter-label {
             .lib-visually-hidden();
         }
-        
+
         .filter-value {
             .lib-font-size(@font-size__s);
-            
+
             + .remove {
                 .lib-icon-font(
                     @_icon-font: @rw-icon__font,
@@ -55,9 +55,9 @@
 
 .media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
     .filter-title {
-        .lib-button-primary();
         width: 100%;
         text-align: center;
+        .lib-button-primary();
     }
 
     .block.filter {

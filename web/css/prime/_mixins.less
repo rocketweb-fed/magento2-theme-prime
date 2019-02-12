@@ -24,36 +24,7 @@
  * Checkboxes and radios
  */
 .rwp-choice(@rw-choice__size: 24px, @rw-choice__color: black) {
-    /* Normal state */
-    input[type="checkbox"],
-    input[type="radio"] {
-        .lib-visually-hidden(); // hide default magento checkboxes and radios
-
-        + label {
-            .lib-vendor-prefix-display();
-            position: relative;
-            cursor: pointer;
-            padding: (@rw-choice__size / 2) 0 (@rw-choice__size / 2) calc(@rw-choice__size + @indent__s);
-            margin: @form-element-choice__margin;
-
-            &:after {
-                position: absolute;
-                text-transform: none;
-                .lib-css(transition, all 0.2s, 1);
-            }
-
-            &:before {
-                content: '';
-                position: absolute;
-                left:0;
-                top: @rw-choice__size / 3;
-                border: 1px solid lighten(@rw-choice__color, 80%);
-                text-transform: none;
-            }
-        }
-    }
-
-    input[type="checkbox"] {
+    [type='checkbox'] {
         + label {
             @inner-padding: 4px;
 
@@ -65,12 +36,12 @@
                 @_icon-font-position: after
             );
 
-            &:after {
-                left: @rw-choice__size * 0.2 + 1;
+            &::after {
+                left: @rw-choice__size * .2 + 1;
                 top: @rw-choice__size / 3;
             }
 
-            &:before {
+            &::before {
                 left: 2px;
                 width: @rw-choice__size;
                 height: @rw-choice__size;
@@ -79,11 +50,11 @@
         }
     }
 
-    input[type="radio"] {
+    [type='radio'] {
         + label {
             @inner-padding: 10px;
 
-            &:after {
+            &::after {
                 content: '';
                 left: @inner-padding / 2 + 1;
                 top: @rw-choice__size / 3 + @inner-padding / 2 + 1;
@@ -93,7 +64,7 @@
                 border-radius: 50%;
             }
 
-            &:before {
+            &::before {
                 width: @rw-choice__size;
                 height: @rw-choice__size;
                 border-radius: 50%;
@@ -101,40 +72,64 @@
         }
     }
 
-    /* Checked state */
-    input[type="checkbox"],
-    input[type="radio"] {
+    [type='checkbox'],
+    [type='radio'] {
+        /* Normal state */
+        .lib-visually-hidden(); // hide default magento checkboxes and radios
+
+        + label {
+            position: relative;
+            cursor: pointer;
+            padding: (@rw-choice__size / 2) 0 (@rw-choice__size / 2) calc(@rw-choice__size + @indent__s);
+            margin: @form-element-choice__margin;
+            .lib-vendor-prefix-display();
+
+            &::after {
+                position: absolute;
+                text-transform: none;
+                .lib-css(transition, all .2s, 1);
+            }
+
+            &::before {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: @rw-choice__size / 3;
+                border: 1px solid lighten(@rw-choice__color, 80%);
+                text-transform: none;
+            }
+        }
+
+        /* Unchecked state */
         &:not(:checked) {
             + label {
-                &:after {
+                &::after {
                     opacity: 0;
                     .lib-css(transform, scale(0), 1);
                 }
             }
         }
 
+        /* Checked state */
         &:checked {
             + label {
-                &:after {
+                &::after {
                     opacity: 1;
                     .lib-css(transform, scale(1), 1);
                 }
             }
         }
-    }
 
-    /* Disabled state */
-    input[type="checkbox"],
-    input[type="radio"] {
+        /* Disabled state */
         &:disabled {
-            + label:before {
-                opacity: 0.4;
+            + label::before {
+                opacity: .4;
             }
         }
 
         &:disabled:checked {
-            + label:after {
-                opacity: 0.4;
+            + label::after {
+                opacity: .4;
             }
         }
     }
@@ -145,12 +140,12 @@
  * Select dropdowns
  */
 .rwp-dropdown() {
-    .lib-css(appearance, none, 1);
     appearance: none;
     background: @select__background url('../images/select-bg.svg') no-repeat 100% 48%;
-    
-    &::-ms-expand{
-        display:none;
+    .lib-css(appearance, none, 1);
+
+    &::-ms-expand {
+        display: none;
     }
 
     .lt-ie10 & {
@@ -159,20 +154,20 @@
     }
 }
 
-/** 
+/**
  * Collapsibles
  */
 .rwp-collapsible() {
-    [data-collapsible="true"] {
+    [data-collapsible='true'] {
         cursor: pointer;
 
-        &:after {
+        &::after {
             float: right;
             content: '\2303';
         }
 
-        &[aria-expanded="false"] {
-            &:after {
+        &[aria-expanded='false'] {
+            &::after {
                 .lib-css(transform, rotate(180deg), 1);
             }
         }
@@ -219,10 +214,9 @@
 }
 
 .grid-column(@start; @end) {
-    grid-column: @start e("/") @end;
+    grid-column: @start e('/') @end;
 }
 
 .grid-row(@start; @end) {
-    grid-row: @start e("/") @end;
+    grid-row: @start e('/') @end;
 }
-

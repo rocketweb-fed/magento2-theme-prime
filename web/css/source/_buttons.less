@@ -1,16 +1,9 @@
-// /**
-//  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
-//  * See COPYING.txt for license details.
-//  */
-
-@import "../prime/_prime-lib.less";
+@import '../prime/_prime-lib.less';
 
 //
 //  Common
 //  _____________________________________________
-
 & when (@media-common = true) {
-
     button,
     a.action.primary {
         .lib-css(border-radius, @button__border-radius);
@@ -60,7 +53,7 @@
                 @_button-color-hover: white;
             );
         }
-        
+
         &.error {
             .lib-button(
                 @_button-background: @col-error;

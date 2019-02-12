@@ -49,7 +49,7 @@
             background: @col-neutral;
         }
     }
-    
+
     .icon {
         .lib-font-size(@rw-icon__size);
 
@@ -67,15 +67,13 @@
     }
 }
 
-// Mobile
 .media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
     .hidden-m {
         .lib-visually-hidden();
     }
 }
 
-// Desktop
-.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {    
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
     .hidden-dt {
         .lib-visually-hidden();
     }

@@ -1,10 +1,4 @@
-// /**
-//  * Copyright © 2015 Studioemma. All rights reserved.
-//  * See ... for license details.
-//  */
-
 & when (@media-common = true) {
-    /*** CART ***/
     .cart {
         .actions-toolbar {
             .action-edit {
@@ -25,8 +19,7 @@
         }
     }
 
-    /*** CHECKOUT ***/
-    .checkout-index-index { 
+    .checkout-index-index {
         .nav-sections,
         .nav-toggle {
             display: block;
@@ -36,12 +29,11 @@
     .checkout-container {
         .lib-vendor-prefix-display();
         .lib-vendor-prefix-flex-wrap(wrap);
-        
-        [class^="opc-"] {
+
+        [class^='opc-'] {
             .lib-vendor-prefix-flex-grow(1);
         }
     }
-
 }
 
 .media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
@@ -53,20 +45,19 @@
         }
     }
 
-    /*** CHECKOUT ***/
     .opc-wrapper {
         .lib-vendor-prefix-flex-basis(60%);
     }
 
     .opc-progress-bar {
-        .lib-vendor-prefix-flex-basis(12%);
         margin: 20px 0;
-        
+        .lib-vendor-prefix-flex-basis(12%);
+
         &-item {
             width: auto;
             display: block;
 
-            &:before {
+            &::before {
                 content: none;
             }
 

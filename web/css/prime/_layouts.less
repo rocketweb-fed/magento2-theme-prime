@@ -5,9 +5,9 @@
     @total-columns: 12;
 
     .column-wrapper {
-        .lib-column-wrapper(); 
-        .lib-clearfix();
         box-sizing: border-box;
+        .lib-column-wrapper();
+        .lib-clearfix();
     }
 
     .column {
@@ -38,10 +38,9 @@
         }
     }
 
-    /** 
+    /**
      * Flex layout
      */
-
     .flex {
         .flex-set();
     }
@@ -73,19 +72,18 @@
         .flex-basis(25%);
     }
 
-    /** 
+    /**
      * Grid layout
      */
-
     .grid {
         display: grid;
         grid-gap: @rw-layout__grid-gap;
     }
-    
+
     .grid-auto {
         .grid-auto();
     }
-    
+
     .grid-2 {
         .grid-set(2);
     }
@@ -104,7 +102,7 @@
 
     /**
      * General layout
-     */ 
+     */
     .page-layout {
         &-full-width {
             .page-main {
@@ -122,7 +120,7 @@
 }
 
 // Desktop
-.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {    
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
     .columns {
         clear: both;
     }
