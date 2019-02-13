@@ -1,0 +1,77 @@
+/**
+ * Copyright © 2019 Rocket Web. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+//
+//  Utilities
+//  ---------------------------------------------
+.rwp-form-reset() {
+    input:not([disabled]),
+    textarea:not([disabled]),
+    select:not([disabled]) {
+        &:focus {
+            border-color: darken(@form-element-input__border-color, 35%);
+        }
+    }
+}
+
+.rwp-link-reset() {
+    color: @text__color;
+
+    &:hover {
+        text-decoration: none;
+        color: @text__color;
+    }
+}
+
+
+//
+//  Styles
+//  ---------------------------------------------
+& when (@media-common = true) {
+    .hidden {
+        .lib-visually-hidden();
+    }
+
+    .example-box {
+        background: #ddd;
+        padding: 5px 10px;
+        min-height: 5rem;
+        min-width: 100px;
+        border: solid 1px #c5c5c5;
+        text-align: center;
+        .flex-set();
+        .flex-align(center);
+        .flex-justify(center);
+        .grid-auto;
+
+        &[class^='color'] {
+            color: white;
+        }
+    }
+
+    /* Lazyloading image */
+    .lazyload,
+    .lazyloading,
+    .lazyloaded.swatch-option-loading {
+        opacity: 0;
+    }
+
+    .lazyloaded {
+        opacity: 1;
+        .lib-css(transition, opacity 200ms, 1);
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .hidden-m {
+        .lib-visually-hidden();
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .hidden-dt {
+        .lib-visually-hidden();
+    }
+}

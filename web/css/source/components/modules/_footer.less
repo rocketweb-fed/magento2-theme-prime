@@ -1,0 +1,39 @@
+/**
+ * Copyright © 2019 Rocket Web. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+//
+//  Styles
+//  ---------------------------------------------
+& when (@media-common = true) {
+    .page-footer {
+        background-color: @color-gray90;
+
+        .footer-social {
+            .icon {
+                .rwp-link-reset();
+            }
+        }
+    }
+
+    .footer.content {
+        padding: 0;
+        border: none;
+    }
+
+    .footer-bottom {
+        text-align: center;
+    }
+}
+
+// Mobile
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .page-footer {
+        .footer-column {
+            padding: 15px;
+            text-align: center;
+            .flex-basis(100%);
+        }
+    }
+}

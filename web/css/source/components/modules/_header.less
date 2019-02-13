@@ -1,5 +1,10 @@
+/**
+ * Copyright © 2019 Rocket Web. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
 //
-//  Header
+//  Styles
 //  ---------------------------------------------
 & when (@media-common = true) {
     .page-header {
@@ -29,11 +34,15 @@
         }
     }
 
-    .page-footer {
-        .footer-social {
-            .icon {
-                .rwp-link-reset();
-            }
+    .header-dropdown {
+        .lib-dropdown(
+            @_dropdown-list-position-right: 0,
+            @_dropdown-list-pointer-position: right,
+            @_dropdown-list-item-padding: @indent__xs @indent__s
+        );
+
+        .dropdown {
+            width: 180px;
         }
     }
 }
@@ -72,12 +81,40 @@
             .flex-basis(10%);
         }
     }
+}
 
-    .page-footer {
-        .footer-column {
-            padding: 15px;
-            text-align: center;
-            .flex-basis(100%);
+// Desktop
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .sticky-header {
+        .flex-set();
+
+        .panel.wrapper {
+            display: none;
+        }
+
+        header.page-header {
+            position: fixed;
+            top: 0;
+            right: 15px;
+            z-index: 1010;
+
+            .header {
+                padding: 10px 15px;
+            }
+
+            .logo-wrapper,
+            .search-wrapper {
+                .lib-visually-hidden();
+            }
+        }
+
+        .nav-sections {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: @dropdown-list__shadow;
         }
     }
 }

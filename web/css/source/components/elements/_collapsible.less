@@ -1,0 +1,63 @@
+/**
+ * Copyright © 2019 Rocket Web. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+
+//
+//  Variables
+//  ---------------------------------------------
+@rw-collapsible__indicator: '\2303';
+
+
+//
+//  Utilities
+//  ---------------------------------------------
+.rwp-collapsible() {
+    [data-collapsible='true'] {
+        cursor: pointer;
+
+        &::after {
+            float: right;
+            content: @rw-collapsible__indicator;
+        }
+
+        &[aria-expanded='false'] {
+            &::after {
+                .lib-css(transform, rotate(180deg), 1);
+            }
+        }
+    }
+}
+
+
+//
+//  Styles
+//  ---------------------------------------------
+& when (@media-common = true) {
+    /* More/less toggle */
+    .more-toggle {
+        display: none;
+        font-style: italic;
+
+        .more-available & {
+            display: block;
+        }
+
+        > a {
+            .less {
+                display: none;
+            }
+
+            &.toggled {
+                .more {
+                    display: none;
+                }
+
+                .less {
+                    display: inline;
+                }
+            }
+        }
+    }
+}

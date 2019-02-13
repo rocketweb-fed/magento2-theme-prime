@@ -1,0 +1,50 @@
+/**
+ * Copyright © 2019 Rocket Web. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+//
+//  Variables
+//  ---------------------------------------------
+@col-primary: #1979c3;
+@col-accent: #c37ac3;
+@col-action: #ff5501;
+@col-success: #51a015;
+@col-error: #ce3a1e;
+@col-dark: #0a0a0a;
+@col-neutral: #ccc;
+
+//
+//  Styles
+//  ---------------------------------------------
+& when (@media-common = true) {
+    .bg-color {
+        &--primary {
+            background: @col-primary;
+        }
+
+        &--accent {
+            background: @col-accent;
+        }
+
+        &--action {
+            background: @col-action;
+        }
+
+        &--success {
+            background: @col-success;
+        }
+
+        &--error {
+            background: @col-error;
+        }
+
+        &--dark {
+            background: @col-dark;
+        }
+
+        &--neutral {
+            background: @col-neutral;
+        }
+    }
+}
