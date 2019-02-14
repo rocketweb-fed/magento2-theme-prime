@@ -7,31 +7,27 @@
 //  Styles
 //  ---------------------------------------------
 & when (@media-common = true) {
-    .page-header {
-        .preheader {
-            text-align: center;
+    .preheader {
+        text-align: center;
 
-            > p {
-                margin: 0;
-            }
+        > p {
+            margin: 0;
         }
+    }
 
-        .logo,
-        .search,
-        .links {
-            &-wrapper {
-                .flex-align(center);
-            }
-        }
+    .logo-container,
+    .search-container,
+    .links-container {
+        .flex-align(center);
+    }
 
-        .search-wrapper {
-            .flex-direction(column);
-            .flex-justify(center);
-        }
+    .search-container {
+        .flex-direction(column);
+        .flex-justify(center);
+    }
 
-        .links-wrapper {
-            .flex-justify(flex-end);
-        }
+    .links-container {
+        .flex-justify(flex-end);
     }
 
     .header-dropdown {
@@ -49,37 +45,33 @@
 
 // Mobile
 .media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
-    .page-header {
-        .header {
-            margin: 0;
-        }
+    .header {
+        margin: 0;
+    }
 
-        .logo {
-            margin: 0 0 0 15%;
-        }
+    .logo {
+        margin: 0 0 0 15%;
+    }
 
-        .logo,
-        .links,
-        .toggle {
-            &-wrapper {
-                padding: 0;
-                margin: 0;
-                .flex-align(center);
-            }
-        }
+    .logo-container,
+    .links-container,
+    .toggle-container {
+        padding: 0;
+        margin: 0;
+        .flex-align(center);
+    }
 
-        .logo-wrapper {
-            .flex-basis(68%);
-            .flex-justify(center);
-        }
+    .logo-container {
+        .flex-basis(68%);
+        .flex-justify(center);
+    }
 
-        .links-wrapper {
-            .flex-basis(20%);
-        }
+    .links-container {
+        .flex-basis(20%);
+    }
 
-        .toggle-wrapper {
-            .flex-basis(10%);
-        }
+    .toggle-container {
+        .flex-basis(10%);
     }
 }
 
@@ -88,11 +80,13 @@
     .sticky-header {
         .flex-set();
 
-        .panel.wrapper {
-            display: none;
+        .panel,
+        .logo-container,
+        .search-container {
+            .lib-visually-hidden();
         }
 
-        header.page-header {
+        .page-header {
             position: fixed;
             top: 0;
             right: 15px;
@@ -100,11 +94,6 @@
 
             .header {
                 padding: 10px 15px;
-            }
-
-            .logo-wrapper,
-            .search-wrapper {
-                .lib-visually-hidden();
             }
         }
 

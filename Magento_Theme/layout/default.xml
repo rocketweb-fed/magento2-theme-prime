@@ -12,9 +12,9 @@
         <!-- Header layout modifications -->
         <referenceContainer name="header-wrapper" htmlClass="header content flex flex--wrap">
             <block class="Magento\Framework\View\Element\Template" name="navigation.toggle" template="Magento_Theme::html/header/hamburger.phtml" />
-            <container name="header-wrapper.logo" as="logo-wrapper" htmlTag="div" htmlClass="flex__item flex logo-wrapper"/>
-            <container name="header-wrapper.search" as="search-wrapper" htmlTag="div" htmlClass="flex__item flex search-wrapper hidden-m" />
-            <container name="header-wrapper.links" as="links-wrapper" htmlTag="div" htmlClass="flex__item flex links-wrapper">
+            <container name="header.logo" as="logo-container" htmlTag="div" htmlClass="flex__item flex logo-container"/>
+            <container name="header.search" as="search-container" htmlTag="div" htmlClass="flex__item flex search-container hidden-m" />
+            <container name="header.links" as="links-container" htmlTag="div" htmlClass="flex__item flex links-container">
                 <block class="Magento\Framework\View\Element\Template" name="navigation.account.menu" template="Magento_Customer::nav/account-dropdown.phtml">
                     <block class="Magento\Framework\View\Element\Html\Link" name="orders-link">
                         <arguments>
@@ -32,10 +32,10 @@
                 <block class="Magento\Framework\View\Element\Template" name="minicart.js" template="Magento_Checkout::cart/minicart-js.phtml" after="-"/>   
             </container>
         </referenceContainer>
-        <move element="logo" destination="header-wrapper.logo" before="-"/>
-        <move element="top.search" destination="header-wrapper.search" before="-"/>
-        <move element="catalog.compare.link" destination="header-wrapper.search" after="-"/>
-        <move element="minicart" destination="header-wrapper.links" after="-"/>
+        <move element="logo" destination="header.logo" before="-"/>
+        <move element="top.search" destination="header.search" before="-"/>
+        <move element="catalog.compare.link" destination="header.search" after="-"/>
+        <move element="minicart" destination="header.links" after="-"/>
         <move element="authorization-link" destination="navigation.account.menu"/>
         <move element="register-link" destination="navigation.account.menu"/>
         <move element="my-account-link" destination="navigation.account.menu"/>
