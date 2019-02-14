@@ -10,11 +10,11 @@
         <referenceBlock name="advanced-search-link" remove="true"/>
         
         <!-- Header layout modifications -->
-        <referenceContainer name="header-wrapper" htmlClass="header content flex flex-wrap">
+        <referenceContainer name="header-wrapper" htmlClass="header content flex flex--wrap">
             <block class="Magento\Framework\View\Element\Template" name="navigation.toggle" template="Magento_Theme::html/header/hamburger.phtml" />
-            <container name="header-wrapper.logo" as="logo-wrapper" htmlTag="div" htmlClass="flex-item flex logo-wrapper"/>
-            <container name="header-wrapper.search" as="search-wrapper" htmlTag="div" htmlClass="flex-item flex search-wrapper hidden-m" />
-            <container name="header-wrapper.links" as="links-wrapper" htmlTag="div" htmlClass="flex-item flex links-wrapper">
+            <container name="header-wrapper.logo" as="logo-wrapper" htmlTag="div" htmlClass="flex__item flex logo-wrapper"/>
+            <container name="header-wrapper.search" as="search-wrapper" htmlTag="div" htmlClass="flex__item flex search-wrapper hidden-m" />
+            <container name="header-wrapper.links" as="links-wrapper" htmlTag="div" htmlClass="flex__item flex links-wrapper">
                 <block class="Magento\Framework\View\Element\Template" name="navigation.account.menu" template="Magento_Customer::nav/account-dropdown.phtml">
                     <block class="Magento\Framework\View\Element\Html\Link" name="orders-link">
                         <arguments>
@@ -64,7 +64,7 @@
         <referenceContainer name="footer-container">
             <container name="footer.bottom" htmlTag="div" htmlClass="footer-bottom" after="-"/>
         </referenceContainer>
-        <referenceContainer name="footer" htmlClass="footer content flex flex-wrap">
+        <referenceContainer name="footer" htmlClass="footer content flex flex--wrap">
             <block class="Magento\Framework\View\Element\Template" name="footer.left" template="Magento_Theme::html/footer-column.phtml">
                 <arguments>
                     <argument name="title" xsi:type="string">Customer Service</argument>

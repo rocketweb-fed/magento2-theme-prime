@@ -1,7 +1,7 @@
-<div class="footer-social flex flex-wrap">
+<div class="footer-social flex flex--wrap">
     <?php $socialLinks = $block->getSocial(); ?>
     <?php foreach ($socialLinks as $link): ?>
-        <span class="flex-item">
+        <span class="flex__item">
             <a class="icon rw-icon-social-<?php echo $link['icon']; ?>" href="<?php echo $link['url']; ?>" title="<?php echo $link['title']; ?>" target="_blank"></a>
         </span>
     <?php endforeach ?>

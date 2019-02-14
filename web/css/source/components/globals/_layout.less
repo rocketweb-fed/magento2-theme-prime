@@ -79,19 +79,19 @@
     }
 
     .column {
-        &.half {
+        &--half {
             .lib-column(6);
         }
 
-        &.one-third {
+        &--one-third {
             .lib-column(12);
         }
 
-        &.one-fourth {
+        &--one-fourth {
             .lib-column(6);
         }
 
-        &.last {
+        &--last {
             .lib-end-column();
         }
     }
@@ -111,33 +111,32 @@
      */
     .flex {
         .flex-set();
-    }
 
-    .flex-wrap {
-        .flex-wrap();
-    }
+        &__item {
+            .lib-vendor-prefix-flex-grow(1);
+            .lib-vendor-prefix-flex-shrink(1);
+            .lib-css(box-sizing, border-box, 1);
 
-    .flex-row {
-        .flex-direction();
-    }
+            &--50 {
+                .flex-basis(50%);
+            }
 
-    .flex-item {
-        .lib-vendor-prefix-flex-grow(1);
-        .lib-vendor-prefix-flex-shrink(1);
-        .lib-css(box-sizing, border-box, 1);
-        // padding: 0 @rw-layout__gutter;
-    }
+            &--33 {
+                .flex-basis(33.33%);
+            }
 
-    .flex-50 {
-        .flex-basis(50%);
-    }
+            &--25 {
+                .flex-basis(25%);
+            }
+        }
 
-    .flex-33 {
-        .flex-basis(33.33%);
-    }
+        &--wrap {
+            .flex-wrap();
+        }
 
-    .flex-25 {
-        .flex-basis(25%);
+        &--row {
+            .flex-direction();
+        }
     }
 
     /**
@@ -146,26 +145,26 @@
     .grid {
         display: grid;
         grid-gap: @rw-layout__grid-gap;
-    }
 
-    .grid-auto {
-        .grid-auto();
-    }
+        &--auto {
+            .grid-auto();
+        }
 
-    .grid-2 {
-        .grid-set(2);
-    }
+        &--2 {
+            .grid-set(2);
+        }
 
-    .grid-3 {
-        .grid-set(3);
-    }
+        &--3 {
+            .grid-set(3);
+        }
 
-    .grid-4 {
-        .grid-set(4);
-    }
+        &--4 {
+            .grid-set(4);
+        }
 
-    .grid-6 {
-        .grid-set(6);
+        &--6 {
+            .grid-set(6);
+        }
     }
 
     /**
@@ -194,11 +193,11 @@
     }
 
     .column {
-        &.one-third {
+        &--one-third {
             .lib-column(4);
         }
 
-        &.one-fourth {
+        &--one-fourth {
             .lib-column(3);
         }
     }
