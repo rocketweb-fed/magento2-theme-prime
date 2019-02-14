@@ -49,14 +49,14 @@
                     $buttonText = array_key_exists('button_text', $banner) ? $banner['button_text'] : null;
                     $customContent = array_key_exists('custom_content', $banner) ? $banner['custom_content'] : '';
                 ?>
-                    <div class="hp-banner-item banner-<?php echo $banner['id']; ?>" style="margin:0px 4px">
+                    <div id="banner-<?php echo $banner['id']; ?>" class="banner" style="margin:0px 4px">
                         <?php if ($bannerType == 1) : ?>
                             <?php if (!$buttonText): ?>
                                 <?php if (isset($url)): ?>
                                 <a href="<?php echo $url; ?>" target="<?php echo $target; ?>" >
                                 <?php endif; ?>
                             <?php endif; ?>
-                                <div class="hp-banner-item--image">
+                                <div class="banner__image">
                                     <picture>
                                         <source media="(min-width: 768px)" srcset="<?php echo $mediaUrl . $image; ?>" />
                                         <source media="(max-width: 767px)" srcset="<?php echo $mediaUrl . $imageMobile; ?>" />
@@ -98,16 +98,16 @@
                                 $align = 'right';
                             }
                         ?>
-                        <div class="hp-banner-item--content align-<?php echo $align; ?>">
+                        <div class="banner__content align-<?php echo $align; ?>">
                             <?php if ($showTitle && $title) : ?>
-                                <h2 class="hp-banner-item--title"><?php echo $title; ?></h2>
+                                <h2 class="banner__title"><?php echo $title; ?></h2>
                             <?php endif; ?>
 
                             <?php if ($showDescription && $description) : ?>
-                                <p class="hp-banner-item--description"><?php echo $description; ?></p>
+                                <p class="banner__description"><?php echo $description; ?></p>
                             <?php endif; ?>
 
-                            <div class="hp-banner-item--button">
+                            <div class="banner__button">
                                 <?php if ($buttonText && $url): ?>
                                     <a class="action button" href="<?php echo $url; ?>" target="<?php echo $target; ?>"> <?php echo $buttonText; ?> </a>
                                 <?php endif; ?>

@@ -1,0 +1,176 @@
+/**
+ * Copyright © 2019 Rocket Web. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+
+//
+//  Variables
+//  ---------------------------------------------
+@rw-banner__width: 1800px;
+@rw-banner__height: 600px;
+
+
+//
+//  Styles
+//  ---------------------------------------------
+& when (@media-common = true) {
+    .banner {
+        color: white;
+        .lib-vendor-prefix-display();
+
+        &__image {
+            position: absolute;
+
+            > picture {
+                > img {
+                    position: relative;
+                }
+            }
+        }
+
+        &__content {
+            width: 100%;
+            margin: auto;
+            display: block;
+            position: relative;
+            .lib-vendor-prefix-display();
+            .lib-vendor-prefix-flex-direction(column);
+        }
+
+        &__title {
+            font-weight: @font-weight__bold;
+        }
+
+        &__description {
+            margin-bottom: 20px;
+
+            &::before {
+                content: '';
+                display: block;
+                margin-top: -15px;
+            }
+        }
+
+        &__button {
+            .button {
+                .lib-button-primary();
+                .lib-button-l();
+            }
+        }
+
+        span.black {
+            color: black;
+        }
+    }
+}
+
+//Desktop
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .banner {
+        min-height: @rw-banner__height;
+        position: relative;
+        z-index: 999;
+        opacity: 1;
+        
+        &__image {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+
+            > picture {
+                width: 100%;
+
+                > img {
+                    width: @rw-banner__width;
+                    left: -@rw-banner__width/2;
+                    margin-left: 50%;
+                    max-width: none;
+
+                    @media (min-width: @rw-banner__width) {
+                        width: 100%;
+                        left: 0;
+                        margin-left: 0;
+                    }
+                }
+            }
+        }
+
+        &__content {
+            max-width: 1280px;
+            padding: 30px 8%;
+
+            &.align-left {
+                text-align: left;
+            }
+
+            &.align-center {
+                text-align: center;
+            }
+
+            &.align-right {
+                text-align: right;
+            }
+        }
+
+        &__title {
+            font-size: @font-size__xl * 2;
+        }
+
+        &__description {
+            font-size: @font-size__xl * 2;
+
+            &::before {
+                .align-center & {
+                    margin: -10px auto 20px;
+                    max-width: 40%;
+                }
+            }
+        }
+
+        &__button {
+            cursor: pointer;
+            margin-top: 30px;
+        }
+    }
+}
+
+// Mobile
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .banner {
+        min-height: 480px;
+        position: relative;
+
+        &__image {
+            max-width: 100%;
+
+            > picture {
+                > img {
+                    width: 100%;
+                }
+            }
+
+            @media (min-width: 640px) {
+                width: 100%;
+            }
+        }
+
+        &__content {
+            padding: 20px;
+            text-align: center;
+            min-height: @rw-banner__height/2;
+            min-width: calc(~'100% - 40px');
+            .lib-vendor-prefix-display();
+            .lib-vendor-prefix-flex-direction(column);
+            .lib-css(justify-content, flex-end, 1);
+        }
+
+        &__title {
+            font-size: @font-size__xl * 2;
+        }
+
+        &__description {
+            font-size: @font-size__xl;
+        }
+    }
+}
