@@ -4,11 +4,17 @@
  */
 
 //
+//  Variables
+//  ---------------------------------------------
+@footer__background: @color-gray90;
+
+
+//
 //  Styles
 //  ---------------------------------------------
 & when (@media-common = true) {
     .page-footer {
-        background-color: @color-gray90;
+        background-color: @footer__background;
 
         .footer-social {
             .icon {
@@ -17,12 +23,7 @@
         }
     }
 
-    .footer.content {
-        padding: 0;
-        border: none;
-    }
-
-    .footer-bottom {
+    .footer__bottom {
         text-align: center;
     }
 }
@@ -30,7 +31,7 @@
 // Mobile
 .media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
     .page-footer {
-        .footer-column {
+        .footer__column {
             padding: 15px;
             text-align: center;
             .flex-basis(100%);
