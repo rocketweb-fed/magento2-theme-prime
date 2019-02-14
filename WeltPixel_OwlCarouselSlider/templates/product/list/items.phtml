@@ -16,7 +16,7 @@ $sliderConfiguration = $helper->getSliderConfiguration($block->getType());
 $sliderConfig = json_encode($sliderConfiguration);
 $helperCustom = $this->helper('WeltPixel\OwlCarouselSlider\Helper\Custom');
 $breakpointConfiguration = $helperCustom->getBreakpointConfiguration();
-$breakpoint   = $breakpointConfiguration;
+$breakpointConfig = json_encode($breakpointConfiguration);
 $showPrice     = array_key_exists('show_price', $sliderConfiguration) ? $sliderConfiguration['show_price'] : false;
 $showAddToCart = array_key_exists('show_addto', $sliderConfiguration) ? $sliderConfiguration['show_addto'] : false;
 $showWishlist  = (array_key_exists('show_wishlist', $sliderConfiguration) && $sliderConfiguration['show_wishlist'] !=0) ? true : false;
