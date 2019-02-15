@@ -15,21 +15,6 @@
 
 & when (@media-common = true) {
     /* Core */
-    .slick-slider {
-        position: relative;
-        display: block;
-        box-sizing: border-box;
-        -webkit-touch-callout: none;
-        -webkit-tap-highlight-color: transparent;
-        .lib-css(touch-action, pan-y);
-        .lib-css(user-selec, none, 1);
-
-        .slick-track,
-        .slick-list {
-            .lib-css(transform, translate3d(0, 0, 0), 1);
-        }
-    }
-
     .slick {
         &-list {
             position: relative;
@@ -68,6 +53,21 @@
 
             .slick-loading & {
                 visibility: hidden;
+            }
+        }
+
+        &-slider {
+            position: relative;
+            display: block;
+            box-sizing: border-box;
+            -webkit-touch-callout: none;
+            -webkit-tap-highlight-color: transparent;
+            .lib-css(touch-action, pan-y);
+            .lib-css(user-selec, none, 1);
+
+            .slick-track,
+            .slick-list {
+                .lib-css(transform, translate3d(0, 0, 0), 1);
             }
         }
 
@@ -111,10 +111,24 @@
         }
 
         /* Arrows */
+        &-prev {
+            left: @rw-slick__nav-size;
+
+            &::before {
+                content: @rw-slick__prev-character;
+            }
+        }
+
+        &-next {
+            right: @rw-slick__nav-size;
+
+            &::before {
+                content: @rw-slick__next-character;
+            }
+        }
+
         &-prev,
         &-next {
-
-            .lib-button-reset();
             position: absolute;
             display: block;
             line-height: 0;
@@ -127,12 +141,13 @@
             color: #eee;
             z-index: 1;
             .lib-css(transform, translate(0, -50%), 1);
+            .lib-button-reset();
 
             &::before {
-                .lib-font-size(2*@rw-slick__nav-size);
                 line-height: 1;
                 font-family: @rw-slick__icon-font;
                 opacity: @rw-slick__opacity;
+                .lib-font-size(2*@rw-slick__nav-size);
             }
 
             &:active,
@@ -141,40 +156,12 @@
                 color: #ccc;
             }
 
-            &.slick-disabled:before {
+            &.slick-disabled::before {
                 opacity: @rw-slick__opacity--not-active;
             }
 
-            &:not(.slick-disabled) {
-                &:hover {
-                    &::before {
-                        opacity: @rw-slick__opacity--on-hover;
-                    }
-                }
-            }
-        }
-
-        &-prev {
-            left: @rw-slick__nav-size;
-
-            .product-slider & {
-                left: -@rw-slick__nav-size;
-            }
-
-            &::before {
-                content: @rw-slick__prev-character;
-            }
-        }
-
-        &-next {
-            right: @rw-slick__nav-size;
-
-            .product-slider & {
-                right: -@rw-slick__nav-size;
-            }
-
-            &::before {
-                content: @rw-slick__next-character;
+            &:not(.slick-disabled):hover::before {
+                opacity: @rw-slick__opacity--on-hover;
             }
         }
 
@@ -202,10 +189,10 @@
                 cursor: pointer;
 
                 button {
-                    .lib-button-reset();
                     display: inline-block;
                     height: @rw-slick__dot-size;
                     width: @rw-slick__dot-size;
+                    padding: 10px;
                     border: solid 2px #eee;
                     background: transparent;
                     outline: none;
@@ -215,19 +202,11 @@
                     border-radius: 50%;
                     opacity: @rw-slick__opacity;
                     cursor: pointer;
+                }
 
-                    &:hover, 
-                    &:focus {
-                        border: solid 2px #eee;
-                    }
-
-                    @media (min-width: @screen__m) {
-                        &:hover {
-                            outline: none;
-                            background: #eee;
-                            opacity: @rw-slick__opacity--on-hover;
-                        }
-                    }
+                button:hover,
+                button:focus {
+                    border: solid 2px #eee;
                 }
 
                 &.slick-active button {
@@ -235,29 +214,28 @@
                     border: solid 2px #ccc;
                 }
             }
+
+            @media (min-width: @screen__m) {
+                li button:hover {
+                    outline: none;
+                    background: #eee;
+                    opacity: @rw-slick__opacity--on-hover;
+                }
+            }
+        }
+
+        &-hide {
+            display: none;
         }
     }
 
-    /** 
-     * Product slider
-     **/
-    .custom-slider {
-        .slick-dots {
-            position: absolute;
-            bottom: 0;
-        }
-    }
-
-    /** 
-     * Product slider
-     **/
     .product-slider {
-        .slick-dots {
-            margin: @indent__l 0;
+        .slick-prev {
+            left: -@rw-slick__nav-size;
         }
-    }
 
-    .slider-hide {
-        display: none;
+        .slick-next {
+            right: -@rw-slick__nav-size;
+        }
     }
 }

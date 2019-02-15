@@ -72,7 +72,7 @@
         position: relative;
         z-index: 999;
         opacity: 1;
-        
+
         &__image {
             width: 100%;
             height: 100%;
@@ -86,12 +86,6 @@
                     left: -@rw-banner__width/2;
                     margin-left: 50%;
                     max-width: none;
-
-                    @media (min-width: @rw-banner__width) {
-                        width: 100%;
-                        left: 0;
-                        margin-left: 0;
-                    }
                 }
             }
         }
@@ -131,6 +125,18 @@
         &__button {
             cursor: pointer;
             margin-top: 30px;
+        }
+    }
+
+    @media (min-width: @rw-banner__width) {
+        .banner__image {
+            > picture {
+                > img {
+                    width: 100%;
+                    left: 0;
+                    margin-left: 0;
+                }
+            }
         }
     }
 }

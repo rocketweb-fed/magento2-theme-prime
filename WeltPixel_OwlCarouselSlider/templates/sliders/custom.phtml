@@ -49,7 +49,7 @@
                     $buttonText = array_key_exists('button_text', $banner) ? $banner['button_text'] : null;
                     $customContent = array_key_exists('custom_content', $banner) ? $banner['custom_content'] : '';
                 ?>
-                    <div id="banner-<?php echo $banner['id']; ?>" class="banner" style="margin:0px 4px">
+                    <div id="banner-<?php echo $banner['id']; ?>" class="banner">
                         <?php if ($bannerType == 1) : ?>
                             <?php if (!$buttonText): ?>
                                 <?php if (isset($url)): ?>

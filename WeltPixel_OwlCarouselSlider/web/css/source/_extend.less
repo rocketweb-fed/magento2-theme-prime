@@ -1,0 +1,32 @@
+& when (@media-common = true) {
+    /**
+     * Product slider
+     **/
+    .custom-slider {
+        .slick-dots {
+            position: absolute;
+            bottom: 0;
+        }
+
+        .banner {
+            + .banner {
+                display: none;
+            }
+        }
+
+        .slick-initialized {
+            .banner {
+                .flex-set();
+            }
+        }
+    }
+
+    /**
+     * Product slider
+     **/
+    .product-slider {
+        .slick-dots {
+            margin: @indent__l 0;
+        }
+    }
+}
