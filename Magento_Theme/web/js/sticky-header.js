@@ -13,11 +13,11 @@ define([
 
         _create: function () {
             if (!this.options.disabled) {
-                this._initializeSticky(options);
+                this._initializeSticky();
             }
         },
 
-        _initializeSticky: function(options) {
+        _initializeSticky: function() {
             const self = this;
             const header = this.element;
             const wrapper = $(this.options.wrapper);
