@@ -21,7 +21,7 @@
             <strong><?= /* @escapeNotVerified */ __('Shop By') ?></strong>
         </div>
 
-        <div class="block-content filter-content">
+        <div class="block-content filter-content" data-mage-init='{"collapsibleFilters": {"showMoreCount": 5}}'>
             <?= $block->getChildHtml('state') ?>
 
             <?php if ($block->getLayer()->getState()->getFilters()): ?>
@@ -45,28 +45,4 @@
             <?php endif; ?>
         </div>
     </div>
-    <script>
-    require([
-        'jquery',
-        'matchMedia',
-        'mage/collapsible'
-    ], function ($, mediaCheck) {
-        'use strict';
-    
-        mediaCheck({
-            media: '(min-width: 769px)',
-
-            /*** Switch to Desktop Version. ***/
-            entry: function () {
-                $("#narrow-by-list > dt").collapsible({ active: true, content: '.filter-options-content' });
-                
-            },
-            /*** Switch to Mobile Version. ***/
-            exit: function () {
-                $("#narrow-by-title .filter-title").collapsible({ active: false, content: '.filter-content' });
-                $("#narrow-by-list > dt").collapsible({ active: false, content: '.filter-options-content' });
-            }
-        });
-    });
-    </script>
 <?php endif; ?>
