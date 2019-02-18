@@ -47,6 +47,7 @@
 .media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
     .header {
         margin: 0;
+        .flex-justify(space-between);
     }
 
     .logo {
@@ -55,7 +56,7 @@
 
     .logo-container,
     .links-container,
-    .toggle-container {
+    .toggle-wrapper {
         padding: 0;
         margin: 0;
         .flex-align(center);
@@ -70,8 +71,19 @@
         .flex-basis(20%);
     }
 
-    .toggle-container {
+    .toggle-wrapper {
         .flex-basis(10%);
+    }
+
+    .sticky-header {
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1010;
+            background: #fff;
+        }
     }
 }
 
