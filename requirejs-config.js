@@ -4,4 +4,4 @@ var config = {
             lazysizes: 'js/lazysizes.min'
         }
     }
-}
+};

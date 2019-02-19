@@ -34,6 +34,7 @@ define([
                     $("#narrow-by-list > dt").collapsible({ active: true, content: '.filter-options-content' });
                     
                 },
+                
                 /* Switch to mobile */
                 exit: function () {
                     $("#narrow-by-title .filter-title").collapsible({ active: false, content: '.filter-content' });

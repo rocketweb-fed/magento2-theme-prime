@@ -1,10 +1,16 @@
-define(["jquery/ui", "jquery"], function (Component, $) {
-    return function (config, element) {
-        var minicart = $(element);
+define([
+    'jquery',
+    'jquery/ui'
+], function ($) {
+    'use strict';
+    
+    return function (element) {
+        const minicart = $(element);
+
         minicart.on('contentLoading', function () {
             minicart.on('contentUpdated', function () {
                 minicart.find('[data-role="dropdownDialog"]').dropdownDialog("open");
             });
         });
-    }
+    };
 });

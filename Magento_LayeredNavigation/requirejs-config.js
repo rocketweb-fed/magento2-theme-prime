@@ -4,4 +4,4 @@ var config = {
             collapsibleFilters: 'Magento_LayeredNavigation/js/collapsible-filters'
         }
     }
-}
+};

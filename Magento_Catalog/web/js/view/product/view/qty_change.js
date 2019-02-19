@@ -11,6 +11,7 @@ define([
        },
        decreaseQty: function () {
            var newQty = this.qty() - 1;
+
            if (newQty < 1) {
                newQty = 1;
            }
@@ -18,6 +19,7 @@ define([
        },
        increaseQty: function () {
            var newQty = this.qty() + 1;
+
            this.qty(newQty);
        }
    });
