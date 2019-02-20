@@ -6,7 +6,7 @@ RW Prime theme is based on Magento Blank and includes our most common customizat
 ![RW Prime](media/preview.png)
 
 ## Features
-* New smiplified header layout
+* New simplified header layout
 * Sticky header (can be enabled/disabled via layout)
 * New CSS grid layout and flexbox utilities
 * Refactored mobile menu - removed additional tabs, included search and account links 
@@ -27,13 +27,15 @@ RW Prime theme is based on Magento Blank and includes our most common customizat
 * Bunch of handy mixins 
 * and more...
 
+> If you want easier front-end development with automatic less/js linting, compilation and more checkout our [magento2-gulfile](https://github.com/rocketweb-fed/magento2-gulpfile).
+
 ## Installation
 Install using Composer
 ```
 $ composer require rocketweb/theme-frontend-prime
 ```
 
-Theme comes bundled with two modules: UiCore and CheckoutEnhancement. You'll need to install them using Magento CLI:
+Theme package comes bundled with two modules: UiCore and CheckoutEnhancement. You'll need to install them using Magento CLI:
 ```
 $ bin/magento module:enable RocketWeb_UiCore
 $ bin/magento module:enable RocketWeb_CheckoutEnhancement
