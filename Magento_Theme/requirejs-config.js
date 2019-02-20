@@ -1,7 +1,7 @@
 var config = {
     map: {
         '*': {
-            lazysizes: 'js/lazysizes.min'
+            lazysizes: 'Magento_Theme/js/lazysizes.min'
         }
     }
 };
