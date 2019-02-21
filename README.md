@@ -14,12 +14,11 @@ RW Prime theme is based on Magento Blank and includes our most common customizat
 * Included Slick carousel for custom banner and product carousels (requires WeltPixel_OwnCarouselSlider extension)
 * Lazy loading product images on product listing pages (can be enabled/disabled via layout)
 * Updated layered navigation - added filter collapse, limit the number of visible options by default, simplified active filters section
-* Full header and footer in checkout
 * Account dropdown containing dynamic customer actions
 * Removed redundant UI elements from product listing pages
 * Cart and checkout UI improvements 
 * UI optimizations on PDP - moved title to product details column, add qty +/- buttons, included social sharing buttons
-* Address autocomplete functionality in address forms
+* Address autocomplete functionality in address forms in checkout
 * Minicart opens automatically when product is added to cart
 * Updated footer layout using flexbox
 * Styled form elements (checkboxes, radios, dropdowns etc.)
