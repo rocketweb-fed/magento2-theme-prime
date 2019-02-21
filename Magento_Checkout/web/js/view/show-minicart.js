@@ -4,7 +4,7 @@ define([
 ], function ($) {
     'use strict';
     
-    return function (element) {
+    return function (config, element) {
         const minicart = $(element);
 
         minicart.on('contentLoading', function () {

@@ -29,7 +29,7 @@
                         </arguments>
                     </block>
                 </block> 
-                <block class="Magento\Framework\View\Element\Template" name="minicart.js" template="Magento_Checkout::cart/minicart-js.phtml" after="-"/>   
+                <block class="Magento\Framework\View\Element\Template" name="minicart.js" template="Magento_Checkout::cart/show-minicart.phtml" after="-"/>   
             </container>
         </referenceContainer>
         <move element="logo" destination="header.logo" before="-"/>
