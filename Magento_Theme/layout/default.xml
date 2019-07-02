@@ -10,7 +10,7 @@
         <referenceBlock name="advanced-search-link" remove="true"/>
         
         <!-- Header layout modifications -->
-        <referenceContainer name="header-wrapper" htmlClass="header content flex flex--wrap">
+        <referenceContainer name="header-wrapper" htmlTag="div" htmlClass="header content flex flex--wrap">
             <block class="Magento\Framework\View\Element\Template" name="navigation.toggle" template="Magento_Theme::html/header/hamburger.phtml" />
             <container name="header.logo" as="logo-container" htmlTag="div" htmlClass="flex__item flex logo-container"/>
             <container name="header.search" as="search-container" htmlTag="div" htmlClass="flex__item flex search-container hidden-m" />
@@ -59,10 +59,14 @@
                 <block class="Magento\Framework\View\Element\Template" name="preheader.message" template="Magento_Theme::html/preheader.phtml" />
             </container>
         </referenceContainer>
+        <referenceContainer name="after.body.start" htmlTag="div" htmlId="top" />
+
 
         <!-- Footer modifications -->
         <referenceContainer name="footer-container">
-            <container name="footer.bottom" htmlTag="div" htmlClass="footer__bottom" after="-"/>
+            <container name="footer.bottom" htmlTag="div" htmlClass="footer__bottom" after="-">
+                <block name="footer.bottom.back" template="Magento_Theme::html/back-to-top.phtml" />
+            </container>
         </referenceContainer>
         <referenceContainer name="footer" htmlClass="footer content flex flex--wrap">
             <block class="Magento\Framework\View\Element\Template" name="footer.left" template="Magento_Theme::html/footer-column.phtml">
