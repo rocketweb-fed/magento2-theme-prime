@@ -1,5 +1,6 @@
 <style>
-	.ls-blur-up-is-loading {
+	.ls-blur-up-is-loading,
+    .lazyloading {
 		visibility: hidden;
 	}
 
@@ -28,10 +29,15 @@
 	}
 </style>
 <script type="text/javascript">
+    if (!('object-fit' in document.createElement('a').style)) {
+        require('lsObjectFit');
+    }
+
     require([
         'lazysizes',
-        'lsBlurUp'
-    ], function(lazysizes){
+        'lsBlurUp',
+        'lsRespimg'
+    ], function() {
         lazySizesConfig.blurupMode = 'auto';
         lazySizesConfig.customMedia = {
             '--xs': '(max-width: 480px)',
