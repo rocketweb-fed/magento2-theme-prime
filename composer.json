@@ -6,7 +6,8 @@
         "magento/theme-frontend-blank": ">=100.0.0",
         "magento/framework": ">=100.0.0",
         "rocketweb/module-ui-core": "~1.1",
-        "rocketweb/module-checkout-enhancement": "~1.1"
+        "rocketweb/module-checkout-enhancement": "~1.1",
+        "staempfli/magento2-module-image-resizer": "~2.0"
     },
     "type": "magento2-theme",
     "license": [

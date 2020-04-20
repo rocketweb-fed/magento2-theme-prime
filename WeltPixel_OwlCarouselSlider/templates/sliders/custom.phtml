@@ -4,6 +4,7 @@
 <?php $sliderGeneral = $sliderConfig['slider_config']; ?>
 <?php $enabled       = (array_key_exists('status', $sliderGeneral) && $sliderGeneral['status'] !=0) ? true : false; ?>
 <?php $type = 'banner-slider'; ?>
+<?php $imageResizer = $block->getImageResizer(); ?>
 
 <?php if ($enabled) : ?>
 
@@ -42,6 +43,8 @@
                     $bannerType = array_key_exists('banner_type', $banner) ? $banner['banner_type'] : '';
                     $image = array_key_exists('image', $banner) ? $banner['image'] : '';
                     $imageMobile = $banner['image_mobile'] ?? '';
+                    $imageUrl = $mediaUrl . $image;
+                    $imageMobileUrl = $mediaUrl . $imageMobile;
                     $layout = $banner['layout'] ?? ''; // 0 - left, 1 - center, 2 - right
                     $altText = array_key_exists('alt_text', $banner) ? $banner['alt_text'] : '';
                     $video = array_key_exists('video', $banner) ? $banner['video'] : '';
@@ -58,12 +61,16 @@
                             <?php endif; ?>
                                 <div class="banner__image">
                                     <picture>
-                                        <source media="(min-width: 768px)" srcset="<?php echo $mediaUrl . $image; ?>" />
-                                        <source media="(max-width: 767px)" srcset="<?php echo $mediaUrl . $imageMobile; ?>" />
-                                        <img src="<?php echo $mediaUrl . $image; ?>"
-                                             alt="<?php echo $altText; ?>"
-                                             title="<?php echo $altText; ?>"
-                                            />
+                                        <source media="--xs" data-srcset="<?= $imageResizer->resizeAndGetUrl($imageMobileUrl, 480, null, []); ?> 1x, <?= $imageResizer->resizeAndGetUrl($imageMobileUrl, 960, null, []); ?> 2x" />
+                                        <source media="--sm" data-srcset="<?= $imageResizer->resizeAndGetUrl($imageMobileUrl, 800, null, []); ?> 1x, <?= $imageResizer->resizeAndGetUrl($imageMobileUrl, 1600, null, []); ?> 2x" />
+                                        <source media="--md" data-srcset="<?= $imageResizer->resizeAndGetUrl($imageUrl, 1100, null, []); ?> 1x, <?= $imageResizer->resizeAndGetUrl($imageUrl, 1100, null, []); ?> 2x" />
+                                        <source data-srcset="<?= $imageResizer->resizeAndGetUrl($imageUrl, 1600, null, []); ?> 1600w" />
+                                        <img data-sizes="auto"
+                                             data-src="<?= $imageResizer->resizeAndGetUrl($imageMobileUrl, 480, null, []); ?>"
+                                             alt="<?= $altText; ?>"
+                                             title="<?= $altText; ?>"
+                                             class="lazyload"
+                                        />
                                     </picture>
                                 </div>
                             <?php if (!$buttonText): ?>
