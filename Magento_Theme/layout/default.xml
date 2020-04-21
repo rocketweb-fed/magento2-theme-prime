@@ -63,11 +63,11 @@
 
 
         <!-- Footer modifications -->
-        <referenceContainer name="footer-container">
+        <!-- <referenceContainer name="footer-container">
             <container name="footer.bottom" htmlTag="div" htmlClass="footer__bottom" after="-">
                 <block name="footer.bottom.back" template="Magento_Theme::html/back-to-top.phtml" />
             </container>
-        </referenceContainer>
+        </referenceContainer> -->
         <referenceContainer name="footer" htmlClass="footer content flex flex--wrap">
             <block class="Magento\Framework\View\Element\Template" name="footer.left" template="Magento_Theme::html/footer-column.phtml">
                 <arguments>
