@@ -8,7 +8,7 @@
 //  Variables
 //  ---------------------------------------------
 @rw-banner__width: 1800px;
-@rw-banner__height: 600px;
+@rw-banner__height: 60rem;
 
 
 //
@@ -21,6 +21,7 @@
 
         &__image {
             position: absolute;
+            width: 100%;
 
             > picture {
                 > img {
@@ -63,18 +64,26 @@
             color: black;
         }
     }
+
+    [data-bg] {
+        background-size: cover;
+        background-position: center center;
+    }
 }
 
 //Desktop
 .media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
     .banner {
-        min-height: @rw-banner__height;
         position: relative;
         z-index: 999;
         opacity: 1;
+        min-height: 12rem;
+
+        &.hero {
+            min-height: @rw-banner__height;
+        }
 
         &__image {
-            width: 100%;
             height: 100%;
             overflow: hidden;
 
@@ -112,7 +121,7 @@
         }
 
         &__description {
-            font-size: @font-size__xl * 2;
+            font-size: @font-size__xl * 1.5;
 
             &::before {
                 .align-center & {
@@ -144,12 +153,17 @@
 // Mobile
 .media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
     .banner {
-        min-height: 480px;
         position: relative;
 
-        &__image {
-            max-width: 100%;
+        &.hero {
+            min-height: 40rem;
 
+            .banner__content {
+                min-height: @rw-banner__height/2;
+            }
+        }
+
+        &__image {
             > picture {
                 > img {
                     width: 100%;
@@ -164,7 +178,7 @@
         &__content {
             padding: 20px;
             text-align: center;
-            min-height: @rw-banner__height/2;
+            min-height: 8rem;
             min-width: calc(~'100% - 40px');
             .lib-vendor-prefix-display();
             .lib-vendor-prefix-flex-direction(column);
