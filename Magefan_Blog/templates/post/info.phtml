@@ -1,0 +1,93 @@
+<?php
+/**
+ * Copyright © Magefan (support@magefan.com). All rights reserved.
+ * Please visit Magefan.com for license details (https://magefan.com/end-user-license-agreement).
+ *
+ * Glory to Ukraine! Glory to the heroes!
+ */
+?>
+<?php
+/**
+ * Blog post info template
+ *
+ * @var $block \Magefan\Blog\Block\Post\Info
+ */
+?>
+
+<?php $_post = $block->getPost() ?>
+
+<div class="post-info">
+    <?php if ($_post->isPublishDateEnabled()) { ?>
+        <div class="item post-posed-date">
+            <span class="icon small rw-icon-calendar"></span>
+            <span class="value"><?= $block->escapeHtml($_post->getPublishDate()) ?></span>
+        </div>
+    <?php } ?>
+    <?php if ($_categoriesCount = $_post->getCategoriesCount()) { ?>
+    <div class="item post-categories">
+        <span class="icon small rw-icon-folder"></span>
+        <?php $n = 0; ?>
+        <span class="value">
+            <?php foreach ($_post->getParentCategories() as $ct) { ?>
+                <?php $n++; ?>
+                <a title="<?= $block->escapeHtml($ct->getTitle()) ?>"
+                href="<?= $block->escapeUrl($ct->getCategoryUrl()) ?>"
+                ><?= $block->escapeHtml($ct->getTitle()) ?></a><?= /*@noEscape*/ ($n != $_categoriesCount) ? ',' : '' ?>
+            <?php } ?>
+        </span>
+    </div>
+    <?php } ?>
+    <?php if ($block->magefanCommentsEnabled() && $_post->getCommentsCount()) { ?>
+    <div class="item post-comments">
+        <span class="icon small rw-icon-comment"></span>
+        <a title="<?= $block->escapeHtml($_post->getTitle()) ?>"
+           href="<?= $block->escapeUrl($_post->getPostUrl()) ?>#post-comments"
+        ><?= $block->escapeHtml($_post->getCommentsCount()) ?></a>
+    </div>
+    <?php } ?>
+    <?php if ($_tagsCount = $_post->getTagsCount()) { ?>
+    <div class="item post-categories">
+        <span class="icon small rw-icon-tag"></span>
+        <?php $n = 0; ?>
+        <span class="value">
+            <?php foreach ($_post->getRelatedTags() as $tag) { ?>
+                <?php $n++; ?>
+                <a title="<?= $block->escapeHtml($tag->getTitle()) ?>"
+                href="<?= $block->escapeUrl($tag->getTagUrl()) ?>"
+                ><?= $block->escapeHtml($tag->getTitle()) ?></a><?= /*@noEscape*/ ($n != $_tagsCount) ? ',' : '' ?>
+            <?php } ?>
+        </span>
+    </div>
+    <?php } ?>
+    <?php if ($block->authorEnabled()) { ?>
+        <?php if ($_author = $_post->getAuthor()) { ?>
+        <div class="item post-author">
+            <span class="icon small rw-icon-person"></span>
+            <span class="value">
+                <?php if ($authorPageEnabled = $block->authorPageEnabled()) { ?>
+                <a title="<?= $block->escapeHtml($_author->getTitle()) ?>"
+                   href="<?= $block->escapeUrl($_author->getAuthorUrl()) ?>">
+                <?php } ?>
+
+                <?= $block->escapeHtml($_author->getTitle()) ?>
+
+                <?php if ($authorPageEnabled) { ?>
+                </a>
+                <?php } ?>
+            </span>
+        </div>
+        <?php } ?>
+    <?php } ?>
+
+    <?php if ($block->viewsCountEnabled()) { ?>
+        <?php if ($viewsCount = $_post->getViewsCount()) { ?>
+            <div class="item post-views">
+                <span class="label"><?= $block->escapeHtml(__('Views:')) ?></span>
+                <span class="value">
+                    <?= $block->escapeHtml($viewsCount)?>
+                </span>
+            </div>
+        <?php } ?>
+    <?php } ?>
+
+</div>

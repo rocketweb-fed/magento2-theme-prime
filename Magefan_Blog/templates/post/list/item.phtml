@@ -1,0 +1,67 @@
+<?php
+/**
+ * Copyright © Magefan (support@magefan.com). All rights reserved.
+ * Please visit Magefan.com for license details (https://magefan.com/end-user-license-agreement).
+ *
+ * Glory to Ukraine! Glory to the heroes!
+ */
+?>
+<?php
+/**
+ * Blog post list item template
+ *
+ * @var $block \Magefan\Blog\Block\Post\AbstractPost
+ */
+?>
+<?php
+    $_post = $block->getPost();
+    $_postUrl = $block->escapeUrl($_post->getPostUrl());
+    $_postName = $block->escapeHtml($_post->getTitle());
+?>
+<li class="post-holder post-holder-<?= (int)$_post->getId() ?>">
+    <div class="post-header">
+
+        <div class="post-title-holder clearfix">
+            <h2 class="post-title">
+                <a class="post-item-link"
+                   href="<?= /*@noEscape*/ $_postUrl ?>">
+                    <?= /*@noEscape*/ $_postName ?>
+                </a>
+            </h2>
+        </div>
+
+        <?= /*@noEscape*/ $block->getInfoHtml() ?>
+    </div>
+
+    <div class="post-content">
+        <div class="post-description clearfix">
+            <?php $featuredImage = $_post->getFeaturedListImage() ?: $_post->getFeaturedImage(); ?>
+            <?php if ($featuredImage) { ?>
+                <?php
+                    $featuredImgAlt = $_post->getData('featured_list_img_alt') ?: $_post->getData('featured_img_alt');
+                    if (!$featuredImgAlt) {
+                        $featuredImgAlt = $_postName;
+                    }
+                ?>
+                <div class="post-ftimg-hld">
+                    <a href="<?= /*@noEscape*/ $_postUrl ?>" title="<?= /*@noEscape*/ $_postName ?>">
+                        <img src="<?= $block->escapeUrl($featuredImage) ?>"
+                             alt="<?= $block->escapeHtml($featuredImgAlt) ?>" />
+                    </a>
+                </div>
+            <?php } ?>
+            <div class="post-text-hld clearfix">
+                <?= /*@noEscape*/ $block->getShorContent() ?>
+            </div>
+            <a class="post-read-more"
+               href="<?= /*@noEscape*/ $_postUrl ?>"
+               title="<?= /*@noEscape*/ $_postName ?>"
+               >
+                <?= $block->escapeHtml(__('Read more &#187;')) ?>
+            </a>
+        </div>
+    </div>
+    <div class="post-footer">
+
+    </div>
+</li>
