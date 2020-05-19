@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magefan (support@magefan.com). All rights reserved.
+ * Please visit Magefan.com for license details (https://magefan.com/end-user-license-agreement).
+ *
+ * Glory to Ukraine! Glory to the heroes!
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="blog_default"/>
+    <update handle="blog_post_opengraph" />
+    <update handle="blog_post_richsnippets" />
+    <body>
+        <referenceBlock name="blog.post.relatedproducts" template="WeltPixel_OwlCarouselSlider::product/list/items.phtml" />
+    </body>
+</page>

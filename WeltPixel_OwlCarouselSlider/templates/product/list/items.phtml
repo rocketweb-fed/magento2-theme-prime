@@ -40,8 +40,9 @@ switch ($type = $block->getType()) {
             $shuffle = (int) $block->isShuffled();
             $canItemsAddToCart = $block->canItemsAddToCart();
 
-            $showAddToCart = false;
+            $showAddToCart = true;
             $templateType = null;
+            $showPrice = true;
             $description = false;
         }
         break;
@@ -61,6 +62,7 @@ switch ($type = $block->getType()) {
 
             $showAddToCart = true;
             $templateType = null;
+            $showPrice = true;
             $description = false;
         }
         break;
