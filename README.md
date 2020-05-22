@@ -19,6 +19,7 @@ RW Prime theme is based on Magento Blank and includes our most common customizat
 * Account dropdown containing dynamic customer actions
 * Removed redundant UI elements from product listing pages
 * Cart and checkout UI improvements 
+* CSS optimizations - async loading of main css files, preloading critical CSS on HP, PDP, PLP
 * UI optimizations on PDP - moved title to product details column, add qty +/- buttons, included social sharing buttons
 * Address autocomplete functionality in address forms in checkout
 * Minicart opens automatically when product is added to cart
