@@ -1,0 +1,649 @@
+/**
+ * File contains only one change on line 277 to fix issue postcss complains about
+ */ 
+
+ //colors
+@black: #000;
+@white: #fff;
+@color_iron_approx: #d6d6d6;
+@color_mantle_approx: #869791;
+@dot_active: @black;
+//urls
+@url_0: url(owl.video.play.png);
+
+//@extend-elements
+//original selectors
+//.owl-carousel .owl-controls .owl-nav .owl-prev, .owl-carousel .owl-controls .owl-nav .owl-next, .owl-carousel .owl-controls .owl-dot
+.extend_1 {
+	cursor: pointer;
+	cursor: hand;
+	//Instead of the line below you could use @include user-select(@select)
+	user-select: none;
+}
+
+.products.products-grid,
+.custom-slider {
+	position: relative;
+	padding: 0 0 20px;
+}
+
+.owl-carousel.products {
+	display: none;
+	width: 100%;
+	position: relative;
+	z-index: 0;
+	.animated {
+		animation-duration: 1000ms;
+		animation-fill-mode: both;
+	}
+	.owl-animated-in {
+		z-index: 0;
+	}
+	.owl-animated-out {
+		z-index: 1;
+	}
+	.fadeOut {
+		animation-name: fadeOut;
+	}
+	.owl-stage {
+		position: relative;
+		&:after {
+			content: ".";
+			display: block;
+			clear: both;
+			visibility: hidden;
+			line-height: 0;
+			height: 0;
+		}
+	}
+	.owl-stage-outer {
+		position: relative;
+		overflow: hidden;
+		padding: 20px 0;
+	}
+	.owl-controls {
+		@size: 40px;
+		.owl-nav {
+			.owl-prev {
+				&:extend(.extend_1);
+			}
+			.owl-next {
+				&:extend(.extend_1);
+			}
+			&.fullscreen {
+				.owl-prev {
+					:root .catalog-product-view & {
+						width: @size !important;
+						top: 0 !important;
+						left: 0 !important;
+						background: none transparent !important;
+						&:hover {
+							background: none transparent !important;
+						}
+					}
+				}
+				.owl-next {
+					:root .catalog-product-view & {
+						width: @size !important;
+						top: 0 !important;
+						right: 0 !important;
+						background: none transparent !important;
+						&:hover {
+							background: none transparent !important;
+						}
+					}
+				}
+			}
+		}
+		.owl-dot {
+			&:extend(.extend_1);
+		}
+	}
+	&.owl-loaded {
+		display: block;
+	}
+	&.owl-loading {
+		opacity: 0;
+		display: block;
+	}
+	&.owl-hidden {
+		opacity: 0;
+	}
+	.owl-item {
+		position: relative;
+		min-height: 1px;
+		float: left;
+		//Instead of the line below you could use @include user-select(@select)
+		user-select: none;
+		img {
+			display: block;
+			width: 100%;
+			//Instead of the line below you could use @include transform-style(@style)
+			transform-style: preserve-3d;
+		}
+		.owl-lazy {
+			opacity: 0;
+			//Instead of the line below you could use @include transition(@transition-1, @transition-2, @transition-3, @transition-4, @transition-5, @transition-6, @transition-7, @transition-8, @transition-9, @transition-10)
+			transition: opacity 400ms ease;
+		}
+		.product-item {
+			width: 100% !important;
+			.product-item-info {}
+		}
+	}
+	.owl-grab {
+		cursor: move;
+		cursor: grab;
+	}
+	&.owl-rtl {
+		direction: rtl;
+		.owl-item {
+			float: right;
+		}
+	}
+	.owl-video-wrapper {
+		position: relative;
+		height: 100%;
+		background: @black;
+	}
+	.owl-video-play-icon {
+		position: absolute;
+		height: 80px;
+		width: 80px;
+		left: 50%;
+		top: 50%;
+		margin-left: -40px;
+		margin-top: -40px;
+		background: @url_0 no-repeat;
+		cursor: pointer;
+		z-index: 1;
+		//Instead of the line below you could use @include transition(@transition-1, @transition-2, @transition-3, @transition-4, @transition-5, @transition-6, @transition-7, @transition-8, @transition-9, @transition-10)
+		transition: scale 100ms ease;
+		&:hover {
+			//Instead of the line below you could use @include transition(@transition-1, @transition-2, @transition-3, @transition-4, @transition-5, @transition-6, @transition-7, @transition-8, @transition-9, @transition-10)
+			transition: scale(1.3, 1.3);
+		}
+	}
+	.owl-video-playing {
+		.owl-video-tn {
+			display: none;
+		}
+		.owl-video-play-icon {
+			display: none;
+		}
+	}
+	.owl-video-tn {
+		opacity: 0;
+		height: 100%;
+		background-position: center center;
+		background-repeat: no-repeat;
+		background-size: contain;
+		//Instead of the line below you could use @include transition(@transition-1, @transition-2, @transition-3, @transition-4, @transition-5, @transition-6, @transition-7, @transition-8, @transition-9, @transition-10)
+		transition: opacity 400ms ease;
+	}
+	.owl-video-frame {
+		position: relative;
+		z-index: 1;
+	}
+	.owl-refresh .owl-item {
+		display: none;
+	}
+	&.owl-text-select-on .owl-item {
+		//Instead of the line below you could use @include user-select(@select)
+		user-select: auto;
+	}
+	.banner-item {
+		.content_slider {
+			position: absolute;
+			top: 25%;
+			left: 50px;
+			width: calc(~"100% - 120px");
+			z-index: 1;
+			color: @white;
+			.banner-title {
+				//position: absolute;
+				//top: 25%;
+				//left: 0;
+				width: 100%;
+				//z-index: 1;
+				color: @white;
+				font-size: 32px;
+				text-transform: uppercase;
+				text-align: center;
+				display: inline-block;
+				clear: both;
+			}
+			.banner-description {
+				width: 100%;
+				clear: both;
+				display: inline-block;
+				text-align: center;
+				padding: 15px 0;
+			}
+			.buttons {
+				width: 100%;
+				clear: both;
+				display: inline-block;
+				text-align: center;
+				a {
+					&.action.primary {
+						margin: 10px;
+					}
+				}
+				.custom_content {
+					margin: 10px 0 0;
+					text-align: center;
+				}
+			}
+		}
+
+	}
+	.product-item-details {
+		float: left;
+		width: 100%;
+	}
+}
+
+@-webkit-keyframes fadeOut {
+	0% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+
+@keyframes fadeOut {
+	0% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+
+.owl-height {
+	//Instead of the line below you could use @include transition(@transition-1, @transition-2, @transition-3, @transition-4, @transition-5, @transition-6, @transition-7, @transition-8, @transition-9, @transition-10)
+	transition: height 500ms ease-in-out;
+}
+
+.owl-theme {
+	.owl-controls {
+		//margin-top: 10px;
+		text-align: center;
+		-webkit-tap-highlight-color: transparent;
+		.owl-nav {
+			// [class*=owl-carousel-products-]
+			@size: 40px;
+			[class*=owl-] {
+				color: @white;
+				font-size: 14px;
+				margin: 20px 0 0;
+				padding: 0;
+				background: rgba(255, 255, 255, .5);
+				display: inline-block;
+				cursor: pointer;
+				-webkit-border-radius: 3px;
+				-moz-border-radius: 3px;
+				border-radius: 3px;
+				position: absolute;
+				top: 50%;
+				width: 40px;
+				height: 40px;
+				text-indent: 100%;
+				overflow: hidden;
+
+				[class*=owl-carousel-products-] & {
+					background: transparent;
+				}
+				&.owl-prev {
+					left: 15px;
+					[class*=owl-carousel-products-] & {
+						left: -55px;
+					}
+					&:before {
+						position: absolute;
+						top: 26px;
+						left: 8px;
+						z-index: 1;
+						width: 20px;
+						height: 1px;
+						content: "";
+						border-top: 2px solid @black;
+						transform: rotate(40deg);
+						border-radius: 20px;
+						text-indent: 0;
+					}
+					&:after {
+						position: absolute;
+						top: 14px;
+						left: 8px;
+						z-index: 1;
+						width: 20px;
+						height: 1px;
+						content: "";
+						border-top: 2px solid @black;
+						transform: rotate(-40deg);
+						border-radius: 20px;
+						text-indent: 0;
+					}
+				}
+				&.owl-next {
+					right: 15px;
+					[class*=owl-carousel-products-] & {
+						right: -55px;
+					}
+					&:before {
+						position: absolute;
+						top: 14px;
+						right: 8px;
+						z-index: 1;
+						width: 20px;
+						height: 1px;
+						content: "";
+						border-top: 2px solid @black;
+						transform: rotate(40deg);
+						border-radius: 20px;
+					}
+					&:after {
+						position: absolute;
+						top: 26px;
+						right: 8px;
+						z-index: 1;
+						width: 20px;
+						height: 1px;
+						content: "";
+						border-top: 2px solid @black;
+						transform: rotate(-40deg);
+						border-radius: 20px;
+					}
+				}
+				&:hover {
+					background: @dot_active;
+					color: @white;
+					text-decoration: none;
+					[class*=owl-carousel-products-] & {
+						background: transparent;
+						color: @dot_active;
+					}
+					&:before,
+					&:after {
+						border-color: @white;
+						[class*=owl-carousel-products-] & {
+							border-color: @dot_active;
+						}
+					}
+				}
+			}
+			.disabled {
+				opacity: .5;
+				cursor: default;
+			}
+		}
+	}
+	.owl-dots {
+		position: absolute;
+		width: 100%;
+		bottom: 20px;
+		[class*=owl-carousel-products-] & {
+			position: relative;
+			bottom: -20px;
+		}
+		.owl-dot {
+			display: inline-block;
+			zoom: 1;
+			*display: inline;
+			span {
+				width: 10px;
+				height: 10px;
+				margin: 5px 7px;
+				background: #d6d6d6;
+				display: block;
+				-webkit-backface-visibility: visible;
+				-webkit-transition: opacity 200ms ease;
+				-moz-transition: opacity 200ms ease;
+				-ms-transition: opacity 200ms ease;
+				-o-transition: opacity 200ms ease;
+				transition: opacity 200ms ease;
+				-webkit-border-radius: 30px;
+				-moz-border-radius: 30px;
+				border-radius: 30px;
+			}
+			&:hover {
+				span {
+					background: @dot_active;
+				}
+			}
+		}
+		.owl-dot.active {
+			span {
+				background: @dot_active;
+			}
+		}
+	}
+}
+
+.no-js .owl-carousel {
+	display: block;
+}
+
+#pre-div {
+	background-color: @white;
+	bottom: 0;
+	height: 100%;
+	width: 100%;
+	left: 0;
+	position: absolute;
+	right: 0;
+	top: 0;
+	z-index: 10000;
+	.cssload-loader {
+		position: relative;
+		left: calc(~"50% - 31px");
+		top: calc(~"50% - 31px");
+		width: 62px;
+		height: 62px;
+		border-radius: 50%;
+		-o-border-radius: 50%;
+		-ms-border-radius: 50%;
+		-webkit-border-radius: 50%;
+		-moz-border-radius: 50%;
+		perspective: 780px;
+	}
+
+	.cssload-inner {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		box-sizing: border-box;
+		-o-box-sizing: border-box;
+		-ms-box-sizing: border-box;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		border-radius: 50%;
+		-o-border-radius: 50%;
+		-ms-border-radius: 50%;
+		-webkit-border-radius: 50%;
+		-moz-border-radius: 50%;
+	}
+
+	.cssload-inner.cssload-one {
+		left: 0%;
+		top: 0%;
+		animation: cssload-rotate-one 1.15s linear infinite;
+		-o-animation: cssload-rotate-one 1.15s linear infinite;
+		-ms-animation: cssload-rotate-one 1.15s linear infinite;
+		-webkit-animation: cssload-rotate-one 1.15s linear infinite;
+		-moz-animation: cssload-rotate-one 1.15s linear infinite;
+		border-bottom: 3px solid rgb(0, 0, 0);
+	}
+
+	.cssload-inner.cssload-two {
+		right: 0%;
+		top: 0%;
+		animation: cssload-rotate-two 1.15s linear infinite;
+		-o-animation: cssload-rotate-two 1.15s linear infinite;
+		-ms-animation: cssload-rotate-two 1.15s linear infinite;
+		-webkit-animation: cssload-rotate-two 1.15s linear infinite;
+		-moz-animation: cssload-rotate-two 1.15s linear infinite;
+		border-right: 3px solid rgb(0, 0, 0);
+	}
+
+	.cssload-inner.cssload-three {
+		right: 0%;
+		bottom: 0%;
+		animation: cssload-rotate-three 1.15s linear infinite;
+		-o-animation: cssload-rotate-three 1.15s linear infinite;
+		-ms-animation: cssload-rotate-three 1.15s linear infinite;
+		-webkit-animation: cssload-rotate-three 1.15s linear infinite;
+		-moz-animation: cssload-rotate-three 1.15s linear infinite;
+		border-top: 3px solid rgb(0, 0, 0);
+	}
+
+	.catalog-product-view .product-items .product-item-actions .actions-secondary {
+		display: inline-block !important;
+	}
+	.catalog-product-view .product-items .product-item-actions .action.tocompare {
+		position: absolute !important;
+		right: 0 !important;
+	}
+	.catalog-product-view .product-items .product-item-actions .action.towishlist {
+		position: absolute !important;
+		left: 0 !important;
+	}
+
+	@keyframes cssload-rotate-one {
+		0% {
+			transform: rotateX(35deg) rotateY(-45deg) rotateZ(0deg);
+		}
+		100% {
+			transform: rotateX(35deg) rotateY(-45deg) rotateZ(360deg);
+		}
+	}
+
+	@-o-keyframes cssload-rotate-one {
+		0% {
+			-o-transform: rotateX(35deg) rotateY(-45deg) rotateZ(0deg);
+		}
+		100% {
+			-o-transform: rotateX(35deg) rotateY(-45deg) rotateZ(360deg);
+		}
+	}
+
+	@-ms-keyframes cssload-rotate-one {
+		0% {
+			-ms-transform: rotateX(35deg) rotateY(-45deg) rotateZ(0deg);
+		}
+		100% {
+			-ms-transform: rotateX(35deg) rotateY(-45deg) rotateZ(360deg);
+		}
+	}
+
+	@-webkit-keyframes cssload-rotate-one {
+		0% {
+			-webkit-transform: rotateX(35deg) rotateY(-45deg) rotateZ(0deg);
+		}
+		100% {
+			-webkit-transform: rotateX(35deg) rotateY(-45deg) rotateZ(360deg);
+		}
+	}
+
+	@-moz-keyframes cssload-rotate-one {
+		0% {
+			-moz-transform: rotateX(35deg) rotateY(-45deg) rotateZ(0deg);
+		}
+		100% {
+			-moz-transform: rotateX(35deg) rotateY(-45deg) rotateZ(360deg);
+		}
+	}
+
+	@keyframes cssload-rotate-two {
+		0% {
+			transform: rotateX(50deg) rotateY(10deg) rotateZ(0deg);
+		}
+		100% {
+			transform: rotateX(50deg) rotateY(10deg) rotateZ(360deg);
+		}
+	}
+
+	@-o-keyframes cssload-rotate-two {
+		0% {
+			-o-transform: rotateX(50deg) rotateY(10deg) rotateZ(0deg);
+		}
+		100% {
+			-o-transform: rotateX(50deg) rotateY(10deg) rotateZ(360deg);
+		}
+	}
+
+	@-ms-keyframes cssload-rotate-two {
+		0% {
+			-ms-transform: rotateX(50deg) rotateY(10deg) rotateZ(0deg);
+		}
+		100% {
+			-ms-transform: rotateX(50deg) rotateY(10deg) rotateZ(360deg);
+		}
+	}
+
+	@-webkit-keyframes cssload-rotate-two {
+		0% {
+			-webkit-transform: rotateX(50deg) rotateY(10deg) rotateZ(0deg);
+		}
+		100% {
+			-webkit-transform: rotateX(50deg) rotateY(10deg) rotateZ(360deg);
+		}
+	}
+
+	@-moz-keyframes cssload-rotate-two {
+		0% {
+			-moz-transform: rotateX(50deg) rotateY(10deg) rotateZ(0deg);
+		}
+		100% {
+			-moz-transform: rotateX(50deg) rotateY(10deg) rotateZ(360deg);
+		}
+	}
+
+	@keyframes cssload-rotate-three {
+		0% {
+			transform: rotateX(35deg) rotateY(55deg) rotateZ(0deg);
+		}
+		100% {
+			transform: rotateX(35deg) rotateY(55deg) rotateZ(360deg);
+		}
+	}
+
+	@-o-keyframes cssload-rotate-three {
+		0% {
+			-o-transform: rotateX(35deg) rotateY(55deg) rotateZ(0deg);
+		}
+		100% {
+			-o-transform: rotateX(35deg) rotateY(55deg) rotateZ(360deg);
+		}
+	}
+
+	@-ms-keyframes cssload-rotate-three {
+		0% {
+			-ms-transform: rotateX(35deg) rotateY(55deg) rotateZ(0deg);
+		}
+		100% {
+			-ms-transform: rotateX(35deg) rotateY(55deg) rotateZ(360deg);
+		}
+	}
+
+	@-webkit-keyframes cssload-rotate-three {
+		0% {
+			-webkit-transform: rotateX(35deg) rotateY(55deg) rotateZ(0deg);
+		}
+		100% {
+			-webkit-transform: rotateX(35deg) rotateY(55deg) rotateZ(360deg);
+		}
+	}
+
+	@-moz-keyframes cssload-rotate-three {
+		0% {
+			-moz-transform: rotateX(35deg) rotateY(55deg) rotateZ(0deg);
+		}
+		100% {
+			-moz-transform: rotateX(35deg) rotateY(55deg) rotateZ(360deg);
+		}
+	}
+}
