@@ -43,10 +43,16 @@ Theme package comes bundled with two modules: UiCore and CheckoutEnhancement. Yo
 ```
 $ bin/magento module:enable RocketWeb_UiCore
 $ bin/magento module:enable RocketWeb_CheckoutEnhancement
+$ bin/magento module:enable Staempfli_ImageResizer
 $ bin/magento setup:upgrade
 ```
 
 > To test if the theme has been installed correctly you can go to **Admin > Content > Design > Themes**. You should see RocketWeb/prime as one of the available themes.
+
+## Supported modules
+RW Prime is compatible with the following third-party modules that we highly recommend to install to take full advantage of the theme features:
+- [WeltPixel_OwlCarouselSlider](https://www.weltpixel.com/resources/OWLCarouselSlider/User-Guide-WeltPixel-Banner-Slider-OWL-Carousel-Magento2.html)
+- [Magefan_Blog](https://magefan.com/magento2-blog-extension)
 
 ## Usage
 To start working with the Prime theme make sure to create your own custom theme that inherits from RocketWeb/prime. You can put all of your customizations in there but make sure not to modify the Prime theme files as your changes will be wiped out when the theme has been updated.
