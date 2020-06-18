@@ -122,10 +122,6 @@
         <move element="form.subscribe" destination="footer.right" after="-"/>
         <move element="copyright" destination="footer.bottom" after="-"/>
 
-        <referenceContainer name="after.body.start">
-            <block name="styles.lazyload" template="Magento_Theme::styles.phtml" />
-        </referenceContainer>
-
         <referenceContainer name="before.body.end">
             <block name="scripts.lazysizes" template="Magento_Theme::html/lazysizes.phtml" />
         </referenceContainer>

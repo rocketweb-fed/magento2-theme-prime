@@ -1,0 +1,25 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<!doctype html>
+<html <?= /* @escapeNotVerified */ $htmlAttributes ?>>
+    <head <?= /* @escapeNotVerified */ $headAttributes ?>>
+        <?= /* @escapeNotVerified */ $requireJs ?>
+        <?= /* @escapeNotVerified */ $headContent ?>
+        <?= /* @escapeNotVerified */ $headAdditional ?>
+
+        <?php // Load css async ?>
+        <link rel="stylesheet" href="<?= $this->assetRepo->getUrl('css/styles-m.css') ?>" media="print" onload="this.media='all'" />
+        <link rel="stylesheet" href="<?= $this->assetRepo->getUrl('css/styles-l.css') ?>" media="print" onload="this.media='(min-width: 768px)'" />
+        <link rel="stylesheet" href="<?= $this->assetRepo->getUrl('mage/calendar.css') ?>" media="print" onload="this.media='all'" />
+    </head>
+    <body data-container="body" data-mage-init='{"loaderAjax": {}, "loader": { "icon": "<?= /* @escapeNotVerified */ $loaderIcon ?>"}}' <?= /* @escapeNotVerified */ $bodyAttributes ?>>
+        <?= /* @escapeNotVerified */ $layoutContent ?>
+    </body>
+</html>
