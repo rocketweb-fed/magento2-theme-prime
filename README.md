@@ -44,6 +44,7 @@ Theme package comes bundled with two modules: UiCore and CheckoutEnhancement. Yo
 $ bin/magento module:enable RocketWeb_UiCore
 $ bin/magento module:enable RocketWeb_CheckoutEnhancement
 $ bin/magento module:enable Staempfli_ImageResizer
+$ bin/magento module:enable Magefan_Blog
 $ bin/magento setup:upgrade
 ```
 

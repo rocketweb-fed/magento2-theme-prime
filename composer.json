@@ -7,7 +7,8 @@
         "magento/framework": ">=100.0.0",
         "rocketweb/module-ui-core": "~1.1",
         "rocketweb/module-checkout-enhancement": "~1.1",
-        "staempfli/magento2-module-image-resizer": "~2.0"
+        "staempfli/magento2-module-image-resizer": "~2.0",
+        "magefan/module-blog": ">=2.9.4"
     },
     "type": "magento2-theme",
     "license": [
