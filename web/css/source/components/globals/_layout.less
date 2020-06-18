@@ -181,8 +181,7 @@
     }
 
     .container {
-        max-width: @layout__max-width;
-        margin: 0 auto;
+        width: 100%;
     }
 }
 
@@ -190,6 +189,11 @@
 .media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
     .columns {
         clear: both;
+    }
+
+    .container {
+        max-width: @layout__max-width;
+        margin: 0 auto;
     }
 
     .column {

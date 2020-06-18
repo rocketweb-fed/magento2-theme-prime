@@ -68,6 +68,48 @@
         .lib-button-primary();
     }
 
+    .filter-content {
+        margin: -20px 0 20px;
+    }
+
+    .filter-current {
+        padding: 1rem 1rem 0;
+        border: 1px solid @color-gray80;
+
+        .item {
+            margin-bottom: 1rem;
+        }
+
+        + .filter-actions {
+            text-align: center;
+            margin: 0;
+            padding: 1rem;
+            background: @color-gray90;
+        }
+    }
+
+
+    .filter-options {
+        .filter-options-title {
+            padding: 1rem;
+            margin: 0;
+            border: solid 1px @color-gray80;
+            border-top: none;
+            .lib-font-size(16);
+        }
+
+        .filter-options-content {
+            background: @color-gray92;
+            margin: 0;
+
+            .item,
+            .more-toggle {
+                padding: .5rem 1rem;
+                .lib-font-size(18);
+            }
+        }
+    }
+
     .block.filter {
         margin-bottom: 0;
     }

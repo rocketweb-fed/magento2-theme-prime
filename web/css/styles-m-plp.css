@@ -1933,6 +1933,25 @@ body {
     border: 1px solid #006bb4;
     color: #fff;
   }
+  .filter-content {
+    margin: -20px 0 20px;
+  }
+  .filter-options .filter-options-title {
+    padding: 1rem;
+    margin: 0;
+    border: solid 1px #ccc;
+    border-top: none;
+    font-size: 1.6rem;
+  }
+  .filter-options .filter-options-content {
+    background: #ebebeb;
+    margin: 0;
+  }
+  .filter-options .filter-options-content .item,
+  .filter-options .filter-options-content .more-toggle {
+    padding: 0.5rem 1rem;
+    font-size: 1.8rem;
+  }
   .block.filter {
     margin-bottom: 0;
   }

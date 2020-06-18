@@ -396,6 +396,16 @@ select::-ms-expand {
   .columns {
     clear: both;
   }
+  .header-dropdown {
+    cursor: pointer;
+  }
+  .header-dropdown:hover {
+    color: #000;
+  }
+  .header-dropdown ul.dropdown li > a {
+    display: block;
+    text-decoration: none;
+  }
   .block-search .label {
     border: 0;
     clip: rect(0, 0, 0, 0);

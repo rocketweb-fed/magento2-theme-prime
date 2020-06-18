@@ -64,7 +64,7 @@
                                         <source media="--xs" data-srcset="<?= $imageResizer->resizeAndGetUrl($imageMobileUrl, 480, null, []); ?> 1x, <?= $imageResizer->resizeAndGetUrl($imageMobileUrl, 960, null, []); ?> 2x" />
                                         <source media="--sm" data-srcset="<?= $imageResizer->resizeAndGetUrl($imageMobileUrl, 800, null, []); ?> 1x, <?= $imageResizer->resizeAndGetUrl($imageMobileUrl, 1600, null, []); ?> 2x" />
                                         <source media="--md" data-srcset="<?= $imageResizer->resizeAndGetUrl($imageUrl, 1100, null, []); ?> 1x, <?= $imageResizer->resizeAndGetUrl($imageUrl, 1100, null, []); ?> 2x" />
-                                        <source data-srcset="<?= $imageResizer->resizeAndGetUrl($imageUrl, 1600, null, []); ?> 1600w" />
+                                        <source media="--lg" data-srcset="<?= $imageResizer->resizeAndGetUrl($imageUrl, 1600, null, []); ?> 1600w" />
                                         <img data-sizes="auto"
                                              data-src="<?= $imageResizer->resizeAndGetUrl($imageMobileUrl, 480, null, []); ?>"
                                              alt="<?= $altText; ?>"

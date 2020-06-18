@@ -89,6 +89,19 @@
 
 // Desktop
 .media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .header-dropdown {
+        cursor: pointer;
+
+        &:hover {
+            color: @color-black;
+        }
+
+        ul.dropdown li > a {
+            display: block;
+            text-decoration: none;
+        }
+    }
+
     .sticky-header {
         .flex-set();
 

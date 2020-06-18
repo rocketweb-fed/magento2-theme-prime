@@ -431,8 +431,7 @@ button:active {
   padding-right: 0;
 }
 .container {
-  max-width: 1280px;
-  margin: 0 auto;
+  width: 100%;
 }
 /**
  * Copyright © 2019 Rocket Web. All rights reserved.
