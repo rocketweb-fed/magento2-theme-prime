@@ -1996,6 +1996,9 @@ body {
   position: absolute;
   width: 1px;
 }
+.filter-options-content {
+  display: none;
+}
 .footer.content {
   padding: 0;
   border: none;

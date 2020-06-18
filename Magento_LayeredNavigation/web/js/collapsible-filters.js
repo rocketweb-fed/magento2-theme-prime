@@ -31,8 +31,8 @@ define([
                 
                 /* Switch to desktop */
                 entry: function () {
-                    $("#narrow-by-list > dt").collapsible({ active: true, content: '.filter-options-content' });
-                    
+                    $("#narrow-by-list > dt").not(":first-child").collapsible({ active: false, content: '.filter-options-content' });
+                    $("#narrow-by-list > dt:first-child").collapsible({ active: true, content: '.filter-options-content' });
                 },
                 
                 /* Switch to mobile */

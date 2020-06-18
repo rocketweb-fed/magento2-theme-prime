@@ -1522,6 +1522,7 @@ body {
 /**
      * Product slider
      **/
-.widget-product-slider {
+.widget-product-slider,
+.widget-product-carousel {
   display: none;
 }

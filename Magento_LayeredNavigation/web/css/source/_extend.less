@@ -5,6 +5,10 @@
     }
 
     .filter-options {
+        &-content {
+            display: none;
+        }
+
         [data-collapsible='true'] {
             cursor: pointer;
 
@@ -17,6 +21,10 @@
                 &::after {
                     .lib-css(transform, rotate(180deg), 1);
                 }
+            }
+
+            + .filter-options-content[aria-hidden='false'] {
+                display: block;
             }
         }
     }

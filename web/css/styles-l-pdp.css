@@ -319,6 +319,27 @@ textarea:not([disabled]):focus {
   .navigation .level0.parent > .level-top {
     padding-right: 20px;
   }
+  .navigation .level0.parent > .level-top > .ui-menu-icon {
+    position: absolute;
+    right: 0;
+    display: inline-block;
+    text-decoration: none;
+  }
+  .navigation .level0.parent > .level-top > .ui-menu-icon:after {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 12px;
+    line-height: 20px;
+    color: inherit;
+    content: '\e622';
+    font-family: 'icons-blank-theme';
+    vertical-align: middle;
+    display: inline-block;
+    font-weight: normal;
+    overflow: hidden;
+    speak: none;
+    text-align: center;
+  }
   .navigation .level0 .submenu {
     background: #fff;
     border: 1px solid #d1d1d1;
@@ -351,6 +372,27 @@ textarea:not([disabled]):focus {
   }
   .navigation .level0 .submenu li {
     margin: 0;
+  }
+  .navigation .level0 .submenu li.parent > a > .ui-menu-icon {
+    position: absolute;
+    right: 3px;
+    display: inline-block;
+    text-decoration: none;
+  }
+  .navigation .level0 .submenu li.parent > a > .ui-menu-icon:after {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 12px;
+    line-height: 20px;
+    color: inherit;
+    content: '\e608';
+    font-family: 'icons-blank-theme';
+    vertical-align: middle;
+    display: inline-block;
+    font-weight: normal;
+    overflow: hidden;
+    speak: none;
+    text-align: center;
   }
   .fieldset > .field {
     margin: 0 0 20px;
@@ -447,9 +489,17 @@ textarea:not([disabled]):focus {
   .product.data.items > .item.title:not(.disabled) > .switch:hover {
     background: #fcfcfc;
   }
-  .product.data.items > .item.title:not(.disabled) > .switch:active {
+  .product.data.items > .item.title:not(.disabled) > .switch:active,
+  .product.data.items > .item.title.active > .switch,
+  .product.data.items > .item.title.active > .switch:focus,
+  .product.data.items > .item.title.active > .switch:hover {
     background: #ffffff;
     color: #333;
+  }
+  .product.data.items > .item.title.active > .switch,
+  .product.data.items > .item.title.active > .switch:focus,
+  .product.data.items > .item.title.active > .switch:hover {
+    padding-bottom: 6px;
   }
   .product.data.items > .item.content {
     background: #ffffff;
@@ -661,6 +711,10 @@ textarea:not([disabled]):focus {
   .block-search .action.search:hover {
     background: none;
     border: none;
+  }
+  .block-search .action.search[disabled] {
+    pointer-events: none;
+    opacity: 0.5;
   }
   .block-search .action.search:focus:before {
     color: #333;

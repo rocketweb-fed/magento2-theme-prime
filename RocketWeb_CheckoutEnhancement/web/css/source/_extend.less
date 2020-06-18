@@ -1,0 +1,27 @@
+& when (@media-common = true) {
+    .field:not(.choice) {
+        > .control._with-tooltip {
+            padding-right: 25px;
+            box-sizing: border-box;
+        }
+    }
+
+    .rw-google-address-container {
+        .actions {
+            margin: 15px 0;
+
+            > .action {
+                display: inline-block;
+                background: #f0f0f0;
+                color: #7d7d7d;
+                padding: 5px 20px;
+                border: 1px solid #d1d1d1;
+                text-decoration: none;
+
+                &.active {
+                    background: #fff;
+                }
+            }
+        }
+    }
+}
