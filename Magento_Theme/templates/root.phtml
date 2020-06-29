@@ -18,6 +18,11 @@
         <link rel="stylesheet" href="<?= $this->assetRepo->getUrl('css/styles-m.css') ?>" media="print" onload="this.media='all'" />
         <link rel="stylesheet" href="<?= $this->assetRepo->getUrl('css/styles-l.css') ?>" media="print" onload="this.media='(min-width: 768px)'" />
         <link rel="stylesheet" href="<?= $this->assetRepo->getUrl('mage/calendar.css') ?>" media="print" onload="this.media='all'" />
+
+        <?php // Include manifest ?>
+        <link rel="manifest" href="<?= $this->assetRepo->getUrl('manifest.json') ?>" />
+        <meta name="theme-color" content="#ce3a1f" />
+        <link rel="apple-touch-icon" sizes="180x180" href="<?= $this->assetRepo->getUrl('images/icons/apple-touch-icon.png') ?>" />
     </head>
     <body data-container="body" data-mage-init='{"loaderAjax": {}, "loader": { "icon": "<?= /* @escapeNotVerified */ $loaderIcon ?>"}}' <?= /* @escapeNotVerified */ $bodyAttributes ?>>
         <?= /* @escapeNotVerified */ $layoutContent ?>
