@@ -3,7 +3,7 @@ RW Prime theme is based on Magento Blank and includes our most common customizat
 
 > NOTE: This project is in constant development so use it with caution.
 
-![RW Prime](media/preview.png)
+![RW Prime](media/prime_home.png)
 
 ## Features
 * New simplified header layout
