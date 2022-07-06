@@ -2,13 +2,13 @@
     "name": "rocketweb/theme-frontend-prime",
     "description": "Rocket Web Prime theme based on Magento Blank that includes our most common customizations.",
     "require": {
-        "php": "~5.5.0|~5.6.0|~7.0.0|~7.0.2|~7.0.4|~7.0.6|~7.1",
+        "php": "~5.5.0|~5.6.0|~7.0.0|~7.0.2|~7.0.4|~7.0.6|~7.1|~8.1",
         "magento/theme-frontend-blank": ">=100.0.0",
         "magento/framework": ">=100.0.0",
         "rocketweb/module-ui-core": "~1.1",
         "rocketweb/module-checkout-enhancement": "~1.1",
-        "staempfli/magento2-module-image-resizer": "~2.0",
-        "magefan/module-blog": ">=2.9.4"
+        "web200/magento-mod-web200_image-resize": "*",
+        "magefan/module-blog": ">=2.10.8.1"
     },
     "type": "magento2-theme",
     "license": [

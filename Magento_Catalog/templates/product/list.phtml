@@ -13,11 +13,14 @@ use Magento\Framework\App\Action\Action;
  * Product list template
  *
  * @var $block \Magento\Catalog\Block\Product\ListProduct
+ * @var \Magento\Framework\Escaper $escaper
+ * @var \Magento\Framework\View\Helper\SecureHtmlRenderer $secureRenderer
  */
 ?>
 <?php
 $_productCollection = $block->getLoadedProductCollection();
-$_helper = $this->helper('Magento\Catalog\Helper\Output');
+/*** $_helper = $this->helper('Magento\Catalog\Helper\Output'); */
+$_helper = $block->getData('outputHelper');
 $_productHelper = $this->helper('RocketWeb\UiCore\Helper\Product');
 ?>
 <?php if (!$_productCollection->count()): ?>
@@ -26,7 +29,7 @@ $_productHelper = $this->helper('RocketWeb\UiCore\Helper\Product');
     <?= $block->getToolbarHtml() ?>
     <?= $block->getAdditionalHtml() ?>
     <?php
-    if ($block->getMode() == 'grid') {
+    if ($block->getMode() === 'grid') {
         $viewMode = 'grid';
         $image = 'category_page_grid';
         $showDescription = false;
@@ -81,8 +84,8 @@ $_productHelper = $this->helper('RocketWeb\UiCore\Helper\Product');
                         <?= $block->getProductDetailsHtml($_product) ?>
 
                         <div class="product-item-inner">
-                            <div class="product actions product-item-actions"<?= strpos($pos, $viewMode . '-actions') ? $position : '' ?>>
-                                <div class="actions-primary"<?= strpos($pos, $viewMode . '-primary') ? $position : '' ?>>
+                            <div class="product actions product-item-actions"<?= ($pos && strpos($pos, $viewMode . '-actions')) ? $position : '' ?>>
+                                <div class="actions-primary"<?= ($pos && strpos($pos, $viewMode . '-primary')) ? $position : '' ?>>
                                     <?php if ($_product->isSaleable()): ?>
                                         <?php $postParams = $block->getAddToCartPostParams($_product); ?>
                                         <form data-role="tocart-form" data-product-sku="<?=  /* @NoEscape */ $_product->getSku() ?>" action="<?= /* @NoEscape */ $postParams['action'] ?>" method="post">
@@ -103,7 +106,7 @@ $_productHelper = $this->helper('RocketWeb\UiCore\Helper\Product');
                                         <?php endif; ?>
                                     <?php endif; ?>
                                 </div>
-                                <div data-role="add-to-links" class="actions-secondary"<?= strpos($pos, $viewMode . '-secondary') ? $position : '' ?>>
+                                <div data-role="add-to-links" class="actions-secondary"<?= ($pos && strpos($pos, $viewMode . '-secondary')) ? $position : '' ?>>
                                     <?php if ($addToBlock = $block->getChildBlock('addto')): ?>
                                         <?= $addToBlock->setProduct($_product)->getChildHtml() ?>
                                     <?php endif; ?>
