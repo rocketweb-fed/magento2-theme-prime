@@ -4,7 +4,9 @@
 <?php $sliderGeneral = $sliderConfig['slider_config']; ?>
 <?php $enabled       = (array_key_exists('status', $sliderGeneral) && $sliderGeneral['status'] !=0) ? true : false; ?>
 <?php $type = 'banner-slider'; ?>
-<?php $imageResizer = $block->getImageResizer(); ?>
+<?php /** @var \Web200\ImageResize\Helper\ImageResize $resizeHelper */ ?>
+<?php $resizeHelper = $this->helper(\Web200\ImageResize\Helper\ImageResize::class) ?>
+<?php $imageResizer = $resizeHelper->getResize(); ?>
 
 <?php if ($enabled) : ?>
 
@@ -16,7 +18,7 @@
     $sliderConfig = json_encode($sliderGeneral);
     $mediaUrl     = $this->getMediaUrl();
     ?>
-    
+
     <?php if($sliderGeneral['show_title']) : ?>
         <div class="content-heading">
             <h2 class="title"><?php echo $sliderGeneral['title']; ?></h2>
@@ -42,7 +44,7 @@
                     $target = array_key_exists('target', $banner) ? $banner['target'] : '_blank';
                     $bannerType = array_key_exists('banner_type', $banner) ? $banner['banner_type'] : '';
                     $image = array_key_exists('image', $banner) ? $banner['image'] : '';
-                    $imageMobile = $banner['image_mobile'] ?? '';
+                    $imageMobile = array_key_exists('image_mobile', $banner) ? $banner['image_mobile'] : $image;
                     $imageUrl = $mediaUrl . $image;
                     $imageMobileUrl = $mediaUrl . $imageMobile;
                     $layout = $banner['layout'] ?? ''; // 0 - left, 1 - center, 2 - right
@@ -61,15 +63,15 @@
                             <?php endif; ?>
                                 <div class="banner__image">
                                     <picture>
-                                        <source media="--xs" data-srcset="<?= $imageResizer->resizeAndGetUrl($imageMobileUrl, 480, null, []); ?> 1x, <?= $imageResizer->resizeAndGetUrl($imageMobileUrl, 960, null, []); ?> 2x" />
-                                        <source media="--sm" data-srcset="<?= $imageResizer->resizeAndGetUrl($imageMobileUrl, 800, null, []); ?> 1x, <?= $imageResizer->resizeAndGetUrl($imageMobileUrl, 1600, null, []); ?> 2x" />
-                                        <source media="--md" data-srcset="<?= $imageResizer->resizeAndGetUrl($imageUrl, 1100, null, []); ?> 1x, <?= $imageResizer->resizeAndGetUrl($imageUrl, 1100, null, []); ?> 2x" />
-                                        <source media="--lg" data-srcset="<?= $imageResizer->resizeAndGetUrl($imageUrl, 1600, null, []); ?> 1600w" />
+                                        <source media="(max-width: 480px)" srcset="<?= $imageResizer->resizeAndGetUrl($imageMobileUrl, 480, null, []); ?> 1x, <?= $imageResizer->resizeAndGetUrl($imageMobileUrl, 960, null, []); ?> 2x" />
+                                        <source media="(max-width: 767px)" srcset="<?= $imageResizer->resizeAndGetUrl($imageMobileUrl, 800, null, []); ?> 1x, <?= $imageResizer->resizeAndGetUrl($imageMobileUrl, 1600, null, []); ?> 2x" />
+                                        <source media="(max-width: 1100px)" srcset="<?= $imageResizer->resizeAndGetUrl($imageUrl, 1100, null, []); ?> 1x, <?= $imageResizer->resizeAndGetUrl($imageUrl, 1100, null, []); ?> 2x" />
+                                        <source media="(min-width: 1101px)" srcset="<?= $imageResizer->resizeAndGetUrl($imageUrl, 1600, null, []); ?> 1600w" />
                                         <img data-sizes="auto"
-                                             data-src="<?= $imageResizer->resizeAndGetUrl($imageMobileUrl, 480, null, []); ?>"
+                                             src="<?= $imageResizer->resizeAndGetUrl($imageMobileUrl, 480, null, []); ?>"
                                              alt="<?= $altText; ?>"
                                              title="<?= $altText; ?>"
-                                             class="lazyload"
+                                             loading="lazy"
                                         />
                                     </picture>
                                 </div>
