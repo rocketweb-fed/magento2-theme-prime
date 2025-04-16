@@ -1,7 +1,7 @@
 # RW Prime - Magento 2 boilerplate theme
-RW Prime theme is based on Magento Blank and includes our most common customizations that we make on the majority of our projects. 
+RW Prime theme is based on Magento Blank and includes the most common customizations that we make on the majority of our projects. 
 
-> NOTE: This project is in constant development so use it with caution.
+> **WARNING**: This project is no longer continued since we switched to Hyvä Theme. Use at your own risk.
 
 ![RW Prime](media/prime_home.png)
 
@@ -31,7 +31,7 @@ RW Prime theme is based on Magento Blank and includes our most common customizat
 * Bunch of handy mixins 
 * and more...
 
-> If you want easier front-end development with automatic less/js linting, compilation and more checkout our [magento2-gulfile](https://github.com/rocketweb-fed/magento2-gulpfile).
+> If you want easier front-end development with automatic less/js linting, compilation and more checkout our [magento2-gulpfile](https://github.com/rocketweb-fed/magento2-gulpfile).
 
 ## Installation
 Install using Composer
